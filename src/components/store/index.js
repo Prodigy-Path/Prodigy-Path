@@ -1,16 +1,17 @@
 /** @format */
 
 import { configureStore } from '@reduxjs/toolkit';
-import clickReducer from './clickSlice';
-import totals from './logger';
 
+import drawerSlice from './drawerSlice';
+import logger from './logger';
+import loginSlice from './loginSlice';
 
 const store = configureStore({
   reducer: {
-    click: clickReducer,
-    
+    drawer: drawerSlice,
+    login: loginSlice,
   },
-  middleware: [totals],
+  middleware: [logger],
 });
 
 export default store;

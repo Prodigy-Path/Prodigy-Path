@@ -1,11 +1,12 @@
 /** @format */
 
-import Footer from './src/Footer';
-import AppShellMain from './src/Header';
-import Header from './src/Header';
-import Main from './src/Main';
-import store from './src/store';
+import Footer from './components/Footer';
+import AppShellMain from './components/Header';
+import Header from './components/Header';
+import Main from './components/Main';
+import store from './components/store';
 import { Provider } from 'react-redux';
+
 const App = () => {
   return (
     <>
