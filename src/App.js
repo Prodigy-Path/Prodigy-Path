@@ -1,7 +1,7 @@
-import Footer from "./Components/Footer";
-import AppShellMain from "./Components/Header";
-import Header from "./Components/Header"
-import Main from "./Components/Main";
+import Footer from "./src/Footer";
+import AppShellMain from "./src/Header";
+import Header from "./src/Header"
+import Main from "./src/Main";
 
 const App = () => {
   return (
