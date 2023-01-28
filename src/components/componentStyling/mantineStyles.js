@@ -1,3 +1,5 @@
+/** @format */
+
 import { createStyles } from '@mantine/core';
 const useStyles = createStyles((theme) => ({
   listCards: {
@@ -20,7 +22,7 @@ const useStyles = createStyles((theme) => ({
     justifyContent: 'center',
   },
   navbarLink: {
-    color: theme.colors.gray[0]
+    color: theme.colors.gray[0],
   },
   settingsHeader: {
     backgroundColor: theme.colors.gray[8],
@@ -28,7 +30,7 @@ const useStyles = createStyles((theme) => ({
     width: '80%',
     margin: 'auto',
     fontSize: theme.fontSizes.lg,
-    padding: theme.spacing.lg
+    padding: theme.spacing.lg,
   },
   homeHeader: {
     backgroundColor: theme.colors.gray[8],
@@ -36,7 +38,7 @@ const useStyles = createStyles((theme) => ({
     width: '80%',
     margin: 'auto',
     fontSize: theme.fontSizes.lg,
-    padding: theme.spacing.lg
-  }
+    padding: theme.spacing.lg,
+  },
 }));
 export default useStyles;

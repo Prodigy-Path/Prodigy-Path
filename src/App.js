@@ -1,15 +1,21 @@
-import Footer from "./src/Footer";
-import Main from "./src/Main";
-import HeaderComponent from "./src/Header";
-import { AppShell } from "@mantine/core";
+/** @format */
+
+import Footer from './components/Footer';
+import AppShellMain from './components/Header';
+import Header from './components/Header';
+import Main from './components/Main';
+import store from './components/store';
+import { Provider } from 'react-redux';
 
 const App = () => {
   return (
-    <AppShell
-      header={<HeaderComponent/>}
-    >
-        <Main />
-    </AppShell>
-  )
-}
+    <>
+      <Provider store={store}>
+        <AppShellMain>
+          <Main />
+        </AppShellMain>
+      </Provider>
+    </>
+  );
+};
 export default App;

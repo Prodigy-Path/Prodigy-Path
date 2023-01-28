@@ -1,4 +1,4 @@
-import { AppShell } from "@mantine/core";
+/** @format */
 
 const Main = () => {
   return (
