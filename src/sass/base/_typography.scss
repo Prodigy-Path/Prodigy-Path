@@ -38,26 +38,9 @@ a {
   text-decoration: none;
 }
 
-.categories {
-  color: rgba(0, 0, 255, 0.777);
-  list-style: none;
-  font-size: 1.3rem;
-  text-transform: uppercase;
-}
-
-.navbar {
-  &__cart {
-    font-size: 1.6rem;
-  }
-  &__logo {
-    font-size: 2.8rem;
-  }
-}
-
-.footer {
-  font-size: 1.9rem;
-  &__items {
-    font-size: 1.3rem;
-    color: gray;
-  }
+.header__group__title{
+  color: $color-light-beige;
+  font-size: 4rem;
+  font-family: sans-serif;
+  text-shadow : 2.25px 2.25px 2.25px $color-light-green;
 }
