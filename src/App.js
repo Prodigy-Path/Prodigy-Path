@@ -6,14 +6,16 @@ import Header from './components/Header';
 import Main from './components/Main';
 import store from './components/store';
 import { Provider } from 'react-redux';
+import { AppShell } from '@mantine/core';
+import Login from './components/signupLogin/Login';
 
 const App = () => {
   return (
     <>
       <Provider store={store}>
-        <AppShellMain>
+        <AppShell>
           <Main />
-        </AppShellMain>
+        </AppShell>
       </Provider>
     </>
   );
