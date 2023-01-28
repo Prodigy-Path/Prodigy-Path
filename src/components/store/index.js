@@ -1,7 +1,7 @@
 /** @format */
 
 import { configureStore } from '@reduxjs/toolkit';
-import clickReducer from './click';
+import clickReducer from './clickSlice';
 import totals from './logger';
 
 
