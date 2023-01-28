@@ -1,0 +1,63 @@
+/** @format */
+
+body {
+  width: 100%;
+  text-align: left;
+  font-family: 'work sans', sans-serif;
+  font-size: 2.5rem;
+}
+
+.large-text {
+  font-size: 5rem;
+}
+
+h1 {
+  font-size: 5.8rem;
+  font-family: sans-serif;
+  font-weight: 100;
+}
+
+h2 {
+  font-size: 2.3rem;
+  font-family: sans-serif;
+  font-weight: 700;
+}
+h3 {
+  font-size: 2rem;
+  font-family: sans-serif;
+  font-weight: 200;
+}
+h4 {
+  font-size: 2.5rem;
+  font-family: sans-serif;
+  font-weight: 100;
+  color: gray;
+}
+
+a {
+  text-decoration: none;
+}
+
+.categories {
+  color: rgba(0, 0, 255, 0.777);
+  list-style: none;
+  font-size: 1.3rem;
+  text-transform: uppercase;
+}
+
+.navbar {
+  &__cart {
+    font-size: 1.6rem;
+  }
+  &__logo {
+    font-size: 2.8rem;
+  }
+}
+
+.footer {
+  font-size: 1.9rem;
+  &__items {
+    font-size: 1.3rem;
+    color: gray;
+  }
+}
