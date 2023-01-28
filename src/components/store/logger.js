@@ -1,7 +1,7 @@
 /** @format */
 
 const logger = (store) => (next) => (action) => {
-  console.log(action.payload);
+  console.log(action);
 
   next(action);
 };
