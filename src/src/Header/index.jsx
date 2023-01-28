@@ -1,95 +1,73 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import {
-  Navbar,
-  Group,
-  Button,
-  AppShell,
-  Burger,
-  Header,
-  Footer,
-  Text,
-} from '@mantine/core';
-import useStyles from '../componentStyling/mantineStyles';
-
+import { Header, Group, Text, SegmentedControl, Button, Burger } from '@mantine/core';
 // import { AuthContext } from '../../context/Auth';
-const AppShellMain = () => {
+
+const HeaderComponent = () => {
+  const [value, setValue] = useState('dashboard');
   const [opened, setOpened] = useState(false);
-  // let { isLoggedIn, login, logout } = useContext(AuthContext);
-  // only temporary
-  const { classes } = useStyles();
-  let isLoggedIn = true;
-  const linkStyle = {
-    color: '#F8F9FA',
-    textDecoration: 'none',
-  };
+  const title = opened ? 'Close navigation' : 'Open navigation';
+  const [menuClass, setClass] = useState('closed')
+
+  useEffect(() => {
+    if(opened){
+      setClass('open')
+    }else {
+      setClass('closed')
+    }
+  }, [opened])
+
   return (
-    <>
-      <AppShell
-        navbar={
-          <Header
-            className={classes.navbar}
-            fixed={false}
-            position='apart'
-            height={1}
-            p='md'
-            hiddenBreakpoint='sm'
-            hidden={!opened}
-            width={{ sm: 200, lg: 300 }}
-          >
-            <Group position='apart'>
-              <Group>
-                <Link
-                  style={linkStyle}
-                  className={classes.navbarLink}
-                  to='/'
-                  default
-                >
-                  ProdigyPath
-                </Link>
-              </Group>
-              <Group>
-                <Link
-                  style={linkStyle}
-                  className={classes.navbarLink}
-                  to='/'
-                  default
-                >
-                  Dashboard
-                </Link>
-                <Link
-                  style={linkStyle}
-                  className={classes.navbarLink}
-                  to='/'
-                  default
-                >
-                  Tasks
-                </Link>
-                <Link
-                  style={linkStyle}
-                  className={classes.navbarLink}
-                  to='/'
-                  default
-                >
-                  Explore
-                </Link>
-              </Group>
-              <Group>
-                <Link
-                  style={linkStyle}
-                  className={classes.navbarLink}
-                  to='/'
-                  default
-                >
-                  Profile
-                </Link>
-              </Group>
-            </Group>
-          </Header>
-        }
-      ></AppShell>
-    </>
+    <Header height={75} fixed={true} className='header' >
+      <Group position='apart' className='header__group'>
+        <Text className='header__group__title'>ProdigyPath</Text>
+        <Group position='apart' className='header__group__nav'>
+          <SegmentedControl
+            className='header__group__nav__segment'
+            transitionDuration={500}
+            transitionTimingFunction="linear"
+            data={[
+              { label: 'Dashboard', value: 'dashboard' },
+              { label: 'Tasks', value: 'tasks' },
+              { label: 'Explore', value: 'Explore' },
+            ]} />
+          <Button
+            className='header__group__nav__signup'
+            size="md"
+            styles={(theme) => ({
+              root: {
+                '&:hover': {
+                  backgroundColor: theme.fn.darken('#678983', 0.05),
+                  color: '#E6DDC4'
+                },
+              },
+              leftIcon: {
+                marginRight: 15,
+              },
+            })}>
+            Sign up
+          </Button>
+        </Group>
+        <Burger 
+          className='header__group__burger'
+          color='#E6DDC4'
+          opened={opened}
+          onClick={() => setOpened((o) => !o)}
+          title={title}
+        />
+        <SegmentedControl
+            className={`header__group__mobileMenu ${menuClass} `}
+            orientation='vertical'
+            transitionDuration={500}
+            transitionTimingFunction="linear"
+            data={[
+              { label: 'Dashboard', value: 'dashboard' },
+              { label: 'Tasks', value: 'tasks' },
+              { label: 'Explore', value: 'Explore' },
+            ]} />
+      </Group>
+    </Header>
   );
 };
-export default AppShellMain;
+export default HeaderComponent;

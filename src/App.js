@@ -1,16 +1,15 @@
 import Footer from "./src/Footer";
-import AppShellMain from "./src/Header";
-import Header from "./src/Header"
 import Main from "./src/Main";
+import HeaderComponent from "./src/Header";
+import { AppShell } from "@mantine/core";
 
 const App = () => {
   return (
-    <>
-      <AppShellMain>
+    <AppShell
+      header={<HeaderComponent/>}
+    >
         <Main />
-      </AppShellMain>
-
-    </>
+    </AppShell>
   )
 }
 export default App;

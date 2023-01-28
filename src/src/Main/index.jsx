@@ -1,7 +1,8 @@
+import { AppShell } from "@mantine/core";
+
 const Main = () => {
   return (
     <>
-      <h1></h1>
     </>
   );
 };

@@ -1,0 +1,97 @@
+.header {
+  &__group {
+    background-color: $color-dark-navy;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding-inline: 2em;
+
+    &__nav {
+      width: 600px;
+
+      &__segment {
+        background-color: $color-light-green;
+        height: 2em;
+        width: 15em;
+        align-items: center;
+
+        .mantine-vtiw9 {
+          color: $color-lighter-beige;
+          background-color: $color-dark-navy;
+          font-size: 2.5rem;
+
+          :hover {
+            color: $color-lighter-beige;
+            background-color: $color-dark-navy;
+          }
+        }
+      }
+
+      &__signup {
+        background-color: $color-lighter-beige;
+        color: $color-dark-navy;
+
+      }
+    }
+
+    &__mobileMenu {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background-color: $color-light-green;
+      height: 6em;
+      width: 10em;
+
+      .mantine-vtiw9 {
+        color: $color-lighter-beige;
+        background-color: $color-dark-navy;
+        font-size: 3rem;
+
+        :hover {
+          color: $color-lighter-beige;
+          background-color: $color-dark-navy;
+        }
+      }
+      .mantine-1f55xvl:not(:first-of-type) {
+        border-color: $color-light-green;
+      }
+    }
+  }
+}
+
+// mobile menu open or closed
+
+.closed {
+  display: none;
+}
+
+// unselected text in Segmented Control
+.mantine-16xt7zx {
+  font-size: 2.5rem;
+}
+
+
+// segmentedControl background colors and transition color
+.mantine-Button-centerLoader {
+  background-color: $color-dark-navy;
+}
+
+.mantine-82tz3r {
+  background-color: $color-dark-navy;
+}
+
+.mantine-2unba0 {
+  background-color: $color-dark-navy;
+}
+
+.mantine-1rm1hi0 {
+  background-color: $color-dark-navy;
+}
+
+.mantine-1of85za:not(:first-of-type) {
+  border-color: $color-light-green;
+}
+
+.mantine-SegmentedControl-active {
+  display: none;
+}

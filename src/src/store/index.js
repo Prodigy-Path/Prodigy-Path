@@ -2,7 +2,7 @@
 
 import { configureStore } from '@reduxjs/toolkit';
 import clickReducer from './click';
-import totals from './logger';
+import logger from './logger';
 
 
 const store = configureStore({
@@ -10,7 +10,7 @@ const store = configureStore({
     click: clickReducer,
     
   },
-  middleware: [totals],
+  middleware: [logger],
 });
 
 export default store;
