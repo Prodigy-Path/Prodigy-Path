@@ -10,9 +10,11 @@ async function fetchApi(url = '', body = null, method = 'GET', config = null) {
       const basicAuth = Base64.encode(`${config.username}:${config.password}`);
 
       headers['Authorization'] = `Basic ${basicAuth}`;
+
     }
+    console.log(config)
   }
-  
+  console.log(headers)
   const response = await fetch(url, {
     method: method,
     mode: 'cors',

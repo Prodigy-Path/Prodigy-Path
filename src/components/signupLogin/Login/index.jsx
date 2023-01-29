@@ -8,8 +8,10 @@ import {
   Button,
 } from '@mantine/core';
 import { IconAt, IconEyeCheck, IconEyeOff } from '@tabler/icons';
-
+import { useDispatch } from 'react-redux';
+import { login } from '../../store/loginSlice';
 const Login = () => {
+  const dispatch = useDispatch();
   const handleSubmit = () => {};
   return (
     <>
@@ -24,7 +26,7 @@ const Login = () => {
             withAsterisk
           />
         </Stack>
-        <Button>Submit</Button>
+        <Button onClick={() => dispatch(login())}>Submit</Button>
       </Card>
     </>
   );
