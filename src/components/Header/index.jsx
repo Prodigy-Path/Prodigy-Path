@@ -31,35 +31,64 @@ const HeaderComponent = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [opened]);
   return (
-    <Header
-      height={75}
-      fixed={true}
-      className="header"
-    >
-      <Group
-        position="apart"
-        className="header__group"
-      >
-        <Text className="header__group__title">ProdigyPath</Text>
-        <Group
-          position="apart"
-          className="header__group__nav"
-        >
+    <Header height={75} fixed={true} className='header'>
+      <Group position='apart' className='header__group'>
+        <Text className='header__group__title'>ProdigyPath</Text>
+        <Group position='apart' className='header__group__nav'>
           <SegmentedControl
-            className="header__group__nav__segment"
+            className='header__group__nav__segment'
             transitionDuration={500}
-            transitionTimingFunction="linear"
+            transitionTimingFunction='linear'
             data={[
-              { label: 'Dashboard', value: 'dashboard' },
-              { label: 'Tasks', value: 'tasks' },
-              { label: 'Explore', value: 'Explore' },
+              {
+                value: 'dashboard',
+                label: (
+                  <Center>
+                    <Box
+                      onClick={() => {
+                        navigate('/');
+                      }}
+                    >
+                      Dashboard
+                    </Box>
+                  </Center>
+                ),
+              },
+              {
+                value: 'tasks',
+                label: (
+                  <Center>
+                    <Box
+                      onClick={() => {
+                        navigate('/tasks');
+                      }}
+                    >
+                      Tasks
+                    </Box>
+                  </Center>
+                ),
+              },
+              {
+                value: 'explore',
+                label: (
+                  <Center>
+                    <Box
+                      onClick={() => {
+                        navigate('/explore');
+                      }}
+                    >
+                      Explore
+                    </Box>
+                  </Center>
+                ),
+              },
             ]}
           />
           {isLoggedIn ? (
             <Button
               onClick={handleLogout}
-              className="header__group__nav__signup"
-              size="md"
+              className='header__group__nav__signup'
+              size='md'
               styles={(theme) => ({
                 root: {
                   '&:hover': {
@@ -72,12 +101,12 @@ const HeaderComponent = () => {
                 },
               })}
             >
-              <Link to="/">Logout</Link>
+              <Link to='/'>Logout</Link>
             </Button>
           ) : (
             <Button
-              className="header__group__nav__signup"
-              size="md"
+              className='header__group__nav__signup'
+              size='md'
               styles={(theme) => ({
                 root: {
                   '&:hover': {
@@ -90,13 +119,13 @@ const HeaderComponent = () => {
                 },
               })}
             >
-              <Link to="/login">Login</Link>
+              <Link to='/login'>Login</Link>
             </Button>
           )}
         </Group>
         <Burger
-          className="header__group__burger"
-          color="#E6DDC4"
+          className='header__group__burger'
+          color='#E6DDC4'
           opened={opened}
           onClick={() => dispatch(setOpened())}
           title={title}
@@ -104,9 +133,9 @@ const HeaderComponent = () => {
 
         <SegmentedControl
           className={`header__group__mobileMenu ${menuClass} `}
-          orientation="vertical"
+          orientation='vertical'
           transitionDuration={500}
-          transitionTimingFunction="linear"
+          transitionTimingFunction='linear'
           data={[
             {
               value: 'dashboard',
@@ -142,7 +171,7 @@ const HeaderComponent = () => {
                 <Center>
                   <Box
                     onClick={() => {
-                      navigate('/');
+                      navigate('/explore');
                     }}
                   >
                     Explore
