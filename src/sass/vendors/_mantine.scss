@@ -29,6 +29,7 @@
 .mantine-SegmentedControl-active {
   display: none;
 }
+
 // mobile menu open or closed
 
 .closed {
@@ -46,6 +47,10 @@
   }
 }
 
+.mantine-puhv18 {
+  width: auto;
+}
+
 .mantine-vtiw9 {
   color: $color-lighter-beige;
   background-color: $color-dark-navy;
@@ -56,9 +61,11 @@
     background-color: $color-dark-navy;
   }
 }
+
 .mantine-1f55xvl:not(:first-of-type) {
   border-color: $color-light-green;
 }
+
 // *******
 
 // Mantine main *******

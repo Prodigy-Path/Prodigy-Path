@@ -34,7 +34,7 @@ const HeaderComponent = () => {
     <Header height={75} fixed={true} className='header'>
       <Group position='apart' className='header__group'>
         <Text className='header__group__title'>ProdigyPath</Text>
-        <Group position='apart' className='header__group__nav'>
+        <Group position='right' className='header__group__nav'>
           <SegmentedControl
             className='header__group__nav__segment'
             transitionDuration={500}
@@ -84,6 +84,13 @@ const HeaderComponent = () => {
               },
             ]}
           />
+          <Burger
+            className='header__group__burger'
+            color='#E6DDC4'
+            opened={opened}
+            onClick={() => dispatch(setOpened())}
+            title={title}
+          />
           {isLoggedIn ? (
             <Button
               onClick={handleLogout}
@@ -123,14 +130,6 @@ const HeaderComponent = () => {
             </Button>
           )}
         </Group>
-        <Burger
-          className='header__group__burger'
-          color='#E6DDC4'
-          opened={opened}
-          onClick={() => dispatch(setOpened())}
-          title={title}
-        />
-
         <SegmentedControl
           className={`header__group__mobileMenu ${menuClass} `}
           orientation='vertical'
