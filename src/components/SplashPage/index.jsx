@@ -1,7 +1,6 @@
 /** @format */
 
 import Card from './Card';
-import match from '../../images/match2.jpg';
 const SplashPage = () => {
   return (
     <>
