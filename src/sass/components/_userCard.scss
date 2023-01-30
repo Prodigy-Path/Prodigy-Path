@@ -1,0 +1,36 @@
+.userCard {
+  background-color: $color-dark-navy;
+  display: flex;
+  height: 20rem;
+  width: 100%;
+
+  &__avatar {
+    margin-right: 3rem;
+  }
+
+  &__content {
+    width: 100%;
+  }
+
+  &__name {
+    font-size: 2.5rem;
+    padding: 0;
+    color: $color-light-beige;
+  }
+
+  &__tagGroup {
+    margin-top: 30px;
+    font-size: 1.5rem;
+    color: $color-lighter-beige;
+    display: flex;
+    gap: 10px;
+  }
+  &__tag {
+    background-color: $color-light-green;
+    padding: 5px;
+    border-radius: 5px;
+  }
+  &__button {
+    background-color: $color-light-green;
+  }
+}
