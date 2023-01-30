@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { useEffect } from 'react';
-import { Link, Navigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import {
   Header,
   Group,
@@ -13,7 +13,7 @@ import {
   Button,
   Burger,
   Anchor,
-  NavLink,
+
 } from '@mantine/core';
 import { useSelector, useDispatch } from 'react-redux';
 import { setOpened, setDrawer } from '../store/drawerSlice';
@@ -27,12 +27,11 @@ const HeaderComponent = () => {
   const handleLogout = () => {
     dispatch(logout());
   };
-  const handleClick = (e) => {
-    <Navigate to={`/${e.target.value}`} replace={true}></Navigate>;
-  };
+
 
   useEffect(() => {
     dispatch(setDrawer());
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [opened]);
   return (
     <Header height={75} fixed={true} className='header'>
