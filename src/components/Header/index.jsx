@@ -12,7 +12,6 @@ import {
   Box,
   Button,
   Burger,
-  Anchor,
 } from '@mantine/core';
 import { useSelector, useDispatch } from 'react-redux';
 import { setOpened, setDrawer } from '../store/drawerSlice';
