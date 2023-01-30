@@ -1,7 +1,9 @@
+/** @format */
+
 const Footer = () => {
   return (
     <>
-      <h1>this is footer</h1>
+      <div>this is footer</div>
     </>
   );
 };

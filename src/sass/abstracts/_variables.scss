@@ -1,17 +1,18 @@
 /** @format */
 
-$color-soft-gray: rgb(141, 125, 125);
-$color-footer: #eee;
+$color-soft-gray: hsl(0, 7%, 52%);
+$color-footer: hsl(280, 7%, 16%);
 
-$color-dark-navy: rgb(24, 29, 49);
+$color-dark-navy: hsl(228, 34%, 14%);
 $color-light-green: rgb(103, 137, 131);
-$color-light-beige: rgb(230, 221, 196);
+$color-light-beige: hsl(44, 40%, 84%);
 $color-lighter-beige: rgb(240, 233, 210);
 
 // Scroll Bar
-$color-scroll-bar: (rgba(163, 163, 185, 0.475));
-$color-scroll-thumb1: (rgb(161, 152, 159));
-$color-scroll-thumb2: (rgb(130, 136, 130));
+$color-scroll-bar: (hsla(240, 14%, 68%, 0.475));
+$color-scroll-thumb1: (hsl(313, 5%, 61%));
+$color-scroll-thumb2: (hsl(120, 2%, 52%));
 
 // Splash Page
-$color-card-splash: rgb(211, 182, 182);
+$color-card-splash: hsl(204, 64%, 44%);
+$color-background-splash: #2c3e50;
