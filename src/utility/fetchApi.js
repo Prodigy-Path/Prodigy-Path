@@ -8,13 +8,12 @@ async function fetchApi(url = '', body = null, method = 'GET', config = null) {
   if (config) {
     if (config.username && config.password) {
       const basicAuth = Base64.encode(`${config.username}:${config.password}`);
-
       headers['Authorization'] = `Basic ${basicAuth}`;
-
+    } else if (config.bearerToken) {
+      headers['Authorization'] = `Bearer ${config.bearerToken}`;
     }
-    console.log(config)
   }
-  console.log(headers)
+
   const response = await fetch(url, {
     method: method,
     mode: 'cors',

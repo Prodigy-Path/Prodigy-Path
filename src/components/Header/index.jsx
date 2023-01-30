@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { useEffect } from 'react';
-import { Link, Navigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import {
   Header,
   Group,
@@ -12,12 +12,10 @@ import {
   Box,
   Button,
   Burger,
-  Anchor,
-  NavLink,
 } from '@mantine/core';
 import { useSelector, useDispatch } from 'react-redux';
 import { setOpened, setDrawer } from '../store/drawerSlice';
-// import { AuthContext } from '../../context/Auth';
+
 import { logout } from '../store/loginSlice';
 const HeaderComponent = () => {
   const dispatch = useDispatch();
@@ -27,22 +25,30 @@ const HeaderComponent = () => {
   const handleLogout = () => {
     dispatch(logout());
   };
-  const handleClick = (e) => {
-    <Navigate to={`/${e.target.value}`} replace={true}></Navigate>;
-  };
-
+  const navigate = useNavigate();
   useEffect(() => {
     dispatch(setDrawer());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [opened]);
   return (
-    <Header height={75} fixed={true} className='header'>
-      <Group position='apart' className='header__group'>
-        <Text className='header__group__title'>ProdigyPath</Text>
-        <Group position='apart' className='header__group__nav'>
+    <Header
+      height={75}
+      fixed={true}
+      className="header"
+    >
+      <Group
+        position="apart"
+        className="header__group"
+      >
+        <Text className="header__group__title">ProdigyPath</Text>
+        <Group
+          position="apart"
+          className="header__group__nav"
+        >
           <SegmentedControl
-            className='header__group__nav__segment'
+            className="header__group__nav__segment"
             transitionDuration={500}
-            transitionTimingFunction='linear'
+            transitionTimingFunction="linear"
             data={[
               { label: 'Dashboard', value: 'dashboard' },
               { label: 'Tasks', value: 'tasks' },
@@ -52,8 +58,8 @@ const HeaderComponent = () => {
           {isLoggedIn ? (
             <Button
               onClick={handleLogout}
-              className='header__group__nav__signup'
-              size='md'
+              className="header__group__nav__signup"
+              size="md"
               styles={(theme) => ({
                 root: {
                   '&:hover': {
@@ -66,12 +72,12 @@ const HeaderComponent = () => {
                 },
               })}
             >
-              <Link to='/'>Logout</Link>
+              <Link to="/">Logout</Link>
             </Button>
           ) : (
             <Button
-              className='header__group__nav__signup'
-              size='md'
+              className="header__group__nav__signup"
+              size="md"
               styles={(theme) => ({
                 root: {
                   '&:hover': {
@@ -84,13 +90,13 @@ const HeaderComponent = () => {
                 },
               })}
             >
-              <Link to='/login'>Login</Link>
+              <Link to="/login">Login</Link>
             </Button>
           )}
         </Group>
         <Burger
-          className='header__group__burger'
-          color='#E6DDC4'
+          className="header__group__burger"
+          color="#E6DDC4"
           opened={opened}
           onClick={() => dispatch(setOpened())}
           title={title}
@@ -98,16 +104,20 @@ const HeaderComponent = () => {
 
         <SegmentedControl
           className={`header__group__mobileMenu ${menuClass} `}
-          orientation='vertical'
+          orientation="vertical"
           transitionDuration={500}
-          transitionTimingFunction='linear'
+          transitionTimingFunction="linear"
           data={[
             {
               value: 'dashboard',
               label: (
                 <Center>
-                  <Box>
-                    <Anchor href='/'>Dashboard</Anchor>
+                  <Box
+                    onClick={() => {
+                      navigate('/');
+                    }}
+                  >
+                    Dashboard
                   </Box>
                 </Center>
               ),
@@ -116,8 +126,12 @@ const HeaderComponent = () => {
               value: 'tasks',
               label: (
                 <Center>
-                  <Box>
-                    <Link to={'/tasks'}>Tasks</Link>
+                  <Box
+                    onClick={() => {
+                      navigate('/tasks');
+                    }}
+                  >
+                    Tasks
                   </Box>
                 </Center>
               ),
@@ -126,10 +140,12 @@ const HeaderComponent = () => {
               value: 'explore',
               label: (
                 <Center>
-                  <Box>
-                    <Anchor>
-                      <Link to={'/explore'}>Explore</Link>
-                    </Anchor>
+                  <Box
+                    onClick={() => {
+                      navigate('/');
+                    }}
+                  >
+                    Explore
                   </Box>
                 </Center>
               ),

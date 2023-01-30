@@ -1,0 +1,20 @@
+/** @format */
+
+.splash {
+  // width: 98%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  &__hero {
+    height: 80vh;
+    width: 100%;
+    background: url('../../images/hero.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  &__feature {
+    background-color: gray;
+    height: 100vh;
+    width: 100%;
+  }
+}
