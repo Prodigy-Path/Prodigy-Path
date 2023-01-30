@@ -5,6 +5,7 @@ import { Route, Routes } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import Dashboard from '../Dashboard';
 import SplashPage from '../SplashPage';
+import Explore from '../Explore';
 const Main = () => {
   const { isLoggedIn, user } = useSelector((state) => state.login);
   console.log(user);
@@ -15,7 +16,11 @@ const Main = () => {
           path={'/'}
           element={isLoggedIn ? <Dashboard /> : <SplashPage />}
         />
-        <Route path={'/login'} element={<Login />}></Route>
+        <Route
+          path={'/explore'}
+          element={<Explore/>}
+        />
+        <Route path={'/login'} element={<Login />}/>
         <Route path={'/signup'} element={<SignUp />} />
       </Routes>
     </>
