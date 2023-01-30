@@ -1,5 +1,5 @@
 /** @format */
-
+// Mantine header *******
 // unselected text in Segmented Control
 .mantine-16xt7zx {
   font-size: 2.5rem;
@@ -44,4 +44,25 @@
     color: $color-lighter-beige;
     background-color: $color-dark-navy;
   }
+}
+
+.mantine-vtiw9 {
+  color: $color-lighter-beige;
+  background-color: $color-dark-navy;
+  font-size: 3rem;
+
+  :hover {
+    color: $color-lighter-beige;
+    background-color: $color-dark-navy;
+  }
+}
+.mantine-1f55xvl:not(:first-of-type) {
+  border-color: $color-light-green;
+}
+// *******
+
+// Mantine main *******
+.mantine-13jfpqk {
+  padding: 0;
+  padding-top: 75px;
 }
