@@ -1,6 +1,4 @@
 /** @format */
-
-import HeaderComponent from '../Header';
 import Login from '../signupLogin/Login';
 import SignUp from '../signupLogin/SignUp';
 import { Route, Routes } from 'react-router-dom';
