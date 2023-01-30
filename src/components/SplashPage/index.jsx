@@ -1,7 +1,14 @@
+/** @format */
+
 const SplashPage = () => {
   return (
     <>
-      <h1>splash page</h1>
+      <div className="splash">
+        <section className="splash__hero">
+          <h1>Splash</h1>
+        </section>
+        <section className="splash__feature"></section>
+      </div>
     </>
   );
 };
