@@ -1,3 +1,5 @@
+<!-- @format -->
+
 # Prodigy-Path-Server
 
 ## Problem Domain
@@ -11,6 +13,26 @@ The main problem this application solves is the difficulty that many individuals
 ## MVP
 
 The MVP of this application is a working platform that allows users to sign up as either a mentor or mentee, search for potential partners, and connect with each other through the application. This would include a search function with filtering capabilities, a messaging feature, and the ability for mentors to approve mentee requests and share contact information.
+
+## Installation
+
+To run this project on your local machine, follow these steps:
+
+Clone the repository: git clone https://github.com/Prodigy-Path/Prodigy-Path.git
+
+Change into the project directory: cd prodigy-path-server
+
+Create a .env file in the root directory of the project and add the following line: REACT_APP_SERVER=http://localhost:3002 (change the URL to the URL of your backend server).
+
+Install the dependencies: npm install or yarn install
+
+Start the backend server. Make sure the backend server is running before proceeding to the next step.
+
+Start the development server for the React application: npm start or yarn start
+
+The application should now be running at http://localhost:3000.
+
+Note: Make sure you have Node.js and npm or yarn installed on your machine before proceeding with the installation. Also, ensure that the required dependencies for the backend server are installed and set up properly.
 
 ### Authors
 
