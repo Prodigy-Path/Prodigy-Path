@@ -91,44 +91,25 @@ const HeaderComponent = () => {
             onClick={() => dispatch(setOpened())}
             title={title}
           />
-          {isLoggedIn ? (
-            <Button
-              onClick={handleLogout}
-              className='header__group__nav__signup'
-              size='md'
-              styles={(theme) => ({
-                root: {
-                  '&:hover': {
-                    backgroundColor: theme.fn.darken('#678983', 0.05),
-                    color: '#E6DDC4',
-                  },
+
+          <Button
+            onClick={handleLogout}
+            className='header__group__nav__signup'
+            size='md'
+            styles={(theme) => ({
+              root: {
+                '&:hover': {
+                  backgroundColor: theme.fn.darken('#678983', 0.05),
+                  color: '#E6DDC4',
                 },
-                leftIcon: {
-                  marginRight: 15,
-                },
-              })}
-            >
-              <Link to='/'>Logout</Link>
-            </Button>
-          ) : (
-            <Button
-              className='header__group__nav__signup'
-              size='md'
-              styles={(theme) => ({
-                root: {
-                  '&:hover': {
-                    backgroundColor: theme.fn.darken('#678983', 0.05),
-                    color: '#E6DDC4',
-                  },
-                },
-                leftIcon: {
-                  marginRight: 15,
-                },
-              })}
-            >
-              <Link to='/login'>Login</Link>
-            </Button>
-          )}
+              },
+              leftIcon: {
+                marginRight: 15,
+              },
+            })}
+          >
+            <Link to='/'>Logout</Link>
+          </Button>
         </Group>
         <SegmentedControl
           className={`header__group__mobileMenu ${menuClass} `}
@@ -175,6 +156,14 @@ const HeaderComponent = () => {
                   >
                     Explore
                   </Box>
+                </Center>
+              ),
+            },
+            {
+              value: 'logout',
+              label: (
+                <Center>
+                  <Box onClick={handleLogout}>Logout</Box>
                 </Center>
               ),
             },
