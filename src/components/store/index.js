@@ -17,6 +17,10 @@ import exploreMiddleware from './middleware/exploreMiddleware';
 import getMentorProtegePosts from './middleware/getMentorProtegePosts';
 import mentorProtegePostsSlice from './mentorProtegePostsSlice';
 
+import connectionMiddleware from './middleware/connectionMiddleware';
+
+import taskSlice from './taskSlice';
+
 const store = configureStore({
   reducer: {
     drawer: drawerSlice,
@@ -24,9 +28,22 @@ const store = configureStore({
     post: postSlice,
     protegesPosts: mentorProtegePostsSlice,
     chat: chatSlice,
-    explore: exploreSlice
+    explore: exploreSlice,
+    taskList: taskSlice,
   },
-  middleware: [logger, loginMiddleware, signUpMiddleware, newPostMiddleware, getPostMiddleware, getMentorProtegePosts, exploreMiddleware, chatMiddleware],
+
+  middleware: [
+    logger,
+    loginMiddleware,
+    signUpMiddleware,
+    newPostMiddleware,
+    getPostMiddleware,
+    exploreMiddleware,
+    chatMiddleware,
+    connectionMiddleware,
+    getMentorProtegePosts,
+  ],
+
 });
 
 export default store;

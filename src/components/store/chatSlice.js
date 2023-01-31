@@ -1,3 +1,5 @@
+/** @format */
+
 import { createSlice } from '@reduxjs/toolkit';
 import { joinRoom, sendMessage } from '../Chat/useMessage';
 
@@ -25,16 +27,13 @@ const chatSlice = createSlice({
 
 export const { setRoomName, setRoomList, setMessages } = chatSlice.actions;
 
-export const joinRoomThunk = (data) => dispatch => {
-  console.log(data);
+export const joinRoomThunk = (data) => (dispatch) => {
   joinRoom(data);
   const { text } = data;
   dispatch(setRoomName(text));
-
 };
 
 export const sendMessageThunk = (data) => (dispatch, getState) => {
-  console.log(data);
   const { text, socket } = data;
   const { messages, roomName } = getState().chat;
   dispatch(setMessages([...messages, text]));
@@ -42,11 +41,10 @@ export const sendMessageThunk = (data) => (dispatch, getState) => {
     const obj = {
       roomName: roomName,
       text: text,
-      socket: socket
-    }
+      socket: socket,
+    };
     sendMessage(obj);
   }
 };
-
 
 export default chatSlice.reducer;

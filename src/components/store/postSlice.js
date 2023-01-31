@@ -1,6 +1,8 @@
+/** @format */
+
 import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
-  posts: []
+  posts: [],
 };
 const postSlice = createSlice({
   name: 'post',
@@ -11,10 +13,9 @@ const postSlice = createSlice({
     },
     getPost: (state, action) => {
       if (state.posts?.length !== action.payload.length) {
-        state.posts = [...action.payload]
+        state.posts = [...action.payload];
       }
-    }
-
+    },
   },
 });
 export const { post, getPost } = postSlice.actions;

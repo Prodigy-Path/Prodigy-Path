@@ -6,6 +6,7 @@ const initialState = {
   isLoggedIn: false,
   user: {},
   usersConnections: []
+
 };
 
 const loginSlice = createSlice({
@@ -14,9 +15,7 @@ const loginSlice = createSlice({
   reducers: {
     login: (state, action) => {
       state.isLoggedIn = true;
-
       state.user = action.payload
-
     },
     logout: (state) => {
       state.isLoggedIn = false;

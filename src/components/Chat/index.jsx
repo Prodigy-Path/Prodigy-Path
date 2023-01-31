@@ -11,7 +11,6 @@ const Chat = () => {
   const dispatch = useDispatch();
   const { roomList, messages } = useSelector((state) => state.chat);
 
-  // console.log('messaages:', messages);
 
   useEffect(() => {
     socket.on('RECEIVE_MESSAGE', (data) => {

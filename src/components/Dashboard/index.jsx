@@ -24,7 +24,6 @@ const Dashboard = () => {
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
-    console.log('hello?');
     e.preventDefault();
     dispatch(
       post({
@@ -42,6 +41,10 @@ const Dashboard = () => {
     dispatch(getPost({ action: 'getPost' }));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [posts]);
+
+  let savedPosts = dispatch(getPost({ action: 'getPost' }));
+  console.log(savedPosts);
+
   let filtered = posts.filter((element) => element.user === user._id);
   let sortedFiltered = filtered.sort((a, b) => {
     return new Date(b.created_at) - new Date(a.created_at);
@@ -55,22 +58,40 @@ const Dashboard = () => {
     );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
   return (
     <>
       {user.role === 'mentor' ? (
         <>
-          <form onSubmit={handleSubmit} className='new_post_component'>
-            <Group mr={0} position='together'>
+          <form
+            onSubmit={handleSubmit}
+            className="new_post_component"
+          >
+            <Group
+              mr={0}
+              position="together"
+            >
               <h4>Publish a new article to your protégé's </h4>
-              <Card withBorder p={0} mb={10}>
+              <Card
+                withBorder
+                p={0}
+                mb={10}
+              >
                 <TextInput
-                  placeholder='Subject'
-                  name='title'
-                  variant='unstyled'
+                  placeholder="Subject"
+                  name="title"
+                  variant="unstyled"
                 />
-                <Textarea placeholder='Body...' name='text' radius={0} />
+                <Textarea
+                  placeholder="Body..."
+                  name="text"
+                  radius={0}
+                />
               </Card>
-              <Button type='submit' m={0}>
+              <Button
+                type="submit"
+                m={0}
+              >
                 Post
               </Button>
             </Group>
@@ -78,9 +99,9 @@ const Dashboard = () => {
           {sortedFiltered.map((d, idx) => (
             <div key={idx}>
               <Card withBorder>
-                <Group position='together'>
+                <Group position="together">
                   <Image
-                    src='https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png'
+                    src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png"
                     height={30}
                     width={30}
                     p={0}
