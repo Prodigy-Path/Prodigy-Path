@@ -10,11 +10,9 @@ const signUpMiddleware = (store) => (next) => async (action) => {
       password: action.payload.password,
       role: action.payload.role,
     };
-
     let method = 'post';
     let config = null;
-    let response = await fetchApi(url, body, method, config);
-    console.log(response.data);
+    await fetchApi(url, body, method, config);
   }
   next(action);
 };

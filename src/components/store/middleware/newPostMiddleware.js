@@ -14,7 +14,6 @@ const newPostMiddleware = (store) => (next) => async (action) => {
       bearerToken: action.payload.token,
     };
     let response = await fetchApi(url, body, method, config);
-    console.log(response);
     action.payload = response;
   }
   next(action);

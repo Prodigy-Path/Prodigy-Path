@@ -1,5 +1,3 @@
-/** @format */
-
 import {
   Button,
   Card,
@@ -12,11 +10,19 @@ import {
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { post, getPost } from '../store/postSlice';
+import { getPostProtege } from '../store/mentorProtegePostsSlice';
 const Dashboard = () => {
   const { user } = useSelector((state) => state.login);
   const { posts } = useSelector((state) => state.post);
+  const { protegePosts, connections } = useSelector(
+    (state) => state.protegesPosts,
+  );
+  console.log(connections);
+  console.log(protegePosts);
   console.log(posts);
+  // Mentor dashboard code *****************
   const dispatch = useDispatch();
+
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(
@@ -35,6 +41,7 @@ const Dashboard = () => {
     dispatch(getPost({ action: 'getPost' }));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [posts]);
+
   let savedPosts = dispatch(getPost({ action: 'getPost' }));
   console.log(savedPosts);
 
@@ -42,6 +49,15 @@ const Dashboard = () => {
   let sortedFiltered = filtered.sort((a, b) => {
     return new Date(b.created_at) - new Date(a.created_at);
   });
+  // *******************************************************
+  useEffect(() => {
+    dispatch(
+      getPostProtege({
+        action: 'getMentorProtegePost',
+      }),
+    );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <>
@@ -93,7 +109,23 @@ const Dashboard = () => {
                   <Text>{user.username}</Text>
                 </Group>
                 <Card.Section withBorder>{d.title}</Card.Section>
-                <Card.Section>{d.text}</Card.Section>
+                <Card.Section>
+                  {d.text.includes('http') ? (
+                    <>
+                      {d.text.split('http')[0]}
+                      <a
+                        href={'http' + d.text.split('http')[1].split(' ')[0]}
+                        target='_blank'
+                        rel='noopener noreferrer'
+                      >
+                        {'http' + d.text.split('http')[1].split(' ')[0]}
+                      </a>{' '}
+                      {d.text.split('http')[1].split(' ').slice(1).join(' ')}
+                    </>
+                  ) : (
+                    d.text
+                  )}
+                </Card.Section>
               </Card>
             </div>
           ))}
