@@ -1,5 +1,3 @@
-
-
 import {
   Button,
   Card,
@@ -12,11 +10,19 @@ import {
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { post, getPost } from '../store/postSlice';
+import { getPostProtege } from '../store/mentorProtegePostsSlice';
 const Dashboard = () => {
   const { user } = useSelector((state) => state.login);
   const { posts } = useSelector((state) => state.post);
+  const { protegePosts, connections } = useSelector(
+    (state) => state.protegesPosts,
+  );
+  console.log(connections);
+  console.log(protegePosts);
   console.log(posts);
+  // Mentor dashboard code *****************
   const dispatch = useDispatch();
+
   const handleSubmit = (e) => {
     console.log('hello?');
     e.preventDefault();
@@ -36,21 +42,20 @@ const Dashboard = () => {
     dispatch(getPost({ action: 'getPost' }));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [posts]);
-  let savedPosts = dispatch(getPost({ action: 'getPost' }));
-  console.log(savedPosts);
-
-  console.log(posts);
   let filtered = posts.filter((element) => element.user === user._id);
   let sortedFiltered = filtered.sort((a, b) => {
     return new Date(b.created_at) - new Date(a.created_at);
   });
-  console.log(sortedFiltered);
-  console.log(filtered);
-  console.log(typeof filtered[0]?.created_at);
-  console.log(user.username);
+  // *******************************************************
+  useEffect(() => {
+    dispatch(
+      getPostProtege({
+        action: 'getMentorProtegePost',
+      }),
+    );
+  }, []);
   return (
     <>
-         
       {user.role === 'mentor' ? (
         <>
           <form onSubmit={handleSubmit} className='new_post_component'>
@@ -82,7 +87,23 @@ const Dashboard = () => {
                   <Text>{user.username}</Text>
                 </Group>
                 <Card.Section withBorder>{d.title}</Card.Section>
-                <Card.Section>{d.text}</Card.Section>
+                <Card.Section>
+                  {d.text.includes('http') ? (
+                    <>
+                      {d.text.split('http')[0]}
+                      <a
+                        href={'http' + d.text.split('http')[1].split(' ')[0]}
+                        target='_blank'
+                        rel='noopener noreferrer'
+                      >
+                        {'http' + d.text.split('http')[1].split(' ')[0]}
+                      </a>{' '}
+                      {d.text.split('http')[1].split(' ').slice(1).join(' ')}
+                    </>
+                  ) : (
+                    d.text
+                  )}
+                </Card.Section>
               </Card>
             </div>
           ))}

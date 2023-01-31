@@ -7,9 +7,7 @@ const getPostMiddleware = (store) => (next) => async (action) => {
     let method = 'get';
     let config = null
     let response = await fetchApi(url, body, method, config);
-    // console.log(response);
     action.payload = response;
-    // console.log(action.payload);
   }
   next(action);
 };
