@@ -37,13 +37,18 @@
     width: 100%;
     resize: none;
     border-radius: 8px;
+    font-size: 2rem;
+    line-height: 15px;
+    padding-top: 1rem;
+    padding-left: 1rem;
   }
   button {
     background-color: $color-footer;
     padding: 0.8rem;
     border-radius: 8px;
     position: absolute;
-    right: 0;
+    right: 2px;
+    bottom: 11px;
     color: #fff;
   }
   border-radius: 8px;
