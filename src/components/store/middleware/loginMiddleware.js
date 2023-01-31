@@ -12,9 +12,8 @@ const loginMiddleware = (store) => (next) => async (action) => {
       password: action.payload.password,
     };
     let response = await fetchApi(url, body, method, config);
-    console.log(response);
+
     action.payload = response;
-    console.log(action.payload);
   }
   next(action);
 };
