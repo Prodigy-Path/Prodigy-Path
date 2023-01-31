@@ -40,7 +40,13 @@ const HeaderComponent = () => {
         position="apart"
         className="header__group"
       >
-        <Text className="header__group__title">ProdigyPath</Text>
+        <Link
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          to={'/'}
+          className="header__group__title"
+        >
+          ProdigyPath
+        </Link>
         <Group
           position="right"
           className="header__group__nav"

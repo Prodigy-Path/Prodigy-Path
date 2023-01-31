@@ -20,10 +20,25 @@ const Footer = () => {
             <ul>
               <li className="footer__title">ABOUT</li>
               <li className="footer__item">
-                <Link to="/"> What's Prodigy Path?</Link>
+                <Link
+                  onClick={() =>
+                    window.scrollTo({ top: 0, behavior: 'smooth' })
+                  }
+                  to="/about"
+                >
+                  {' '}
+                  What's Prodigy Path?
+                </Link>
               </li>
               <li className="footer_item">
-                <Link to="/">Meet the Devs</Link>
+                <Link
+                  onClick={() =>
+                    window.scrollTo({ top: 0, behavior: 'smooth' })
+                  }
+                  to="/devs"
+                >
+                  Meet the Devs
+                </Link>
               </li>
             </ul>
           </div>

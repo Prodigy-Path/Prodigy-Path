@@ -8,6 +8,8 @@ import SplashPage from '../SplashPage';
 import Explore from '../Explore';
 import Footer from '../Footer';
 import Chat from '../Chat';
+import DevsAbout from '../About/DevsAbout';
+import ProdPathAbout from '../About/ProdPathAbout';
 const Main = () => {
   const { isLoggedIn, user } = useSelector((state) => state.login);
   console.log(user);
@@ -29,6 +31,14 @@ const Main = () => {
         <Route
           path={'/signup'}
           element={<SignUp />}
+        />
+        <Route
+          path={'/devs'}
+          element={<DevsAbout />}
+        />
+        <Route
+          path={'/about'}
+          element={<ProdPathAbout />}
         />
       </Routes>
       {isLoggedIn ? <Chat /> : <Chat />}
