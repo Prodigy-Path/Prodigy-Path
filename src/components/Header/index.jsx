@@ -2,7 +2,9 @@
 
 import React from 'react';
 import { useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 
+  'react-router-dom';
+
 import {
   Header,
   Group,
@@ -16,6 +18,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { setOpened, setDrawer } from '../store/drawerSlice';
 
 import { logout } from '../store/loginSlice';
+import { IconMessage2 } from '@tabler/icons';
 const HeaderComponent = () => {
   const dispatch = useDispatch();
   const { isLoggedIn } = useSelector((state) => state.login);
