@@ -8,6 +8,10 @@ $color-light-green: rgb(103, 137, 131);
 $color-light-beige: rgb(230, 221, 196);
 $color-lighter-beige: rgb(240, 233, 210);
 
-$color-scroll-bar: (rgba(0, 0, 255, 0.475));
-$color-scroll-thumb1: (rgb(110, 36, 98));
-$color-scroll-thumb2: (rgb(34, 169, 27));
+// Scroll Bar
+$color-scroll-bar: (rgba(163, 163, 185, 0.475));
+$color-scroll-thumb1: (rgb(161, 152, 159));
+$color-scroll-thumb2: (rgb(130, 136, 130));
+
+// Splash Page
+$color-card-splash: rgb(211, 182, 182);
