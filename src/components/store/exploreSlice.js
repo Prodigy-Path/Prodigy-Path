@@ -3,6 +3,8 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
   searchParam: '',
   results: [],
+  currentPage: 1,
+  newConnection: []
 }
 
 const exploreSlice = createSlice({
@@ -14,10 +16,16 @@ const exploreSlice = createSlice({
     },
     setResults: (state, action) => {
       state.results = action.payload.filter(user => state.searchParam ? user.tags.includes(state.searchParam) : user)
-    }
+    },
+    setPage: (state, action) => {
+      state.currentPage = action.payload.page
+    },
+    newConnection: (state, action) => {
+        state.newConnection = action.payload
+      }
   }
 })
 
-export const { setParams, setResults } = exploreSlice.actions;
+export const { setParams, setResults, setPage, newConnection } = exploreSlice.actions;
 
 export default exploreSlice.reducer

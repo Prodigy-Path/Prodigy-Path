@@ -1,18 +1,18 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { setParams, setResults } from '../store/exploreSlice';
-import { TextInput, ActionIcon, useMantineTheme } from '@mantine/core';
+import { setParams, setResults, setPage} from '../store/exploreSlice';
+import { TextInput, ActionIcon, useMantineTheme, Pagination } from '@mantine/core';
 import { IconSearch, IconArrowRight, IconArrowLeft } from '@tabler/icons';
 import UserCard from '../UserCard';
 
 const Explore = () => {
 
   const dispatch = useDispatch();
-  const { searchParam, results } = useSelector((state) => state.explore)
+  const { searchParam, results, currentPage } = useSelector((state) => state.explore)
   const { user } = useSelector((state) => state.login);
 
   const theme = useMantineTheme();
-
+  const searchTerm = user.role === 'mentor' ? 'Protege' : 'Mentor'
   const handleNewParam = (query) => {
     dispatch(
       setParams({
@@ -30,7 +30,22 @@ const Explore = () => {
       })
     )
   }
-  console.log(results)
+
+  const startIndex = (currentPage - 1) * 5;
+  const endIndex = startIndex + 5
+  const showResults = results.slice(startIndex, endIndex)
+
+  const setCurrentPage = (page) => {
+    dispatch(
+      setPage({
+        action: 'pageChange',
+        page
+      })
+    )
+  }
+
+
+
   return (
     <>
       <div className='explore'>
@@ -51,15 +66,16 @@ const Explore = () => {
                 )}
               </ActionIcon>
             }
-            placeholder="Search Tags"
+            placeholder={`Search for a new ${searchTerm}`}
             rightSectionWidth={42}
           />
         </section>
         <section className='explore__results'>
-          {results.map((user, idx) => (
-            <UserCard user={user} key={idx}/>
+          {showResults.map((user, idx) => (
+            <UserCard cardUser={user} key={idx} />
           ))}
         </section>
+        <Pagination page={currentPage} onChange={(page) => setCurrentPage(page)} total={Math.ceil(results.length / 5)} />
       </div>
     </>
   )
