@@ -25,6 +25,9 @@ const Chat = () => {
     socket.on('USER_CONNECTED', (data) => {
       console.log('USER CONNECTED YAY', data);
     });
+    socket.on('proofOfLife', (data) => {
+      console.log(data);
+    });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [socket]);
   
