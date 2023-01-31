@@ -16,6 +16,7 @@ import exploreSlice from './exploreSlice';
 import exploreMiddleware from './middleware/exploreMiddleware';
 import connectionMiddleware from './middleware/connectionMiddleware';
 
+import taskSlice from './taskSlice';
 
 const store = configureStore({
   reducer: {
@@ -23,9 +24,20 @@ const store = configureStore({
     login: loginSlice,
     post: postSlice,
     chat: chatSlice,
-    explore: exploreSlice
+    explore: exploreSlice,
+    taskList: taskSlice,
   },
-  middleware: [logger, loginMiddleware, signUpMiddleware, newPostMiddleware, getPostMiddleware, exploreMiddleware, chatMiddleware, connectionMiddleware],
+  middleware: [
+    logger,
+    loginMiddleware,
+    signUpMiddleware,
+    newPostMiddleware,
+    getPostMiddleware,
+    exploreMiddleware,
+    chatMiddleware,
+    onnectionMiddleware
+  ],
+
 });
 
 export default store;
