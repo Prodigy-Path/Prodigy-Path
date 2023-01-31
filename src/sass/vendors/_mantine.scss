@@ -29,6 +29,7 @@
 .mantine-SegmentedControl-active {
   display: none;
 }
+
 // mobile menu open or closed
 
 .closed {
@@ -46,6 +47,10 @@
   }
 }
 
+.mantine-puhv18 {
+  width: auto;
+}
+
 .mantine-vtiw9 {
   color: $color-lighter-beige;
   background-color: $color-dark-navy;
@@ -56,13 +61,76 @@
     background-color: $color-dark-navy;
   }
 }
+
 .mantine-1f55xvl:not(:first-of-type) {
   border-color: $color-light-green;
 }
+
 // *******
 
 // Mantine main *******
 .mantine-13jfpqk {
   padding: 0;
   padding-top: 75px;
+}
+
+
+// mantine explore search button
+.mantine-1ftescj {
+  background-color: $color-dark-navy;
+}
+
+.mantine-1ftescj:active {
+  background-color: $color-lighter-blue;
+}
+
+.mantine-1ftescj:hover {
+  background-color: $color-lighter-blue;
+}
+
+// mantine explore connect button 
+
+.mantine-8nr514:active {
+  background-color: $color-lighter-blue;
+}
+
+.mantine-8nr514:hover {
+  background-color: $color-lighter-blue;
+}
+
+.mantine-lwjxt8 {
+  margin: 0;
+}
+
+.mantine-5u0ydd {
+  height: auto;
+}
+
+// Mentor new post group 
+.mantine-1yllaja {
+  margin-top: 10px;
+  width: 35%;
+}
+
+.mantine-11u54ae {
+  width: 100%;
+}
+
+// Mentors personal posts
+.mantine-rph89u {
+  width: 50%;
+  height: 20rem;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 5rem;
+
+
+}
+
+.mantine-sse0oy {
+  padding-left: 1rem;
+}
+
+.mantine-i2fjw4 {
+  padding-left: 1rem;
 }

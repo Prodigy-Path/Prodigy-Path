@@ -24,7 +24,7 @@ h2 {
 }
 h3 {
   font-size: 2rem;
-  font-family: sans-serif;
+  font-family: serif;
   font-weight: 200;
 }
 h4 {
@@ -38,9 +38,9 @@ a {
   text-decoration: none;
 }
 
-.header__group__title{
-  color: $color-light-beige;
+.header__group__title {
+  color: $color-lighter-beige;
   font-size: 4rem;
   font-family: sans-serif;
-  text-shadow : 2.25px 2.25px 2.25px $color-light-green;
+  text-shadow: 2.25px 2.25px 2.25px $color-lighter-blue;
 }

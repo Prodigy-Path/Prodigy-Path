@@ -1,0 +1,18 @@
+.explore {
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  padding-top: 2.5%;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  &__results {
+    display: flex;
+    flex-direction: column;
+    width: 65rem;
+    gap: 20px;
+  }
+  &__textInput {
+    width: 50rem;
+  }
+}
