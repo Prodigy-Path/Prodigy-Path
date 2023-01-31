@@ -6,7 +6,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import {
   Header,
   Group,
-  Text,
   SegmentedControl,
   Center,
   Box,
