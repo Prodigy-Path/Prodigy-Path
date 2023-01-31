@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { joinRoomThunk, sendMessageThunk } from '../store/chatSlice';
 import io from 'socket.io-client';
 // import messageInterface from './useMessage';
-const socket = io.connect('http://localhost:3002');
+const socket = io.connect(process.env.REACT_APP_SERVER);
 
 const Chat = () => {
   const dispatch = useDispatch();
@@ -16,6 +16,7 @@ const Chat = () => {
   useEffect(() => {
     socket.on('RECEIVE_MESSAGE', (data) => {
       console.log('YAY GOT MESSAGE', data);
+      dispatch(sendMessageThunk({ text: data }));
     });
 
     socket.on('USER_CONNECTED', (data) => {

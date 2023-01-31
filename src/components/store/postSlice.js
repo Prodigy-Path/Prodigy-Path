@@ -8,10 +8,10 @@ const postSlice = createSlice({
   reducers: {
     post: (state, action) => {
       state.posts.push(action.payload)
-      console.log(action.payload)
+      // console.log(action.payload)
     },
     getPost: (state, action) => {
-      console.log(action.payload)
+      // console.log(action.payload)
       if (state.posts?.length !== action.payload.length) {
         state.posts = [...action.payload]
       }
