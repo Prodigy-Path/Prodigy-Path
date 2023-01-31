@@ -19,7 +19,7 @@ import { setOpened, setDrawer } from '../store/drawerSlice';
 import { logout } from '../store/loginSlice';
 const HeaderComponent = () => {
   const dispatch = useDispatch();
-  const { isLoggedIn } = useSelector((state) => state.login);
+  // const { isLoggedIn } = useSelector((state) => state.login);
   const { opened, menuClass } = useSelector((state) => state.drawer);
   const title = opened ? 'Close navigation' : 'Open navigation';
   const handleLogout = () => {
