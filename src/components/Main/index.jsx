@@ -7,6 +7,7 @@ import Dashboard from '../Dashboard';
 import SplashPage from '../SplashPage';
 import Explore from '../Explore';
 import Footer from '../Footer';
+import Chat from '../Chat';
 const Main = () => {
   const { isLoggedIn, user } = useSelector((state) => state.login);
   console.log(user);
@@ -30,6 +31,7 @@ const Main = () => {
           element={<SignUp />}
         />
       </Routes>
+      {isLoggedIn ? <Chat /> : <Chat />}
       <Footer />
     </>
   );

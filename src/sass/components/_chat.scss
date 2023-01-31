@@ -1,0 +1,50 @@
+/** @format */
+
+.chat {
+  &__join {
+    position: fixed;
+    bottom: 25rem; //! THIS WILL BE DELETED WHEN ROOM ASSIGNMENT IS PASSIVE
+  }
+  position: fixed;
+  right: 15px;
+  bottom: 5px;
+  background-color: #fff;
+  height: 25rem;
+  overflow: scroll;
+  overflow-x: hidden;
+  border-top: 0;
+  border-bottom: 0;
+  width: 25rem;
+  &::-webkit-scrollbar {
+    width: 15px;
+  }
+  &::-webkit-scrollbar-track {
+    background-color: $color-scroll-bar;
+  }
+  &::-webkit-scrollbar-thumb {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background-image: linear-gradient(
+      180deg,
+      $color-scroll-thumb1 0%,
+      $color-scroll-thumb2 99%
+    );
+    box-shadow: inset 2px 2px 5px 0 rgba(#fff, 0.5);
+    border-radius: 100px;
+  }
+  display: flex;
+  flex-direction: column-reverse;
+  textarea[name='text'] {
+    width: 100%;
+    resize: none;
+    border-radius: 8px;
+  }
+  button {
+    background-color: $color-footer;
+    padding: 0.8rem;
+    border-radius: 8px;
+    position: absolute;
+    right: 0;
+    color: #fff;
+  }
+  border-radius: 8px;
+}
