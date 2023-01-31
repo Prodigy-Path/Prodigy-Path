@@ -34,6 +34,15 @@ The application should now be running at http://localhost:3000.
 
 Note: Make sure you have Node.js and npm or yarn installed on your machine before proceeding with the installation. Also, ensure that the required dependencies for the backend server are installed and set up properly.
 
+## User Stories
+
+https://github.com/orgs/Prodigy-Path/projects/2
+
+## UML
+
+https://github.com/orgs/Prodigy-Path/projects/2
+
 ### Authors
 
 Seth ,Elias, Lewis, Steven
+
