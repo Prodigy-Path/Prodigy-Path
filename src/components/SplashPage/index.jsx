@@ -1,5 +1,6 @@
 /** @format */
 
+import { Link } from 'react-router-dom';
 import Card from './Card';
 const SplashPage = () => {
   return (
@@ -8,6 +9,13 @@ const SplashPage = () => {
         <section className="splash__hero">
           <h1>Prodigy Path</h1>
           <h3>Empowering the Next Generation of Experts</h3>
+
+          <Link
+            className="btn"
+            to="/login"
+          >
+            LOGIN
+          </Link>
         </section>
         <section className="splash__feature">
           <div className="splash__row">
