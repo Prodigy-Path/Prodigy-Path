@@ -34,11 +34,20 @@ export const joinRoomThunk = (data) => (dispatch) => {
 };
 
 export const sendMessageThunk = (data) => (dispatch, getState) => {
-  const { text, socket } = data;
+
+  const { text, socket, id } = data;
+
+
   const { messages, roomName } = getState().chat;
-  dispatch(setMessages([...messages, text]));
+  console.log(id);
+
+  if (messages.filter(message => message.id === id).length === 0) {
+    console.log('Message saved to state')
+    dispatch(setMessages([...messages, { text, id }]));
+  }
   if (socket) {
     const obj = {
+      id: id,
       roomName: roomName,
       text: text,
       socket: socket,
