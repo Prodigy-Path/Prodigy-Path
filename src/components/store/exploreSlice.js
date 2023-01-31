@@ -13,7 +13,7 @@ const exploreSlice = createSlice({
       state.searchParam = action.payload.query
     },
     setResults: (state, action) => {
-      state.results = action.payload.filter(user => user)
+      state.results = action.payload.filter(user => state.searchParam ? user.tags.includes(state.searchParam) : user)
     }
   }
 })
