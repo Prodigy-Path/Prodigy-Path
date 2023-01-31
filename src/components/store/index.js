@@ -35,7 +35,7 @@ const store = configureStore({
     getPostMiddleware,
     exploreMiddleware,
     chatMiddleware,
-    onnectionMiddleware
+    connectionMiddleware
   ],
 
 });
