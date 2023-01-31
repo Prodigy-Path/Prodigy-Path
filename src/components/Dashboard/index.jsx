@@ -1,5 +1,5 @@
 
-import Chat from '../Chat';
+
 import {
   Button,
   Card,
@@ -50,7 +50,7 @@ const Dashboard = () => {
   console.log(user.username);
   return (
     <>
-          <Chat></Chat>
+         
       {user.role === 'mentor' ? (
         <>
           <form onSubmit={handleSubmit} className='new_post_component'>

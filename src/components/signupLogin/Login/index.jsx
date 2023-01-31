@@ -1,3 +1,5 @@
+/** @format */
+
 import { Card, PasswordInput, TextInput, Stack, Button } from '@mantine/core';
 
 import { Link, Navigate } from 'react-router-dom';
@@ -18,33 +20,38 @@ const Login = () => {
     );
   };
   return (
-    <>
+    <div className="login__form">
       <form onSubmit={handleSubmit}>
         <Card withBorder>
           <Stack>
             <TextInput
-              placeholder='Username'
+              placeholder="Username"
               withAsterisk
-              label='Username'
-              name='Username'
+              label="Username"
+              name="Username"
             />
 
             <PasswordInput
-              name='Password'
-              type='password'
-              placeholder='Password'
-              label='Password'
+              name="Password"
+              type="password"
+              placeholder="Password"
+              label="Password"
               withAsterisk
             />
           </Stack>
-          <Button type='submit'>Submit</Button>
+          <Button type="submit">Submit</Button>
         </Card>
       </form>
-      <p>
+      <p className='create-account'>
         Don't have an account? <Link to={'/signup'}>Create one here</Link>
       </p>
-      {isLoggedIn ? <Navigate to='/' replace={true} /> : null}
-    </>
+      {isLoggedIn ? (
+        <Navigate
+          to="/"
+          replace={true}
+        />
+      ) : null}
+    </div>
   );
 };
 export default Login;

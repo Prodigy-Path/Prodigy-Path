@@ -1,3 +1,5 @@
+/** @format */
+
 import {
   Card,
   PasswordInput,
@@ -29,54 +31,69 @@ const SignUp = () => {
     );
   };
   return (
-    <>
+    <div className="login__form">
       <form onSubmit={handleSubmit}>
         <Card withBorder>
           <Stack>
             <TextInput
-              placeholder='Username'
+              placeholder="Username"
               withAsterisk
-              label='Username'
-              name='Username'
+              label="Username"
+              name="Username"
             />
             <TextInput
-              placeholder='Name'
+              placeholder="Name"
               withAsterisk
-              label='Name'
-              name='Name'
+              label="Name"
+              name="Name"
             />
-            <TextInput placeholder='Email' label='E-mail' name='Email' />
+            <TextInput
+              placeholder="Email"
+              label="E-mail"
+              name="Email"
+            />
 
             <PasswordInput
-              name='Password'
-              type='password'
-              placeholder='Password'
-              label='Password'
+              name="Password"
+              type="password"
+              placeholder="Password"
+              label="Password"
               withAsterisk
               visible={visible}
               onVisibilityChange={toggle}
             />
             <PasswordInput
-              name='PasswordConfirm'
-              type='password'
-              placeholder='Password'
-              label='Confirm Password'
+              name="PasswordConfirm"
+              type="password"
+              placeholder="Password"
+              label="Confirm Password"
               withAsterisk
             />
           </Stack>
-          <Button type='submit'>Submit</Button>
+          <Button type="submit">Submit</Button>
           <Chip.Group>
-            <Chip name='role' value='mentor'>
+            <Chip
+              name="role"
+              value="mentor"
+            >
               Mentor
             </Chip>
-            <Chip name='role' value='protege'>
+            <Chip
+              name="role"
+              value="protege"
+            >
               Protege
             </Chip>
           </Chip.Group>
         </Card>
       </form>
-      {isLoggedIn ? <Navigate to='/' replace={true} /> : null}
-    </>
+      {isLoggedIn ? (
+        <Navigate
+          to="/"
+          replace={true}
+        />
+      ) : null}
+    </div>
   );
 };
 export default SignUp;

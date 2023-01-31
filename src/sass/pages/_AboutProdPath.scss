@@ -1,0 +1,19 @@
+/** @format */
+
+.article {
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+  width: 60%;
+  align-items: center;
+}
+.wrapper {
+  h2 {
+    margin: 4rem;
+  }
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  margin: 5rem;
+}

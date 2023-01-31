@@ -1,0 +1,39 @@
+/** @format */
+
+.btn {
+  font-size: 3rem;
+  margin-top: 15rem;
+  border: 1px solid #333;
+  padding: 10px 25px 10px 25px;
+  border-radius: 5px;
+  position: relative;
+  background-image: linear-gradient(
+    to right,
+    hsl(134, 51%, 43%),
+    hsl(145, 61%, 29%)
+  );
+  z-index: 1;
+
+  color: white;
+  font-weight: 700;
+  &::before {
+    position: absolute;
+    content: '';
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: linear-gradient(
+      to bottom,
+      hsl(137, 55%, 36%),
+      hsl(135, 60%, 23%)
+    );
+    z-index: -1;
+    transition: opacity 0.2s linear;
+    opacity: 0;
+  }
+
+  &:hover::before {
+    opacity: 1;
+  }
+}
