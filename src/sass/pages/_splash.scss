@@ -13,8 +13,19 @@
     background-repeat: no-repeat;
   }
   &__feature {
-    background-color: gray;
-    height: 100vh;
+    height: 100%;
     width: 100%;
+    margin-bottom: 10rem;
+  }
+  &__feature {
+    margin-top: 10rem;
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    gap: 5rem;
+  }
+  &__row {
+    display: flex;
+    gap: 5rem;
   }
 }
