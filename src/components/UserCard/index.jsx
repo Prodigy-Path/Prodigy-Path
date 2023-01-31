@@ -14,7 +14,7 @@ const UserCard = (props) => {
       <Avatar
         className='userCard__avatar'
         src={'https://via.placeholder.com/150'}
-        size={100}
+        size={120}
         radius={20} />
       <div className='userCard__content'>
         <Group className='userCard__content' position='apart'>
