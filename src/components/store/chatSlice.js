@@ -37,13 +37,15 @@ export const sendMessageThunk = (data) => (dispatch, getState) => {
   console.log(data);
   const { text, socket } = data;
   const { messages, roomName } = getState().chat;
-  const obj = {
-    roomName: roomName,
-    text: text,
-socket: socket
+  dispatch(setMessages([...messages, text]));
+  if (socket) {
+    const obj = {
+      roomName: roomName,
+      text: text,
+      socket: socket
+    }
+    sendMessage(obj);
   }
-  sendMessage(obj);
-  dispatch(setMessages([...messages, text ]));
 };
 
 
