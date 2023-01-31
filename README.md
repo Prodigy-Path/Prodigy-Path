@@ -40,7 +40,7 @@ https://github.com/orgs/Prodigy-Path/projects/2
 
 ## UML
 
-https://github.com/orgs/Prodigy-Path/projects/2
+https://www.figma.com/file/eXqjKzhT1QhKDdddNtkDu7/ProdigyPath?node-id=0%3A1&t=DQjCQyi398Vtphwe-1 
 
 ### Authors
 
