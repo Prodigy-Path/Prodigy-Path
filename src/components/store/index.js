@@ -14,6 +14,8 @@ import postSlice from './postSlice';
 import getPostMiddleware from './middleware/getPostMiddleware';
 import exploreSlice from './exploreSlice';
 import exploreMiddleware from './middleware/exploreMiddleware';
+import connectionMiddleware from './middleware/connectionMiddleware';
+
 import taskSlice from './taskSlice';
 
 const store = configureStore({
@@ -33,7 +35,9 @@ const store = configureStore({
     getPostMiddleware,
     exploreMiddleware,
     chatMiddleware,
+    connectionMiddleware
   ],
+
 });
 
 export default store;
