@@ -1,5 +1,6 @@
+/** @format */
 
-import fetchApi from "../../../utility/fetchApi";
+import fetchApi from '../../../utility/fetchApi';
 const newPostMiddleware = (store) => (next) => async (action) => {
   if (action.payload?.action === 'newPost') {
     let url = `${process.env.REACT_APP_SERVER}/posts`;
@@ -10,12 +11,10 @@ const newPostMiddleware = (store) => (next) => async (action) => {
     };
     let method = 'post';
     let config = {
-      bearerToken: action.payload.token
+      bearerToken: action.payload.token,
     };
     let response = await fetchApi(url, body, method, config);
-    console.log(response);
     action.payload = response;
-    // console.log(action.payload);
   }
   next(action);
 };

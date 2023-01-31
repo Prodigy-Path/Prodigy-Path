@@ -77,7 +77,6 @@ const SplashPage = () => {
             plugins={[autoplay.current]}
             auto
             align="start"
-            center
             loop
             dragFree
             orientation="vertical"

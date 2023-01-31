@@ -11,6 +11,7 @@ const Chat = () => {
   const {  messages, roomName } = useSelector((state) => state.chat);
   const { user } = useSelector((state) => state.login);
 
+
   const [isChatVisible, setIsChatVisible] = useState(false);
 
   const testMentors = ['jim', 'tom', 'joe', 'craig', 'ronny']
@@ -18,6 +19,7 @@ const Chat = () => {
   console.log(user);
 
   let name = user.name
+
 
   useEffect(() => {
     socket.on('RECEIVE_MESSAGE', ({ text, id }) => {

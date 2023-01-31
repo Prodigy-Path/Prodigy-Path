@@ -2,7 +2,7 @@
 
 import fetchApi from '../../../utility/fetchApi';
 
-const loginMiddleware = (store) => (next) => async (action) => {
+const loginMiddleware = (store,) => (next) => async (action) => {
   if (action.payload?.action === 'login') {
     let url = `${process.env.REACT_APP_SERVER}/login`;
     let body = null;
@@ -12,9 +12,7 @@ const loginMiddleware = (store) => (next) => async (action) => {
       password: action.payload.password,
     };
     let response = await fetchApi(url, body, method, config);
-    console.log(response);
     action.payload = response;
-    console.log(action.payload);
   }
   next(action);
 };

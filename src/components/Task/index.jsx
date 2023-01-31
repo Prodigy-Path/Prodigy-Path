@@ -5,35 +5,39 @@ import {
   faPen,
   faTrashCan,
 } from '@fortawesome/free-solid-svg-icons';
-import { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import {
+  tasks,
+  removeItem,
+  setDone,
+  setNewTask,
+  updateItem,
+  setUpdateData,
+} from '../store/taskSlice';
 const Post = () => {
-  const [toDo, setToDo] = useState([]);
+  const dispatch = useDispatch();
 
-  const [newTask, setNewTask] = useState('');
-  const [updateData, setUpdateData] = useState('');
+  const { taskList, newTask, updateData } = useSelector(
+    (state) => state.taskList,
+  );
 
   const addTask = () => {
     if (newTask) {
-      let newTaskId = toDo.length + 1;
+      let newTaskId = taskList.length + 1;
       let newEntry = { id: newTaskId, title: newTask, status: false };
-      setToDo([...toDo, newEntry]);
+
+      console.log(newEntry);
+      dispatch(tasks(newEntry));
       setNewTask('');
     }
   };
 
   const deleteTask = (id) => {
-    let newTasks = toDo.filter((task) => task.id !== id);
-    setToDo(newTasks);
+    dispatch(removeItem(id));
   };
 
   const markDone = (id) => {
-    const newTasks = toDo.map((task) => {
-      if (task.id === id) {
-        return { ...task, status: !task.status };
-      }
-      return task;
-    });
-    setToDo(newTasks);
+    dispatch(setDone(id));
   };
 
   const cancelUpdate = () => {
@@ -50,9 +54,7 @@ const Post = () => {
   };
 
   const updateTask = () => {
-    let filterRecords = [...toDo].filter((task) => task.id !== updateData.id);
-    let updatedObject = [...filterRecords, updateData];
-    setToDo(updatedObject);
+    dispatch(updateItem(updateData));
     setUpdateData('');
   };
 
@@ -63,11 +65,13 @@ const Post = () => {
       {updateData && updateData ? (
         <div className="tasks__form-update">
           <div className="tasks__input-wrap">
-            <input
-              value={updateData && updateData.title}
-              onChange={(e) => changeTask(e)}
-              className="tasks__input"
-            />
+            <label value="Add Task">
+              <input
+                value={updateData && updateData.title}
+                onChange={(e) => changeTask(e)}
+                className="tasks__input"
+              />
+            </label>
           </div>
           <div className="tasks__button-wrap">
             <button
@@ -103,9 +107,10 @@ const Post = () => {
           </div>
         </div>
       )}
-      {toDo && toDo.length ? '' : 'Currently no tasks...'}
-      {toDo &&
-        toDo
+      {taskList && taskList.length ? '' : 'Currently no tasks...'}
+
+      {taskList &&
+        [...taskList]
           .sort((a, b) => (a.id > b.id ? 1 : -1))
           .map((task, index) => (
             <div

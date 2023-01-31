@@ -1,9 +1,24 @@
 import React from 'react'
 import { Avatar, Text, Button, Paper, Group } from '@mantine/core';
+import { useDispatch, useSelector } from 'react-redux';
+import { newConnection } from '../store/exploreSlice';
 
 const UserCard = (props) => {
-  const { user } = props;
+  const { cardUser } = props;
+  const dispatch = useDispatch();
+  const { user } = useSelector((state) => state.login);
 
+  const addNewConnection = () => {
+    dispatch(
+      newConnection({
+        action: 'connection',
+        user: cardUser,
+        connection_requests: cardUser.connection_requests,
+        newConnection: user._id,
+        token: user.token
+      })
+    )
+  }
   return (
     <Paper
       radius="lg"
@@ -20,18 +35,25 @@ const UserCard = (props) => {
         <Group className='userCard__content' position='apart'>
           <div>
             <Text size="lg" weight={500} mt="md" className='userCard__name'>
-              {user.name}
+              {cardUser.name}
             </Text>
-            <Text  color="dimmed" size="sm" className='userCard__username'>
-              @{user.username}
+            <Text color="dimmed" size="sm" className='userCard__username'>
+              @{cardUser.username}
             </Text>
           </div>
-          <Button className='userCard__button'>
-            Connect
-          </Button>
+          {
+            cardUser.connection_requests.includes(user._id) ?
+              <Button className='userCard__button'>
+                Pending
+              </Button>
+              :
+              <Button className='userCard__button' onClick={addNewConnection}>
+                Connect
+              </Button>
+          }
         </Group>
         <div className='userCard__tagGroup'>
-          {user.tags.map(tag => (
+          {cardUser.tags.map(tag => (
             <div className='userCard__tag'>
               {tag}
             </div>

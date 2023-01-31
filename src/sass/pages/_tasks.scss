@@ -3,16 +3,27 @@
 // Tasks
 .tasks {
   text-align: center;
+  &__title {
+    color: rgb(173, 158, 158);
+    font-size: 5rem;
+    margin: 15rem;
+  }
+
+  &__input {
+    padding-left: 2rem;
+    border-radius: 2rem;
+    font-size: 2rem;
+    height: 5rem;
+    width: 50%;
+  }
 }
 
-// Done Task
 .task.done .task__text,
 .tasks__task-status--done {
   text-decoration: line-through;
   opacity: 0.3;
 }
 
-// Task Background
 .tasks__task {
   background-color: $color-lighter-blue;
   border-radius: 6px;
