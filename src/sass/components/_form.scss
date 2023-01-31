@@ -9,5 +9,10 @@
 }
 
 .login__form {
-  margin-bottom: 20rem;
+  min-height: 80vh;
+}
+
+.create-account a {
+  color: rgb(105, 160, 255);
+  text-decoration: underline;
 }

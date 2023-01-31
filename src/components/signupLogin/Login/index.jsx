@@ -20,11 +20,8 @@ const Login = () => {
     );
   };
   return (
-    <>
-      <form
-        className="login__form"
-        onSubmit={handleSubmit}
-      >
+    <div className="login__form">
+      <form onSubmit={handleSubmit}>
         <Card withBorder>
           <Stack>
             <TextInput
@@ -45,7 +42,7 @@ const Login = () => {
           <Button type="submit">Submit</Button>
         </Card>
       </form>
-      <p>
+      <p className='create-account'>
         Don't have an account? <Link to={'/signup'}>Create one here</Link>
       </p>
       {isLoggedIn ? (
@@ -54,7 +51,7 @@ const Login = () => {
           replace={true}
         />
       ) : null}
-    </>
+    </div>
   );
 };
 export default Login;
