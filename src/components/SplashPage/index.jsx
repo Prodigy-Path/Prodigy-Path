@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 import Card from './Card';
 import { useRef } from 'react';
 const SplashPage = () => {
-  const autoplay = useRef(Autoplay({ delay: 7000 }));
+  const autoplay = useRef(Autoplay({ delay: 17000 }));
   return (
     <>
       <div className="splash">
@@ -86,20 +86,30 @@ const SplashPage = () => {
           >
             <Carousel.Slide>
               <img
+                src={img1}
+                alt="Testimonial: Heading: ProdigyPath is amazing! Body: I never would have thought I'd find a mentor who shares my passion, but ProdigyPath made it possible. I've gained so much knowledge and made valuable connections.
+                Attribution: Cartoon person designed by Freepik"
+              />
+            </Carousel.Slide>
+
+            <Carousel.Slide>
+              <img
                 src={img2}
-                alt="Testimonial"
+                alt="Testimonial: Heading: Great Platform! Body: I was intimidated to enter a new industry, but prodigyPath connected me with the perfect mentor who provided guidance and valuable insights I'm grateful for this platform. Attribution: Cartoon person designed by Freepik"
               />
             </Carousel.Slide>
             <Carousel.Slide>
               <img
                 src={img3}
-                alt="Testimonial"
+                alt="Testimonial: Heading: ProdigyPath kept me current! As a mentor, ProdigyPath has allowed me to give back.and stay current in my field. It's been a rewarding experience for both me and my mentee. Body: 
+                Attribution: Cartoon person designed by Freepik"
               />
             </Carousel.Slide>
             <Carousel.Slide>
               <img
                 src={img4}
-                alt="Testimonial"
+                alt="Testimonial: Heading: ProdigyPath changed my life! Body: As a busy professional, I appreciate the convenience and efficiency of ProdigyPath. It's made mentorship accessible for me. 
+                Attribution: Cartoon person designed by Freepik"
               />
             </Carousel.Slide>
           </Carousel>

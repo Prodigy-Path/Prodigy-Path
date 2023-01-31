@@ -40,9 +40,12 @@ https://github.com/orgs/Prodigy-Path/projects/2
 
 ## UML
 
-https://www.figma.com/file/eXqjKzhT1QhKDdddNtkDu7/ProdigyPath?node-id=0%3A1&t=DQjCQyi398Vtphwe-1 
+https://www.figma.com/file/eXqjKzhT1QhKDdddNtkDu7/ProdigyPath?node-id=0%3A1&t=DQjCQyi398Vtphwe-1
+
+## Attribution
+
+Testimonial cartoon people Designed by Freepik
 
 ### Authors
 
 Seth ,Elias, Lewis, Steven
-
