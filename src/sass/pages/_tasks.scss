@@ -1,0 +1,66 @@
+/** @format */
+
+// Tasks
+.tasks {
+  text-align: center;
+}
+
+// Done Task
+.task.done .task__text,
+.tasks__task-status--done {
+  text-decoration: line-through;
+  opacity: 0.3;
+}
+
+// Task Background
+.tasks__task {
+  background-color: $color-lighter-blue;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  padding: 10px 140px 10px 15px;
+  text-align: left;
+  font-size: 22px;
+  position: relative;
+}
+
+.task__icons-wrap {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 15px;
+  width: auto;
+  display: inline-block;
+}
+
+.task__icon {
+  display: inline-block;
+  margin: 0px 10px 0 10px;
+  cursor: pointer;
+  color: #00ff89;
+
+  &:focus-visible {
+    outline: none;
+  }
+
+  &:hover {
+    color: yellow;
+  }
+}
+
+.task__number {
+  color: #999;
+  border: 1px solid #999;
+  border-radius: 50%;
+  width: 26px;
+  height: 26px;
+  display: flex;
+  text-align: center;
+  font-size: 14px;
+  margin-right: 8px;
+  align-items: center;
+  justify-content: center;
+}
+
+.task__text {
+  flex: 1;
+}
