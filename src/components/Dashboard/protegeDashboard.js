@@ -11,7 +11,7 @@ import { getPost } from '../store/postSlice';
 const ProtegeDashboard = () => {
   const { usersConnections } = useSelector((state) => state.login);
   const { posts } = useSelector((state) => state.post);
-
+  console.log(usersConnections)
   const dispatch = useDispatch();
 
   let mentorMap = usersConnections.map((m) => m.mentor);
