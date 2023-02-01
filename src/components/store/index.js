@@ -18,7 +18,9 @@ import getMentorProtegePosts from './middleware/getMentorProtegePosts';
 import mentorProtegePostsSlice from './mentorProtegePostsSlice';
 import chatConnectMiddleware from './middleware/chatConnectMiddleware';
 import connectionMiddleware from './middleware/connectionMiddleware';
+import sendTasksDBMiddleware from './middleware/sendTasksDBMiddleware';
 import taskSlice from './taskSlice';
+import getAllTasks from './middleware/getAllTasksMiddleware';
 
 const store = configureStore({
   reducer: {
@@ -42,8 +44,9 @@ const store = configureStore({
     exploreMiddleware,
     connectionMiddleware,
     getMentorProtegePosts,
+    sendTasksDBMiddleware,
+    getAllTasks,
   ],
-
 });
 
 export default store;
