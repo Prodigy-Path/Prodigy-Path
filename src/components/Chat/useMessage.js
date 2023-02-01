@@ -5,7 +5,6 @@ export const joinRoom = (data ) => {
 };
 
 export const sendMessage = (data) => {
-  console.log(data);
-  const { socket, text, id } = data;
-  socket.emit('SEND_MESSAGE', text, id);
+  const { socket, text, id, room } = data;
+  socket.emit('SEND_MESSAGE', text, id, room);
 };
