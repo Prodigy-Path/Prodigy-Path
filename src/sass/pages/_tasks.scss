@@ -2,19 +2,49 @@
 
 // Tasks
 .tasks {
+  margin: auto;
+  margin-top: 20rem;
+  min-height: 50vh;
   text-align: center;
+  width: 80%;
+  .tasks__input-wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    align-items: center;
+  }
   &__title {
     color: rgb(173, 158, 158);
     font-size: 5rem;
     margin: 15rem;
   }
+  &_icon {
+    margin: 2rem;
+    cursor: pointer;
+  }
+  .trash {
+    color: rgb(226, 58, 58);
+  }
 
+  .pen {
+    color: rgb(226, 178, 58);
+  }
+
+  .check {
+    color: rgb(58, 226, 106);
+  }
   &__input {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
     padding-left: 2rem;
     border-radius: 2rem;
     font-size: 2rem;
     height: 5rem;
-    width: 50%;
+    max-width: 60rem;
+    min-width: 40rem;
   }
 }
 
@@ -25,6 +55,8 @@
 }
 
 .tasks__task {
+  display: flex;
+
   background-color: $color-lighter-blue;
   border-radius: 6px;
   margin-bottom: 20px;
@@ -32,46 +64,4 @@
   text-align: left;
   font-size: 22px;
   position: relative;
-}
-
-.task__icons-wrap {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  right: 15px;
-  width: auto;
-  display: inline-block;
-}
-
-.task__icon {
-  display: inline-block;
-  margin: 0px 10px 0 10px;
-  cursor: pointer;
-  color: #00ff89;
-
-  &:focus-visible {
-    outline: none;
-  }
-
-  &:hover {
-    color: yellow;
-  }
-}
-
-.task__number {
-  color: #999;
-  border: 1px solid #999;
-  border-radius: 50%;
-  width: 26px;
-  height: 26px;
-  display: flex;
-  text-align: center;
-  font-size: 14px;
-  margin-right: 8px;
-  align-items: center;
-  justify-content: center;
-}
-
-.task__text {
-  flex: 1;
 }
