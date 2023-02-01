@@ -13,7 +13,6 @@ const Chat = () => {
   const { messages, roomName, chatConnection } = useSelector((state) => state.chat);
   const { user, userConnectionsUsers } = useSelector((state) => state.login);
   const [isChatVisible, setIsChatVisible] = useState(false);
-  console.log('MYSUER!!!!!', user);
 
   const filterConnection = chatConnection.filter((item) => user._id === item.mentor || user._id === item.protege);
   const nameConnect = userConnectionsUsers.filter(item =>
@@ -48,10 +47,8 @@ const Chat = () => {
       dispatch(sendMessageThunk({ text: text, id: id }));
     });
     socket.on('USER_CONNECTED', (data) => {
-      console.log('USER CONNECTED YAY', data);
     });
     socket.on('proofOfLife', (data) => {
-      console.log(data);
     });
     socket.on('ROOMS')
     // socket.on('USER_DISCONNECTED', (obj) => {
@@ -76,9 +73,7 @@ const Chat = () => {
   }
 
   function handleJoinRoom(name) {
-    console.log(name);
     let text = nameConnect.find(item => item.name === name)._id;
-    console.log(text);
     socket.emit("LEAVE_ROOM", roomName);
     dispatch(sendMessageThunk({  id: null }));
     dispatch(joinRoomThunk({ socket, text }));

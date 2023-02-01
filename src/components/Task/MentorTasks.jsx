@@ -31,9 +31,7 @@ const Tasks = () => {
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  console.log(userConnectionsUsers, 'users!!');
   const addTask = () => {
-    console.log(newMentee);
     if (newTitle) {
       let newTaskId = taskList.length + 1;
       let newEntry = {
@@ -82,11 +80,9 @@ const Tasks = () => {
   };
 
   const updateTask = () => {
-    console.log(updateData);
     dispatch(updateItem(updateData));
     dispatch(setUpdateData(''));
   };
-  console.log(updateData, 'zombie');
   return (
     <div className="container tasks">
       <h2 className="tasks__title">Task Assignment</h2>
@@ -163,7 +159,6 @@ const Tasks = () => {
 
           <button
             onClick={() => {
-              console.log('click');
               addTask();
             }}
             className="tasks__btn"
@@ -228,7 +223,6 @@ const Tasks = () => {
                             status: task.status ? true : false,
                           }),
                         );
-                        console.log(task, '231');
                       }}
                     >
                       <FontAwesomeIcon

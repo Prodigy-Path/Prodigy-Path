@@ -14,12 +14,10 @@ const taskSlice = createSlice({
   initialState,
   reducers: {
     setTasks: (state, action) => {
-      console.log(action.payload);
       state.taskList = [...action.payload.response];
     },
 
     tasks: (state, action) => {
-      console.log(action.payload.tasks);
       state.taskList.push(action.payload.tasks);
     },
     removeItem: (state, action) => {
@@ -37,7 +35,6 @@ const taskSlice = createSlice({
       });
     },
     updateItem: (state, action) => {
-      console.log(action.payload);
       let filterRecords = [...state.taskList].filter(
         (task) => task.id !== action.payload.id,
       );
