@@ -13,8 +13,13 @@ const taskSlice = createSlice({
   name: 'task',
   initialState,
   reducers: {
+    setTasks: (state, action) => {
+      console.log(action.payload);
+      state.taskList = [...action.payload.response];
+    },
+
     tasks: (state, action) => {
-      state.taskList.push(action.payload);
+      state.taskList.push(action.payload.tasks);
     },
     removeItem: (state, action) => {
       const id = action.payload;
@@ -53,6 +58,7 @@ const taskSlice = createSlice({
 });
 
 export const {
+  setTasks,
   setNewTitle,
   setNewDescription,
   setNewMentee,
