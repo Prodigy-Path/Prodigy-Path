@@ -21,7 +21,7 @@ const exploreSlice = createSlice({
       state.currentPage = action.payload.page
     },
     newConnection: (state, action) => {
-        state.newConnection = action.payload
+        state.results = state.results.filter(user => user._id === action.payload._id ? action.payload : user)
       }
   }
 })

@@ -11,6 +11,7 @@ import Chat from '../Chat';
 import DevsAbout from '../About/DevsAbout';
 import ProdPathAbout from '../About/ProdPathAbout';
 import Task from '../Task';
+import Profile from '../Profile';
 const Main = () => {
   const { isLoggedIn, user } = useSelector((state) => state.login);
   console.log(user);
@@ -45,6 +46,10 @@ const Main = () => {
         <Route
           path={'/about'}
           element={<ProdPathAbout />}
+        />
+        <Route
+          path={'/profile'}
+          element={<Profile/>}
         />
       </Routes>
       {isLoggedIn ? <Chat /> : <Chat />}
