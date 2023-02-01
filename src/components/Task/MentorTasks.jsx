@@ -24,13 +24,16 @@ const Tasks = () => {
 
   const { taskList, newTitle, newDescription, newMentee, updateData } =
     useSelector((state) => state.taskList);
+  const { user, userConnectionsUsers, usersConnections } = useSelector(
+    (state) => state.login,
+  );
 
   useEffect(() => {
     dispatch(setTasks({ action: 'GET_TASKS' }));
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
+  console.log(userConnectionsUsers, usersConnections);
   const addTask = () => {
     if (newTitle) {
       let newTaskId = taskList.length + 1;
@@ -38,6 +41,7 @@ const Tasks = () => {
         id: newTaskId,
         title: newTitle,
         description: newDescription,
+        assigned_by: user.id,
         mentee: newMentee,
         status: false,
       };

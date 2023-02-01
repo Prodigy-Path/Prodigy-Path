@@ -9,6 +9,7 @@ const getAllTasks = (store) => (next) => async (action) => {
     let config = null;
     let response = await fetchApi(url, body, method, config);
     action.payload.response = response;
+    console.log(action.payload.response);
   }
   next(action);
 };

@@ -12,8 +12,10 @@ import DevsAbout from '../About/DevsAbout';
 import ProdPathAbout from '../About/ProdPathAbout';
 import MentorTasks from '../Task/MentorTasks';
 import ProtegeTasks from '../Task/ProtegeTasks';
+
 const Main = () => {
   const { isLoggedIn, user } = useSelector((state) => state.login);
+
   console.log(user);
   return (
     <>

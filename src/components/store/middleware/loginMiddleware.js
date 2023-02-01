@@ -1,9 +1,10 @@
 /** @format */
 
 import fetchApi from '../../../utility/fetchApi';
+import { convertToNames } from '../loginSlice';
 
-const loginMiddleware = (store,) => (next) => async (action) => {
-  if (action.payload?.action === 'login') {
+const loginMiddleware = (store) => (next) => async (action) => {
+  if (action?.payload?.action === 'login') {
     let url = `${process.env.REACT_APP_SERVER}/login`;
     let body = null;
     let method = 'post';
@@ -13,6 +14,7 @@ const loginMiddleware = (store,) => (next) => async (action) => {
     };
     let response = await fetchApi(url, body, method, config);
     action.payload = response;
+    store.dispatch(convertToNames({ action: 'CONNECTION_NAMES' }));
   }
   next(action);
 };

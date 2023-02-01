@@ -5,8 +5,8 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
   isLoggedIn: false,
   user: {},
-  usersConnections: []
-
+  usersConnections: [],
+  userConnectionsUsers: [],
 };
 
 const loginSlice = createSlice({
@@ -15,28 +15,33 @@ const loginSlice = createSlice({
   reducers: {
     login: (state, action) => {
       state.isLoggedIn = true;
-      state.user = action.payload
+      state.user = action.payload;
     },
     logout: (state) => {
       state.isLoggedIn = false;
     },
     getConnections: (state, action) => {
-
-
       let filtered = [];
       if (state.user.role === 'protege') {
-        filtered = action.payload.filter((item) => state.user._id === item.protege)
-
+        filtered = action.payload.filter(
+          (item) => state.user._id === item.protege,
+        );
       } else {
-        filtered = action.payload.filter((item) => state.user._id === item.mentor)
+        filtered = action.payload.filter(
+          (item) => state.user._id === item.mentor,
+        );
       }
       if (state.usersConnections?.length !== filtered.length) {
-        state.usersConnections = [...filtered]
+        state.usersConnections = [...filtered];
       }
-    }
+    },
+    convertToNames: (state, action) => {
+      state.userConnectionsUsers = [...action.payload.users];
+    },
   },
 });
 
-export const { login, logout, getConnections } = loginSlice.actions;
+export const { login, logout, getConnections, convertToNames } =
+  loginSlice.actions;
 
 export default loginSlice.reducer;

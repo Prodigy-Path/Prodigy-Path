@@ -19,6 +19,7 @@ const taskSlice = createSlice({
     },
 
     tasks: (state, action) => {
+      console.log(action.payload.tasks);
       state.taskList.push(action.payload.tasks);
     },
     removeItem: (state, action) => {
