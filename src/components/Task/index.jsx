@@ -93,7 +93,7 @@ const Post = () => {
           <div className="tasks__input-wrap">
             <input
               value={newTask}
-              onChange={(e) => setNewTask(e.target.value)}
+              onChange={(e) => dispatch(setNewTask(e.target.value))}
               className="tasks__input"
             />
           </div>
