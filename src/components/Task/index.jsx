@@ -10,25 +10,35 @@ import {
   tasks,
   removeItem,
   setDone,
-  setNewTask,
+  setNewTitle,
+  setNewDescription,
+  setNewMentee,
   updateItem,
   setUpdateData,
 } from '../store/taskSlice';
+import { Input, Select } from '@mantine/core';
 const Post = () => {
   const dispatch = useDispatch();
 
-  const { taskList, newTask, updateData } = useSelector(
-    (state) => state.taskList,
-  );
-
+  const { taskList, newTitle, newDescription, newMentee, updateData } =
+    useSelector((state) => state.taskList);
+  console.log(newTitle, newDescription, newMentee);
   const addTask = () => {
-    if (newTask) {
+    if (newTitle) {
       let newTaskId = taskList.length + 1;
-      let newEntry = { id: newTaskId, title: newTask, status: false };
-
+      let newEntry = {
+        id: newTaskId,
+        title: newTitle,
+        description: newDescription,
+        mentee: newMentee,
+        status: false,
+      };
       console.log(newEntry);
+
       dispatch(tasks(newEntry));
-      setNewTask('');
+      setNewTitle('');
+      setNewDescription('');
+      setNewMentee('');
     }
   };
 
@@ -91,10 +101,28 @@ const Post = () => {
       ) : (
         <div className="tasks__form-add">
           <div className="tasks__input-wrap">
-            <input
-              value={newTask}
-              onChange={(e) => dispatch(setNewTask(e.target.value))}
+            <Input
+              label="Title of task"
+              placeholder="Title of task"
+              value={newTitle.title}
+              onChange={(e) => dispatch(setNewTitle(e.target.value))}
               className="tasks__input"
+            />
+            <Input
+              label="Description task:"
+              placeholder="Description of task..."
+              value={newDescription}
+              onChange={(e) => dispatch(setNewDescription(e.target.value))}
+              className="tasks__input"
+            />
+
+            <Select
+              className="tasks__input"
+              value={newMentee}
+              data={['Me']}
+              onChange={(e) => dispatch(setNewMentee(e))}
+              label="Protege assigned to task:"
+              placeholder="Who will you assign this task?"
             />
           </div>
           <div className="tasks__button-wrap">
@@ -123,10 +151,11 @@ const Post = () => {
                     task.status ? 'tasks__task-status--done' : ''
                   }`}
                 >
-                  <span className="tasks__task-number">{index + 1}</span>
+                  <span className="tasks__task-number">{index + 1}</span>{' '}
                   <span className="tasks__task-text">{task.title}</span>
                 </div>
-
+                <p>{task.description}</p>
+                <p>{task.mentee}</p>
                 <div className="tasks__icons-wrap">
                   <span
                     onClick={(e) => markDone(task.id)}

@@ -3,7 +3,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
   taskList: [],
-  newTask: '',
+  newTitle: '',
+  newMentee: '',
+  newDescription: '',
   updateData: '',
 };
 
@@ -29,13 +31,20 @@ const taskSlice = createSlice({
       });
     },
     updateItem: (state, action) => {
+      console.log(action.payload);
       let filterRecords = [...state.taskList].filter(
         (task) => task.id !== action.payload.id,
       );
       state.taskList = [...filterRecords, action.payload];
     },
-    setNewTask: (state, action) => {
-      state.newTask = action.payload;
+    setNewTitle: (state, action) => {
+      state.newTitle = action.payload;
+    },
+    setNewDescription: (state, action) => {
+      state.newDescription = action.payload;
+    },
+    setNewMentee: (state, action) => {
+      state.newMentee = action.payload;
     },
     setUpdateData: (state, action) => {
       state.updateData = action.payload;
@@ -44,10 +53,12 @@ const taskSlice = createSlice({
 });
 
 export const {
+  setNewTitle,
+  setNewDescription,
+  setNewMentee,
   tasks,
   removeItem,
   setDone,
-  setNewTask,
   updateItem,
   setUpdateData,
 } = taskSlice.actions;
