@@ -5,9 +5,19 @@
     position: fixed;
     bottom: 25rem; //! THIS WILL BE DELETED WHEN ROOM ASSIGNMENT IS PASSIVE
   }
+  .close_button{
+    position: fixed;
+    right: 10px;
+    bottom: 30rem;
+  }
+  &__select {
+    position: fixed;
+    bottom: 30rem;
+    right: 10px;
+  }
   position: fixed;
-  right: 15px;
-  bottom: 5px;
+  right: 0px;
+  bottom: 0px;
   background-color: #fff;
   height: 25rem;
   overflow: scroll;
