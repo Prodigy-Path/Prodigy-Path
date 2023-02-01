@@ -5,12 +5,17 @@ import { useSelector, useDispatch } from 'react-redux';
 import { joinRoomThunk, sendMessageThunk, getChats } from '../store/chatSlice';
 import { Select } from '@mantine/core';
 import io from 'socket.io-client';
+import { convertToNames } from '../store/loginSlice';
 const socket = io.connect(process.env.REACT_APP_SERVER);
 
 const Chat = () => {
   const dispatch = useDispatch();
   const { messages, roomName, chatConnection } = useSelector((state) => state.chat);
-  const { user } = useSelector((state) => state.login);
+  const { user, userConnectionsUsers } = useSelector((state) => state.login);
+
+  console.log('I WANYT THIS FLKDFSHJKL', userConnectionsUsers);
+
+
 
   const [isChatVisible, setIsChatVisible] = useState(false);
 
@@ -22,9 +27,14 @@ const Chat = () => {
 
   useEffect(() => {
     dispatch(getChats({action: 'getChats'}))
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
+  useEffect(() =>{
+    dispatch(convertToNames({ action: 'CONNECTION_NAMES' }));
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [chatConnection])
 
   useEffect(() => {
     socket.on('RECEIVE_MESSAGE', ({ text, id }) => {
