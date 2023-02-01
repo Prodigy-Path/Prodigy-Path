@@ -51,7 +51,7 @@ const Post = () => {
   };
 
   const cancelUpdate = () => {
-    setUpdateData('');
+    dispatch(setUpdateData(''));
   };
 
   const changeTask = (e) => {
@@ -60,12 +60,12 @@ const Post = () => {
       title: e.target.value,
       status: updateData.status ? true : false,
     };
-    setUpdateData(newEntry);
+    dispatch(setUpdateData(newEntry));
   };
 
   const updateTask = () => {
     dispatch(updateItem(updateData));
-    setUpdateData('');
+    dispatch(setUpdateData(''));
   };
 
   return (
@@ -75,13 +75,29 @@ const Post = () => {
       {updateData && updateData ? (
         <div className="tasks__form-update">
           <div className="tasks__input-wrap">
-            <label value="Add Task">
-              <input
-                value={updateData && updateData.title}
-                onChange={(e) => changeTask(e)}
-                className="tasks__input"
-              />
-            </label>
+            <Input
+              label="Title of task"
+              placeholder="Title of task"
+              value={newTitle.title}
+              onChange={(e) => dispatch(setNewTitle(e.target.value))}
+              className="tasks__input"
+            />
+            <Input
+              label="Description task:"
+              placeholder="Description of task..."
+              value={newDescription}
+              onChange={(e) => dispatch(setNewDescription(e.target.value))}
+              className="tasks__input"
+            />
+
+            <Select
+              className="tasks__input"
+              value={newMentee}
+              data={['Me']}
+              onChange={(e) => dispatch(setNewMentee(e))}
+              label="Protege assigned to task:"
+              placeholder="Who will you assign this task?"
+            />
           </div>
           <div className="tasks__button-wrap">
             <button
@@ -151,31 +167,50 @@ const Post = () => {
                     task.status ? 'tasks__task-status--done' : ''
                   }`}
                 >
-                  <span className="tasks__task-number">{index + 1}</span>{' '}
-                  <span className="tasks__task-text">{task.title}</span>
+                  <p>
+                    Task Number:{' '}
+                    <span className="tasks__task-number">{index + 1}</span>
+                  </p>
+                  <p>
+                    Title:{' '}
+                    <span className="tasks__task-text">{task.title}</span>
+                  </p>
+                  <p>
+                    <span>Description: </span> {task.description}
+                  </p>
+                  <p>
+                    <span>Assigned to: </span>
+                    {task.mentee}
+                  </p>
                 </div>
-                <p>{task.description}</p>
-                <p>{task.mentee}</p>
                 <div className="tasks__icons-wrap">
                   <span
                     onClick={(e) => markDone(task.id)}
                     title="Completed / Not Completed"
                   >
-                    <FontAwesomeIcon icon={faCircleCheck} />
+                    <FontAwesomeIcon
+                      className="tasks_icon check"
+                      icon={faCircleCheck}
+                    />
                   </span>
 
                   {task.status ? null : (
                     <span
                       title="Edit"
-                      onClick={() =>
-                        setUpdateData({
+                      onClick={() => {
+                        dispatch(setUpdateData({
                           id: task.id,
                           title: task.title,
+                          describe: task.description,
+                          mentee: task.mentee,
                           status: task.status ? true : false,
-                        })
-                      }
+                        }));
+                      }}
                     >
-                      <FontAwesomeIcon icon={faPen} />
+                      <FontAwesomeIcon
+                        className="tasks_icon pen"
+                        icon={faPen}
+                      />
                     </span>
                   )}
 
@@ -183,7 +218,10 @@ const Post = () => {
                     onClick={() => deleteTask(task.id)}
                     title="Delete"
                   >
-                    <FontAwesomeIcon icon={faTrashCan} />
+                    <FontAwesomeIcon
+                      className="tasks_icon trash"
+                      icon={faTrashCan}
+                    />
                   </span>
                 </div>
               </div>
