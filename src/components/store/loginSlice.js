@@ -36,7 +36,9 @@ const loginSlice = createSlice({
       }
     },
     convertToNames: (state, action) => {
-      state.userConnectionsUsers = [...action.payload.users];
+      if (action.payload.users) {
+        state.userConnectionsUsers = [...action.payload.users];
+      }
     },
   },
 });
