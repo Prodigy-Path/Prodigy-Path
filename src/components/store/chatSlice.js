@@ -7,6 +7,7 @@ const initialState = {
   roomName: '',
   roomList: [],
   messages: [],
+  chatConnection: []
 };
 
 const chatSlice = createSlice({
@@ -22,10 +23,17 @@ const chatSlice = createSlice({
     setMessages: (state, action) => {
       state.messages = action.payload;
     },
+    getChats: (state, action) => {
+      console.log(action.payload)
+        if (state.chatConnection?.length !== action.payload.length) {
+          state.chatConnection = [...action.payload];
+          console.log(state.chatConnection);
+      }
+    }
   },
 });
 
-export const { setRoomName, setRoomList, setMessages } = chatSlice.actions;
+export const { setRoomName, setRoomList, setMessages, getChats } = chatSlice.actions;
 
 export const joinRoomThunk = (data) => (dispatch) => {
   joinRoom(data);
@@ -34,16 +42,34 @@ export const joinRoomThunk = (data) => (dispatch) => {
 };
 
 export const sendMessageThunk = (data) => (dispatch, getState) => {
-  const { text, socket } = data;
+  const { text, socket, id, room } = data;
   const { messages, roomName } = getState().chat;
-  dispatch(setMessages([...messages, text]));
+  if (messages.filter(message => message.id === id).length === 0) {
+    console.log('Message saved to state')
+    dispatch(setMessages([...messages, { text, id }]));
+  }
+  if (id === null) {
+    console.log('messages erased')
+    dispatch(setMessages([]));
+  }
   if (socket) {
-    const obj = {
-      roomName: roomName,
-      text: text,
-      socket: socket,
-    };
-    sendMessage(obj);
+    if (room) {
+      const obj = {
+        id: id,
+        room: room,
+        text: text,
+        socket: socket,
+      };
+      sendMessage(obj);
+    } else {
+      const obj = {
+        id: id,
+        room: roomName,
+        text: text,
+        socket: socket,
+      };
+      sendMessage(obj);
+    }
   }
 };
 

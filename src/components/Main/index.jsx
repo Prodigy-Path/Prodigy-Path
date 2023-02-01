@@ -47,7 +47,7 @@ const Main = () => {
           element={<ProdPathAbout />}
         />
       </Routes>
-      {isLoggedIn ? <Chat /> : <Chat />}
+      {isLoggedIn ? <Chat /> : null}
       <Footer />
     </>
   );

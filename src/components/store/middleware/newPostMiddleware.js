@@ -8,6 +8,7 @@ const newPostMiddleware = (store) => (next) => async (action) => {
       user: action.payload.user,
       text: action.payload.text,
       title: action.payload.title,
+      userName: action.payload.userName,
     };
     let method = 'post';
     let config = {

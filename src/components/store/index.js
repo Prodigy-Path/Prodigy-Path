@@ -16,9 +16,8 @@ import exploreSlice from './exploreSlice';
 import exploreMiddleware from './middleware/exploreMiddleware';
 import getMentorProtegePosts from './middleware/getMentorProtegePosts';
 import mentorProtegePostsSlice from './mentorProtegePostsSlice';
-
+import chatConnectMiddleware from './middleware/chatConnectMiddleware';
 import connectionMiddleware from './middleware/connectionMiddleware';
-
 import taskSlice from './taskSlice';
 
 const store = configureStore({
@@ -35,11 +34,12 @@ const store = configureStore({
   middleware: [
     logger,
     loginMiddleware,
+    chatConnectMiddleware,
+    chatMiddleware,
     signUpMiddleware,
     newPostMiddleware,
     getPostMiddleware,
     exploreMiddleware,
-    chatMiddleware,
     connectionMiddleware,
     getMentorProtegePosts,
   ],

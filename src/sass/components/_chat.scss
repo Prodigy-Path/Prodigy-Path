@@ -5,9 +5,19 @@
     position: fixed;
     bottom: 25rem; //! THIS WILL BE DELETED WHEN ROOM ASSIGNMENT IS PASSIVE
   }
+  .close_button{
+    position: fixed;
+    right: 10px;
+    bottom: 30rem;
+  }
+  &__select {
+    position: fixed;
+    bottom: 30rem;
+    right: 10px;
+  }
   position: fixed;
-  right: 15px;
-  bottom: 5px;
+  right: 0px;
+  bottom: 0px;
   background-color: #fff;
   height: 25rem;
   overflow: scroll;
@@ -52,4 +62,20 @@
     color: #fff;
   }
   border-radius: 8px;
+  
+}
+
+.chat_open {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 250px;
+  height: 50px;
+  background-color: #fff;
+  border-top: 1px solid #ccc;
+  border-left: 1px solid #ccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
 }
