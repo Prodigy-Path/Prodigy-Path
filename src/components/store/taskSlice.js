@@ -23,7 +23,7 @@ const taskSlice = createSlice({
       state.taskList.push(action.payload.tasks);
     },
     removeItem: (state, action) => {
-      const id = action.payload;
+      const id = action.payload.data;
       let newTasks = state.taskList.filter((task) => task.id !== id);
       state.taskList = [...newTasks];
     },

@@ -8,6 +8,7 @@ const deleteTask = (store) => (next) => async (action) => {
     let method = 'delete';
     let config = null;
     let response = await fetchApi(url, body, method, config);
+    console.log(response, response.status);
     action.payload.response = response;
   }
   next(action);
