@@ -34,7 +34,6 @@ const store = configureStore({
   },
 
   middleware: [
-    logger,
     loginMiddleware,
     chatConnectMiddleware,
     chatMiddleware,
@@ -47,6 +46,7 @@ const store = configureStore({
     sendTasksDBMiddleware,
     getAllTasks,
     getConnectionNames,
+    logger,
   ],
 });
 
