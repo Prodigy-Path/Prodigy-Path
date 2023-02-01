@@ -1,8 +1,8 @@
 /** @format */
 
-import React from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setParams, setResults, setPage} from '../store/exploreSlice';
+import { setParams, setResults, setPage } from '../store/exploreSlice';
 import { TextInput, ActionIcon, useMantineTheme, Pagination } from '@mantine/core';
 import { IconSearch, IconArrowRight, IconArrowLeft } from '@tabler/icons';
 import UserCard from '../UserCard';
@@ -25,18 +25,22 @@ const Explore = () => {
     );
   };
 
-  const handleSearch = () => {
+  useEffect(() => {
     dispatch(
       setResults({
         action: 'search',
         userRole: user.role
       })
     )
-  }
+  })
+  
+  const filteredItems = useMemo (() => {
+    return results.filter(user => searchParam ? user.tags.includes(searchParam) : user)
+  },[searchParam, results])
 
   const startIndex = (currentPage - 1) * 5;
   const endIndex = startIndex + 5
-  const showResults = results.slice(startIndex, endIndex)
+  const showResults = filteredItems.slice(startIndex, endIndex)
 
   const setCurrentPage = (page) => {
     dispatch(
@@ -71,7 +75,6 @@ const Explore = () => {
                 radius="xl"
                 color={theme.primaryColor}
                 variant="filled"
-                onClick={handleSearch}
               >
                 {theme.dir === 'ltr' ? (
                   <IconArrowRight

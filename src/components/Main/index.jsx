@@ -10,10 +10,13 @@ import Footer from '../Footer';
 import Chat from '../Chat';
 import DevsAbout from '../About/DevsAbout';
 import ProdPathAbout from '../About/ProdPathAbout';
-import Task from '../Task';
+import MentorTasks from '../Task/MentorTasks';
+import ProtegeTasks from '../Task/ProtegeTasks';
+
 import Profile from '../Profile';
 const Main = () => {
   const { isLoggedIn, user } = useSelector((state) => state.login);
+
   console.log(user);
   return (
     <>
@@ -29,7 +32,12 @@ const Main = () => {
 
         <Route
           path={'/tasks'}
-          element={<Task />}
+          element={
+            <>
+              {isLoggedIn && user.role === 'protege' && <ProtegeTasks />}
+              {isLoggedIn && user.role === 'mentor' && <MentorTasks />}
+            </>
+          }
         />
         <Route
           path={'/login'}
@@ -52,7 +60,7 @@ const Main = () => {
           element={<Profile/>}
         />
       </Routes>
-      {isLoggedIn ? <Chat /> : <Chat />}
+      {isLoggedIn ? <Chat /> : null}
       <Footer />
     </>
   );

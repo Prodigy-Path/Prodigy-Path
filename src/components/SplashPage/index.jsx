@@ -75,7 +75,6 @@ const SplashPage = () => {
         <section className="splash__testimonials">
           <Carousel
             plugins={[autoplay.current]}
-            auto
             align="start"
             loop
             dragFree
