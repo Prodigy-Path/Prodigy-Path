@@ -1,6 +1,6 @@
 /** @format */
 
-import fetchApi from '../../../utility/fetchApi';
+import fetchApi from '../../../../utility/fetchApi';
 const getAllTasks = (store) => (next) => async (action) => {
   if (action.payload?.action === 'GET_TASKS') {
     let url = `${process.env.REACT_APP_SERVER}/tasks`;

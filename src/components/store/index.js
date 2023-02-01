@@ -18,9 +18,9 @@ import getMentorProtegePosts from './middleware/getMentorProtegePosts';
 import mentorProtegePostsSlice from './mentorProtegePostsSlice';
 import chatConnectMiddleware from './middleware/chatConnectMiddleware';
 import connectionMiddleware from './middleware/connectionMiddleware';
-import sendTasksDBMiddleware from './middleware/sendTasksDBMiddleware';
+import sendTasksDBMiddleware from './middleware/tasks/sendTasksDBMiddleware';
 import taskSlice from './taskSlice';
-import getAllTasks from './middleware/getAllTasksMiddleware';
+import getAllTasks from './middleware/tasks/getAllTasksMiddleware';
 
 const store = configureStore({
   reducer: {

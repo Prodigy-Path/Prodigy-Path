@@ -1,6 +1,6 @@
 /** @format */
 
-import fetchApi from '../../../utility/fetchApi';
+import fetchApi from '../../../../utility/fetchApi';
 const sendTasksDBMiddleware = (store) => (next) => async (action) => {
   if (action.payload?.action === 'NEW_TASK') {
     let url = `${process.env.REACT_APP_SERVER}/tasks`;
