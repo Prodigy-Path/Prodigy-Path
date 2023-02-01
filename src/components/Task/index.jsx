@@ -22,7 +22,7 @@ const Post = () => {
 
   const { taskList, newTitle, newDescription, newMentee, updateData } =
     useSelector((state) => state.taskList);
-  console.log(newTitle, newDescription, newMentee);
+  console.log(updateData);
   const addTask = () => {
     if (newTitle) {
       let newTaskId = taskList.length + 1;
@@ -54,10 +54,16 @@ const Post = () => {
     dispatch(setUpdateData(''));
   };
 
-  const changeTask = (e) => {
+  const changeTask = ({
+    title = updateData.title,
+    description = updateData.description,
+    mentee = updateData.mentee,
+  }) => {
     let newEntry = {
       id: updateData.id,
-      title: e.target.value,
+      title,
+      description,
+      mentee,
       status: updateData.status ? true : false,
     };
     dispatch(setUpdateData(newEntry));
@@ -78,23 +84,23 @@ const Post = () => {
             <Input
               label="Title of task"
               placeholder="Title of task"
-              value={newTitle.title}
-              onChange={(e) => dispatch(setNewTitle(e.target.value))}
+              value={updateData.title}
+              onChange={(e) => changeTask({ title: e.target.value })}
               className="tasks__input"
             />
             <Input
               label="Description task:"
               placeholder="Description of task..."
-              value={newDescription}
-              onChange={(e) => dispatch(setNewDescription(e.target.value))}
+              value={updateData.description}
+              onChange={(e) => changeTask({ description: e.target.value })}
               className="tasks__input"
             />
 
             <Select
               className="tasks__input"
-              value={newMentee}
+              value={updateData.mentee}
               data={['Me']}
-              onChange={(e) => dispatch(setNewMentee(e))}
+              onChange={(value) => changeTask({ mentee: value })}
               label="Protege assigned to task:"
               placeholder="Who will you assign this task?"
             />
@@ -198,13 +204,15 @@ const Post = () => {
                     <span
                       title="Edit"
                       onClick={() => {
-                        dispatch(setUpdateData({
-                          id: task.id,
-                          title: task.title,
-                          describe: task.description,
-                          mentee: task.mentee,
-                          status: task.status ? true : false,
-                        }));
+                        dispatch(
+                          setUpdateData({
+                            id: task.id,
+                            title: task.title,
+                            describe: task.description,
+                            mentee: task.mentee,
+                            status: task.status ? true : false,
+                          }),
+                        );
                       }}
                     >
                       <FontAwesomeIcon
