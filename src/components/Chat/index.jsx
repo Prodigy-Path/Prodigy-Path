@@ -80,7 +80,7 @@ const Chat = () => {
     let text = nameConnect.find(item => item.name === name)._id;
     console.log(text);
     socket.emit("LEAVE_ROOM", roomName);
-    dispatch(sendMessageThunk({ socket, text, id: null }));
+    dispatch(sendMessageThunk({  id: null }));
     dispatch(joinRoomThunk({ socket, text }));
   }
 
