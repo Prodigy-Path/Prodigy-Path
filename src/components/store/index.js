@@ -4,7 +4,7 @@ import { configureStore } from '@reduxjs/toolkit';
 
 import drawerSlice from './drawerSlice';
 import logger from './middleware/logger';
-import loginSlice from './loginSlice';
+import loginSlice, { getConnectionRequests } from './loginSlice';
 import chatSlice from './chatSlice';
 import loginMiddleware from './middleware/loginMiddleware';
 import signUpMiddleware from './middleware/signUpMiddleware';
@@ -22,6 +22,9 @@ import sendTasksDBMiddleware from './middleware/tasks/sendTasksDBMiddleware';
 import taskSlice from './taskSlice';
 import getAllTasks from './middleware/tasks/getAllTasksMiddleware';
 import getConnectionNames from './middleware/getConnectionNames';
+import getConnectionRequest from './middleware/getConnectionRequest';
+import processConnectionRequest from './middleware/processRequestMiddleware';
+
 const store = configureStore({
   reducer: {
     drawer: drawerSlice,
@@ -46,6 +49,8 @@ const store = configureStore({
     sendTasksDBMiddleware,
     getAllTasks,
     getConnectionNames,
+    getConnectionRequest,
+    processConnectionRequest,
     logger,
   ],
 });

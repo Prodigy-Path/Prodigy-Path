@@ -1,15 +1,38 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Avatar, Text, Button, Paper, Group } from '@mantine/core';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Tabs } from '@mantine/core';
 import { IconPhoto, IconMessageCircle, IconSettings } from '@tabler/icons';
+import { getConnectionRequests, processConnectionRequest } from '../store/loginSlice';
 
 const Profile = (props) => {
 
-  const { user } = useSelector((state) => state.login);
+  const { user, userConnectionsUsers, connectionRequestUsers } = useSelector((state) => state.login);
+  const dispatch = useDispatch()
 
   const tags = ['asdf', 'asdf', 'asdf', 'asdf', 'asdf', 'asdf', 'asdf', 'asdf', 'asdf', 'asdf', 'asdf', 'asdf', 'asdf']
 
+  useEffect(() => {
+    dispatch(
+      getConnectionRequests(
+        { action: 'CONNECTION_REQUEST' }
+      )
+    )
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+
+  const handleRequest = (action, connection) => {
+    dispatch(
+      processConnectionRequest({
+        action,
+        connection
+      })
+    )
+  }
+
+
+  console.log(connectionRequestUsers)
   return (
     <div className='profileContainer'>
       <Paper
@@ -49,8 +72,8 @@ const Profile = (props) => {
             ))}
           </div>
         </div>
-        <Tabs  radius="md" variant='outline' defaultValue="description" className='profile__tabs'>
-          <Tabs.List  grow>
+        <Tabs radius="md" variant='outline' defaultValue="description" className='profile__tabs'>
+          <Tabs.List grow>
             <Tabs.Tab value="description" icon={<IconPhoto size={14} />}>Description</Tabs.Tab>
             <Tabs.Tab value="messages" icon={<IconMessageCircle size={14} />}>Connections</Tabs.Tab>
             <Tabs.Tab value="settings" icon={<IconSettings size={14} />}>Pending Connections</Tabs.Tab>
@@ -61,11 +84,19 @@ const Profile = (props) => {
           </Tabs.Panel>
 
           <Tabs.Panel value="messages" pl="xs">
-            Users connection
+            {userConnectionsUsers.map(user => (
+              <p>{user.name}</p>
+            ))}
           </Tabs.Panel>
 
           <Tabs.Panel value="settings" pl="xs">
-            Settings tab content
+            {connectionRequestUsers.map(user => (
+              <div>
+                <p>{user.username}</p>
+                <Button onClick={() => handleRequest('ACCEPT', user)}>Accept</Button>
+                <Button>Decline</Button>
+              </div>
+            ))}
           </Tabs.Panel>
         </Tabs>
       </Paper>

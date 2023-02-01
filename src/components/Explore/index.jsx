@@ -32,10 +32,12 @@ const Explore = () => {
         userRole: user.role
       })
     )
-  })
+  }, [])
   
   const filteredItems = useMemo (() => {
-    return results.filter(user => searchParam ? user.tags.includes(searchParam) : user)
+    return results.filter(user => {
+      return searchParam ? user.tags.some(tag => tag.toLowerCase().includes(searchParam.toLowerCase())) : user
+    })
   },[searchParam, results])
 
   const startIndex = (currentPage - 1) * 5;
