@@ -15,14 +15,22 @@ import {
   setNewMentee,
   updateItem,
   setUpdateData,
+  setTasks,
 } from '../store/taskSlice';
 import { Input, Select } from '@mantine/core';
-const Post = () => {
+import { useEffect } from 'react';
+const Tasks = () => {
   const dispatch = useDispatch();
 
   const { taskList, newTitle, newDescription, newMentee, updateData } =
     useSelector((state) => state.taskList);
-  console.log(updateData);
+
+  useEffect(() => {
+    dispatch(setTasks({ action: 'GET_TASKS' }));
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const addTask = () => {
     if (newTitle) {
       let newTaskId = taskList.length + 1;
@@ -33,9 +41,9 @@ const Post = () => {
         mentee: newMentee,
         status: false,
       };
-      console.log(newEntry);
 
-      dispatch(tasks(newEntry));
+      dispatch(tasks({ tasks: newEntry, action: 'NEW_TASK' }));
+
       setNewTitle('');
       setNewDescription('');
       setNewMentee('');
@@ -238,4 +246,4 @@ const Post = () => {
     </div>
   );
 };
-export default Post;
+export default Tasks;

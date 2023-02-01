@@ -2,9 +2,11 @@
 
 // Tasks
 .tasks {
+  margin: auto;
+  margin-top: 20rem;
   min-height: 50vh;
   text-align: center;
-  width: 100%;
+  width: 80%;
   .tasks__input-wrap {
     display: flex;
     flex-direction: column;
