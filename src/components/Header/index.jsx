@@ -54,6 +54,7 @@ const HeaderComponent = () => {
                     <Center>
                       <Box
                         onClick={() => {
+                          window.scrollTo({ top: 0, behavior: 'smooth' });
                           navigate('/');
                         }}
                       >
@@ -68,6 +69,7 @@ const HeaderComponent = () => {
                     <Center>
                       <Box
                         onClick={() => {
+                          window.scrollTo({ top: 0, behavior: 'smooth' });
                           navigate('/tasks');
                         }}
                       >
@@ -82,6 +84,7 @@ const HeaderComponent = () => {
                     <Center>
                       <Box
                         onClick={() => {
+                          window.scrollTo({ top: 0, behavior: 'smooth' });
                           navigate('/explore');
                         }}
                       >
@@ -89,12 +92,14 @@ const HeaderComponent = () => {
                       </Box>
                     </Center>
                   ),
-                },{
+                },
+                {
                   value: 'Profile',
                   label: (
                     <Center>
                       <Box
                         onClick={() => {
+                          window.scrollTo({ top: 0, behavior: 'smooth' });
                           navigate('/profile');
                         }}
                       >

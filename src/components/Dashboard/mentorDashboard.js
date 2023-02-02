@@ -44,7 +44,7 @@ const MentorDashboard = () => {
     <>
       <form onSubmit={handleSubmit} className='new_post_component'>
         <Group mr={0} position='together'>
-          <h4>Publish a new article to your protégé's </h4>
+          <h4>Publish a new article to your protégé's dashboards</h4>
           <Card withBorder p={0} mb={10}>
             <TextInput
               placeholder='Subject'
