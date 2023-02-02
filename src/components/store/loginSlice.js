@@ -7,8 +7,8 @@ const initialState = {
   user: {},
   usersConnections: [],
   userConnectionsUsers: [],
-  checked: false
-  connectionRequestUsers: []
+  checked: false,
+  connectionRequestUsers: [],
 
 };
 
