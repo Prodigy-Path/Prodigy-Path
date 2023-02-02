@@ -12,7 +12,9 @@ const Explore = () => {
 
   const { searchParam, results, currentPage } = useSelector((state) => state.explore)
 
-  const { user } = useSelector((state) => state.login);
+  const { user, userConnectionsUsers  } = useSelector((state) => state.login);
+
+  const userIDs = userConnectionsUsers.map(user => user._id)
 
   const theme = useMantineTheme();
   const searchTerm = user.role === 'mentor' ? 'Protege' : 'Mentor'
@@ -32,14 +34,20 @@ const Explore = () => {
         userRole: user.role
       })
     )
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   
+
+
+  const filterConnections = results.filter(users => !userIDs.includes(users._id))
+
   const filteredItems = useMemo (() => {
-    return results.filter(user => {
+    return filterConnections.filter(user => {
       return searchParam ? user.tags.some(tag => tag.toLowerCase().includes(searchParam.toLowerCase())) : user
     })
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   },[searchParam, results])
-
+  
   const startIndex = (currentPage - 1) * 5;
   const endIndex = startIndex + 5
   const showResults = filteredItems.slice(startIndex, endIndex)
@@ -96,8 +104,8 @@ const Explore = () => {
           />
         </section>
         <section className='explore__results'>
-          {showResults.map((user, idx) => (
-            <UserCard cardUser={user} key={idx} />
+          {showResults.map((users, idx) => (
+            <UserCard cardUser={users} key={idx}/>
 
           ))}
         </section>

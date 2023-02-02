@@ -27,7 +27,7 @@ const Main = () => {
         />
         <Route
           path={'/explore'}
-          element={<Explore />}
+          element={isLoggedIn ? <Explore /> : <SplashPage />}
         />
 
         <Route
@@ -57,7 +57,7 @@ const Main = () => {
         />
         <Route
           path={'/profile'}
-          element={<Profile/>}
+          element={isLoggedIn ?<Profile /> : <SplashPage/>}
         />
       </Routes>
       {isLoggedIn ? <Chat /> : null}

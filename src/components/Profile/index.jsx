@@ -10,7 +10,6 @@ const Profile = (props) => {
   const { user, userConnectionsUsers, connectionRequestUsers } = useSelector((state) => state.login);
   const dispatch = useDispatch()
 
-  const tags = ['asdf', 'asdf', 'asdf', 'asdf', 'asdf', 'asdf', 'asdf', 'asdf', 'asdf', 'asdf', 'asdf', 'asdf', 'asdf']
 
   useEffect(() => {
     dispatch(
@@ -32,7 +31,6 @@ const Profile = (props) => {
   }
 
 
-  console.log(connectionRequestUsers)
   return (
     <div className='profileContainer'>
       <Paper
@@ -50,13 +48,13 @@ const Profile = (props) => {
           <Group position='apart' className='profile__group'>
             <div>
               <Text size="lg" weight={500} mt="md" className='profile__name'>
-                {user?.name} Seth Pierce
+                {user?.name}
               </Text>
               <Text color="dimmed" size="sm" className='profile__username'>
-                @{user?.username}sethppierce
+                @{user?.username}
               </Text>
               <Text size="sm" className='profile__role'>
-                {user?.role}mentor
+                {user?.role}
               </Text>
             </div>
             <Button className='profile__button' size='md'>
@@ -65,7 +63,7 @@ const Profile = (props) => {
           </Group>
           <div className='profile__tagGroup'>
             Tags:
-            {tags.map(tag => (
+            {user.tags?.map(tag => (
               <div className='profile__tag'>
                 {tag}
               </div>
@@ -94,7 +92,7 @@ const Profile = (props) => {
               <div>
                 <p>{user.username}</p>
                 <Button onClick={() => handleRequest('ACCEPT', user)}>Accept</Button>
-                <Button>Decline</Button>
+                <Button onClick={() => handleRequest('DELETE', user)}>Decline</Button>
               </div>
             ))}
           </Tabs.Panel>

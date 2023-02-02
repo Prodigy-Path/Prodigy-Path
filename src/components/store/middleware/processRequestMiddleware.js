@@ -16,22 +16,36 @@ const processConnectionRequest = (store) => (next) => async (action) => {
       let response = await fetchApi(url, body, method, config);
       return response;
     }
-    async function deleteRequest(){
+    async function deleteRequest() {
       let url = `${process.env.REACT_APP_SERVER}/users/${user._id}`;
-      let body = { ...user, connection_requests: user.connection_requests.filter(item => item !== connection._id)};
+      let body = { ...user, connection_requests: user.connection_requests.filter(item => item !== connection._id) };
       let method = 'PATCH';
       let config = {
         bearerToken: user.token,
-      }; 
+      };
       let response = await fetchApi(url, body, method, config);
       console.log(response)
     }
     await acceptConnection()
-    await deleteRequest()
-    action.payload = action.payload.connection._id
+    action.payload = await deleteRequest()
   }
-  next(action);
-}
+    if (action.payload?.action === 'DELETE') {
+      const { user } = store.getState((state) => state).login;
+      const connection = action.payload.connection
+      async function deleteRequest() {
+        let url = `${process.env.REACT_APP_SERVER}/users/${user._id}`;
+        let body = { ...user, connection_requests: user.connection_requests.filter(item => item !== connection._id) };
+        let method = 'PATCH';
+        let config = {
+          bearerToken: user.token,
+        };
+        let response = await fetchApi(url, body, method, config);
+        console.log(response)
+      }
+      action.payload = await deleteRequest()
+    }
+    next(action);
+  }
 
 
-export default processConnectionRequest
+  export default processConnectionRequest;
