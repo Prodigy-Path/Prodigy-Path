@@ -7,7 +7,7 @@ const chatMiddleware =
     if (typeof action === 'function') {
       return action(dispatch, getState);
     }
-    action.type = 'test';
+    if (!action.type) action.type = 'test';
     return next(action);
   };
 

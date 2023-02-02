@@ -13,7 +13,7 @@ const chatConnectMiddleware = (store) => (next) => async (action) => {
     store.dispatch(getChats(response));
     action.payload = response;
   }
-  action.type = getChats?.type; //! ADDED THIS LINE FOR TESTING
+  if (!action.type) action.type = getChats?.type;
   next(action);
 };
 

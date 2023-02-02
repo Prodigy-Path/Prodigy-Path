@@ -3,6 +3,7 @@
 import fetchApi from '../../../utility/fetchApi';
 
 const exploreMiddleware = (store) => (next) => async (action) => {
+ 
   if (action.payload?.action === 'search') {
     let url = `${process.env.REACT_APP_SERVER}/users`;
     let body = null;

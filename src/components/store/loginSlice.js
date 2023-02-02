@@ -9,7 +9,6 @@ const initialState = {
   userConnectionsUsers: [],
   checked: false,
   connectionRequestUsers: [],
-
 };
 
 const loginSlice = createSlice({
@@ -17,6 +16,7 @@ const loginSlice = createSlice({
   initialState,
   reducers: {
     login: (state, action) => {
+      console.log(action.payload);
       state.isLoggedIn = true;
       state.user = action.payload;
     },
@@ -28,12 +28,11 @@ const loginSlice = createSlice({
       state.checked = false;
     },
     setChecked: (state) => {
-      state.checked = !state.checked
-
+      state.checked = !state.checked;
     },
     cookieLogin: (state, action) => {
       state.isLoggedIn = true;
-      state.user = action.payload
+      state.user = action.payload;
     },
     getConnections: (state, action) => {
       let filtered = [];
@@ -56,27 +55,26 @@ const loginSlice = createSlice({
       }
     },
     getConnectionRequests: (state, action) => {
-      state.connectionRequestUsers = [...action.payload]
+      state.connectionRequestUsers = [...action.payload];
     },
     processConnectionRequest: (state, action) => {
-      state.user = action.payload
-      state.connectionRequestUsers = state.connectionRequestUsers.filter(user => user._id !== action.payload)
-    }
+      state.user = action.payload;
+      state.connectionRequestUsers = state.connectionRequestUsers.filter(
+        (user) => user._id !== action.payload,
+      );
+    },
   },
 });
 
-
 export const {
-login,
-logout,
-getConnections,
-convertToNames,
-getConnectionRequests,
-setChecked,
-cookieLogin,
-processConnectionRequest, 
-} =
-
-  loginSlice.actions;
+  login,
+  logout,
+  getConnections,
+  convertToNames,
+  getConnectionRequests,
+  setChecked,
+  cookieLogin,
+  processConnectionRequest,
+} = loginSlice.actions;
 
 export default loginSlice.reducer;
