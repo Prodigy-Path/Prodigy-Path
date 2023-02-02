@@ -20,6 +20,8 @@ const UserCard = (props) => {
       })
     )
   }
+
+
   return (
       <Paper
         radius="lg"
@@ -43,7 +45,7 @@ const UserCard = (props) => {
               </Text>
             </div>
             {
-              cardUser.connection_requests.includes(user._id) ?
+              cardUser.connection_requests.includes(user._id)?
                 <Button className='userCard__button'>
                   Pending
                 </Button>
@@ -54,8 +56,8 @@ const UserCard = (props) => {
             }
           </Group>
           <div className='userCard__tagGroup'>
-            {cardUser.tags?.map(tag => (
-              <div className='userCard__tag'>
+            {cardUser.tags?.map((tag, idx) => (
+              <div key={`tag_${tag}_${idx}`} className='userCard__tag'>
                 {tag}
               </div>
             ))}

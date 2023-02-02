@@ -30,7 +30,7 @@ const Profile = (props) => {
     )
   }
 
-
+  console.log(user)
   return (
     <div className='profileContainer'>
       <Paper

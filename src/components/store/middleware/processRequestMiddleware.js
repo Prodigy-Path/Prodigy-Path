@@ -25,9 +25,11 @@ const processConnectionRequest = (store) => (next) => async (action) => {
       };
       let response = await fetchApi(url, body, method, config);
       console.log(response)
+      return response
     }
     await acceptConnection()
     action.payload = await deleteRequest()
+    console.log(action.payload)
   }
     if (action.payload?.action === 'DELETE') {
       const { user } = store.getState((state) => state).login;
@@ -41,6 +43,7 @@ const processConnectionRequest = (store) => (next) => async (action) => {
         };
         let response = await fetchApi(url, body, method, config);
         console.log(response)
+        return response
       }
       action.payload = await deleteRequest()
     }
