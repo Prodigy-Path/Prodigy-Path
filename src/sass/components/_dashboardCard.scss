@@ -1,0 +1,60 @@
+.dashCard {
+  background-color: $color-dark-navy;
+  margin-bottom: 3rem;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  position: relative;
+  height: auto;
+  min-height: 30rem;
+  width: 60%;
+  box-shadow: 0px 0px 5px 1px $color-lighter-beige;
+
+  &__avatar {
+    margin-right: 3rem;
+  }
+
+  &__title {
+    position: absolute;
+    top: 2rem;
+    left: 16.5rem;
+    font-size: 4rem;
+    width: auto;
+    color: $color-lighter-beige;
+    font-weight: bold;
+  }
+
+  &__name {
+    position: absolute;
+    top: 15rem;
+    left: 2.5rem;
+    font-size: 1.5rem;
+    padding: 0;
+    color: $color-lighter-beige;
+  }
+
+  &__content {
+    // position: relative;
+    margin-top: 7rem;
+
+    margin-right: 15rem;
+    font-size: 2.5rem;
+    padding-bottom: 2.5rem;
+    color: $color-lighter-beige;
+
+  }
+
+  &__tag {
+    background-color: $color-background-splash;
+    padding: 5px;
+    border-radius: 5px;
+  }
+
+  &__delete {
+    position: absolute;
+    right: 3rem;
+    top: 3rem;
+    padding: 0%;
+    background-color: $color-background-splash;
+  }
+}
