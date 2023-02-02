@@ -13,9 +13,10 @@
 
       &__segment {
         background-color: $color-lighter-blue;
-        height: 2em;
-        width: 15em;
+        height: 1.46em;
+        width: 15.38em;
         align-items: center;
+        border-radius: 4px;
       }
 
       &__signup {
@@ -29,9 +30,8 @@
       top: 100%;
       right: 0;
       background-color: $color-lighter-blue;
-      height: 6em;
-      width: 10em;
-
+      height: auto;
+      width: auto;
     }
   }
 }
