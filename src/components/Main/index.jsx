@@ -16,7 +16,6 @@ import ProtegeTasks from '../Task/ProtegeTasks';
 const Main = () => {
   const { isLoggedIn, user } = useSelector((state) => state.login);
 
-  console.log(user);
   return (
     <>
       <Routes>
