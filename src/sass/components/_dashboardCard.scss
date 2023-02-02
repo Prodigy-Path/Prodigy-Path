@@ -57,4 +57,27 @@
     padding: 0%;
     background-color: $color-background-splash;
   }
+
+  &__edit {
+    position: absolute;
+    right: 10rem;
+    top: 3rem;
+    padding: 0%;
+    background-color: $color-background-splash;
+  }
+
+  &__modal {
+    padding: 0%;
+  }
+
+  &__editForm {
+    width: 100%;
+    padding: 0%;
+    margin: 0%;
+  }
+
+  &__editFormInput {
+
+    width: 100%;
+  }
 }
