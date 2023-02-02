@@ -24,16 +24,14 @@ const Tasks = () => {
 
   const { taskList, newTitle, newDescription, newMentee, updateData } =
     useSelector((state) => state.taskList);
-  const { user, userConnectionsUsers, usersConnections } = useSelector(
-    (state) => state.login,
-  );
+  const { user, userConnectionsUsers } = useSelector((state) => state.login);
 
   useEffect(() => {
     dispatch(setTasks({ action: 'GET_TASKS' }));
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  console.log(userConnectionsUsers, usersConnections);
+
   const addTask = () => {
     if (newTitle) {
       let newTaskId = taskList.length + 1;
@@ -41,8 +39,8 @@ const Tasks = () => {
         id: newTaskId,
         title: newTitle,
         description: newDescription,
-        assigned_by: user.id,
-        mentee: newMentee,
+        assigned_by: user.username,
+        assigned_to: newMentee,
         status: false,
       };
 
@@ -54,8 +52,8 @@ const Tasks = () => {
     }
   };
 
-  const deleteTask = (id) => {
-    dispatch(removeItem(id));
+  const deleteTask = (_id, id) => {
+    dispatch(removeItem({ _id, id, action: 'DELETE_TASK' }));
   };
 
   const markDone = (id) => {
@@ -69,20 +67,22 @@ const Tasks = () => {
   const changeTask = ({
     title = updateData.title,
     description = updateData.description,
-    mentee = updateData.mentee,
+    assigned_to = updateData.assigned_to,
   }) => {
     let newEntry = {
+      _id: updateData._id,
       id: updateData.id,
       title,
-      description,
-      mentee,
+      description: description,
+      assigned_to,
       status: updateData.status ? true : false,
     };
+
     dispatch(setUpdateData(newEntry));
   };
 
   const updateTask = () => {
-    dispatch(updateItem(updateData));
+    dispatch(updateItem({ updateData, action: 'UPDATE_TASK' }));
     dispatch(setUpdateData(''));
   };
 
@@ -110,22 +110,22 @@ const Tasks = () => {
 
             <Select
               className="tasks__input"
-              value={updateData.mentee}
-              data={['Me']}
-              onChange={(value) => changeTask({ mentee: value })}
+              value={updateData.assigned_to}
+              data={userConnectionsUsers.map((item) => item.username)}
+              onChange={(value) => changeTask({ assigned_to: value })}
               label="Protege assigned to task:"
               placeholder="Who will you assign this task?"
             />
           </div>
           <div className="tasks__button-wrap">
             <button
-              className="tasks__btn btn"
+              className="tasks__btn"
               onClick={updateTask}
             >
               Update
             </button>
             <button
-              className="tasks__btn btn"
+              className="tasks__btn"
               onClick={cancelUpdate}
             >
               Cancel
@@ -153,20 +153,21 @@ const Tasks = () => {
             <Select
               className="tasks__input"
               value={newMentee}
-              data={['Me']}
+              data={userConnectionsUsers?.map((item) => item.username)}
               onChange={(e) => dispatch(setNewMentee(e))}
               label="Protege assigned to task:"
               placeholder="Who will you assign this task?"
             />
           </div>
-          <div className="tasks__button-wrap">
-            <button
-              className="tasks__btn btn"
-              onClick={addTask}
-            >
-              Add Task
-            </button>
-          </div>
+
+          <button
+            onClick={() => {
+              addTask();
+            }}
+            className="tasks__btn"
+          >
+            Add Task
+          </button>
         </div>
       )}
       {taskList && taskList.length ? '' : 'Currently no tasks...'}
@@ -176,7 +177,7 @@ const Tasks = () => {
           .sort((a, b) => (a.id > b.id ? 1 : -1))
           .map((task, index) => (
             <div
-              key={task.id}
+              key={task._id}
               className="tasks__task"
             >
               <div className="tasks__task-content">
@@ -198,7 +199,7 @@ const Tasks = () => {
                   </p>
                   <p>
                     <span>Assigned to: </span>
-                    {task.mentee}
+                    {task.assigned_to}
                   </p>
                 </div>
                 <div className="tasks__icons-wrap">
@@ -218,10 +219,11 @@ const Tasks = () => {
                       onClick={() => {
                         dispatch(
                           setUpdateData({
+                            _id: task._id,
                             id: task.id,
                             title: task.title,
-                            describe: task.description,
-                            mentee: task.mentee,
+                            description: task.description,
+                            assigned_to: task.assigned_to,
                             status: task.status ? true : false,
                           }),
                         );
@@ -235,7 +237,7 @@ const Tasks = () => {
                   )}
 
                   <span
-                    onClick={() => deleteTask(task.id)}
+                    onClick={() => deleteTask(task._id, task.id)}
                     title="Delete"
                   >
                     <FontAwesomeIcon

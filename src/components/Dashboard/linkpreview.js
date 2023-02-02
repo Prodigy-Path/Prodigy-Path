@@ -1,10 +1,10 @@
 // const Dashboard = () => {
 //   const { user } = useSelector((state) => state.login);
 //   const { posts } = useSelector((state) => state.post);
-//   console.log(posts);
+
 //   const dispatch = useDispatch();
 //   const handleSubmit = (e) => {
-//     console.log('hello?');
+
 //     e.preventDefault();
 //     dispatch(
 //       post({
@@ -44,17 +44,14 @@
 //       .then((data) => setLinkPreview(data));
 //   }, [d.text]);
 //   let savedPosts = dispatch(getPost({ action: 'getPost' }));
-//   console.log(savedPosts);
 
-//   console.log(posts);
+
+
 //   let filtered = posts.filter((element) => element.user === user._id);
 //   let sortedFiltered = filtered.sort((a, b) => {
 //     return new Date(b.created_at) - new Date(a.created_at);
 //   });
-//   console.log(sortedFiltered);
-//   console.log(filtered);
-//   console.log(typeof filtered[0]?.created_at);
-//   console.log(user.username);
+
 //   const isLink =
 //     /^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/;
 //   const hasLink = ({ d }) => { };

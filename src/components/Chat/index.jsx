@@ -12,9 +12,12 @@ const Chat = () => {
   const dispatch = useDispatch();
   const { messages, roomName, chatConnection } = useSelector((state) => state.chat);
   const { user, userConnectionsUsers } = useSelector((state) => state.login);
+
   const [showMessage, setShowMessage] = useState(false);
   const [textHeader, setTextHeader] = useState(false);
   // const [online, setOnline] = useState(false);
+
+
 
   const filterConnection = chatConnection.filter((item) => user._id === item.mentor || user._id === item.protege);
   const nameConnect = userConnectionsUsers.filter(item =>
@@ -61,10 +64,8 @@ const Chat = () => {
       dispatch(sendMessageThunk({ text: text, id: id }));
     });
     socket.on('USER_CONNECTED', (data) => {
-      console.log('USER CONNECTED YAY', data);
     });
     socket.on('proofOfLife', (data) => {
-      console.log(data);
     });
     socket.on('ROOMS', (data) => {
       // setOnline(data);
@@ -90,6 +91,7 @@ const Chat = () => {
     }
     e.target.text.value = ''
   }
+
 
   function handleJoinRoom(e) {
     let name = e.target.innerText
