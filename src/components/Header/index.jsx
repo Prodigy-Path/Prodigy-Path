@@ -5,12 +5,12 @@ import { Link, useNavigate } from 'react-router-dom';
 import {
   Header,
   Group,
-  SegmentedControl,
-  Center,
-  Box,
+  Tabs,
   Button,
   Burger,
+  Stack
 } from '@mantine/core';
+import { IconChecklist, IconHome, IconLogout, IconSearch, IconUserCircle } from '@tabler/icons';
 import { useSelector, useDispatch } from 'react-redux';
 import { setOpened, setDrawer } from '../store/drawerSlice';
 import Cookies from 'universal-cookie';
@@ -53,73 +53,36 @@ const HeaderComponent = () => {
           className="header__group__nav"
         >
           {isLoggedIn ? (
-            <SegmentedControl
-              className="header__group__nav__segment"
-              transitionDuration={500}
-              transitionTimingFunction="linear"
-              data={[
-                {
-                  value: 'dashboard',
-                  label: (
-                    <Center>
-                      <Box
-                        onClick={() => {
-                          window.scrollTo({ top: 0, behavior: 'smooth' });
-                          navigate('/');
-                        }}
-                      >
-                        Dashboard
-                      </Box>
-                    </Center>
-                  ),
-                },
-                {
-                  value: 'tasks',
-                  label: (
-                    <Center>
-                      <Box
-                        onClick={() => {
-                          window.scrollTo({ top: 0, behavior: 'smooth' });
-                          navigate('/tasks');
-                        }}
-                      >
-                        Tasks
-                      </Box>
-                    </Center>
-                  ),
-                },
-                {
-                  value: 'explore',
-                  label: (
-                    <Center>
-                      <Box
-                        onClick={() => {
-                          window.scrollTo({ top: 0, behavior: 'smooth' });
-                          navigate('/explore');
-                        }}
-                      >
-                        Explore
-                      </Box>
-                    </Center>
-                  ),
-                },
-                {
-                  value: 'Profile',
-                  label: (
-                    <Center>
-                      <Box
-                        onClick={() => {
-                          window.scrollTo({ top: 0, behavior: 'smooth' });
-                          navigate('/profile');
-                        }}
-                      >
-                        Profile
-                      </Box>
-                    </Center>
-                  ),
-                },
-              ]}
-            />
+
+            <Tabs className={`header__group__nav__segment`}>
+              <Tabs.List>
+                <Tabs.Tab color="teal" value='dashboard' icon={<IconHome size={14} />} onClick={() => {
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                  navigate('/');
+                }}>
+                  Dashboard
+                </Tabs.Tab>
+                <Tabs.Tab color="lime" icon={<IconChecklist size={14} />} value='tasks' onClick={() => {
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                  navigate('/tasks');
+                }}>
+                  Tasks
+                </Tabs.Tab>
+                <Tabs.Tab icon={<IconSearch size={14} />} color="orange" value='explore' onClick={() => {
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                  navigate('/explore');
+                }}>
+                  Explore
+                </Tabs.Tab>
+                <Tabs.Tab icon={<IconUserCircle size={14} />} color="pink" value='profile' onClick={() => {
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                  navigate('/profile');
+                }}>
+                  Profile
+                </Tabs.Tab>
+              </Tabs.List>
+            </Tabs>
+
           ) : null}
           {isLoggedIn ? (
             <Burger
@@ -130,7 +93,6 @@ const HeaderComponent = () => {
               title={title}
             />
           ) : null}
-
           {isLoggedIn ? (
             <Button
               onClick={handleLogout}
@@ -144,73 +106,53 @@ const HeaderComponent = () => {
                   },
                 },
                 leftIcon: {
-                  marginRight: 15,
+                  marginRight: 19,
                 },
               })}
             >
-              <Link to="/">Logout</Link>
+
+              
+              <Link to='/'>Logout <IconLogout size={14} /></Link>
+
             </Button>
           ) : null}
         </Group>
         {isLoggedIn ? (
-          <SegmentedControl
-            className={`header__group__mobileMenu ${menuClass} `}
-            orientation="vertical"
-            transitionDuration={500}
-            transitionTimingFunction="linear"
-            data={[
-              {
-                value: 'dashboard',
-                label: (
-                  <Center>
-                    <Box
-                      onClick={() => {
-                        navigate('/');
-                      }}
-                    >
-                      Dashboard
-                    </Box>
-                  </Center>
-                ),
-              },
-              {
-                value: 'tasks',
-                label: (
-                  <Center>
-                    <Box
-                      onClick={() => {
-                        navigate('/tasks');
-                      }}
-                    >
-                      Tasks
-                    </Box>
-                  </Center>
-                ),
-              },
-              {
-                value: 'explore',
-                label: (
-                  <Center>
-                    <Box
-                      onClick={() => {
-                        navigate('/explore');
-                      }}
-                    >
-                      Explore
-                    </Box>
-                  </Center>
-                ),
-              },
-              {
-                value: 'logout',
-                label: (
-                  <Center>
-                    <Box onClick={handleLogout}>Logout</Box>
-                  </Center>
-                ),
-              },
-            ]}
-          />
+
+          <Tabs className={`header__group__mobileMenu ${menuClass}`}>
+            <Tabs.List>
+              <Stack>
+                <Tabs.Tab color="teal" value='dashboard' icon={<IconHome size={14} />} onClick={() => {
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                  navigate('/');
+                }}>
+                  Dashboard
+                </Tabs.Tab>
+                <Tabs.Tab color="lime" icon={<IconChecklist size={14} />} value='tasks' onClick={() => {
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                  navigate('/tasks');
+                }}>
+                  Tasks
+                </Tabs.Tab>
+                <Tabs.Tab icon={<IconSearch size={14} />} color="orange" value='explore' onClick={() => {
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                  navigate('/explore');
+                }}>
+                  Explore
+                </Tabs.Tab>
+                <Tabs.Tab icon={<IconUserCircle size={14} />} color="pink" value='profile' onClick={() => {
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                  navigate('/profile');
+                }}>
+                  Profile
+                </Tabs.Tab>
+                <Tabs.Tab icon={<IconLogout size={14} />} color="pink" value='logout' onClick={handleLogout}>
+                  Logout
+                </Tabs.Tab>
+              </Stack>
+            </Tabs.List>
+          </Tabs>
+
         ) : null}
       </Group>
     </Header>
