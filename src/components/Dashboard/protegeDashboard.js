@@ -12,7 +12,6 @@ const ProtegeDashboard = () => {
   const { usersConnections } = useSelector((state) => state.login);
   const { posts } = useSelector((state) => state.post);
   const dispatch = useDispatch();
-
   let mentorMap = usersConnections.map((m) => m.mentor);
   let protegeFilteredPost = posts.filter((item) =>
     mentorMap.includes(item.user),
@@ -20,7 +19,6 @@ const ProtegeDashboard = () => {
   let sortedFilteredProtege = protegeFilteredPost.sort((a, b) => {
     return new Date(b.created_at) - new Date(a.created_at);
   });
-
   useEffect(() => {
     dispatch(
       getPostProtege({
@@ -33,7 +31,6 @@ const ProtegeDashboard = () => {
     dispatch(getPost({ action: 'getPost' }));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
   return (
     <>
       <Text className='new_post_component'>

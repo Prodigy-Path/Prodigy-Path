@@ -10,6 +10,7 @@ const getMentorProtegePosts = (store) => (next) => async (action) => {
       let config = null
       let response = await fetchApi(url, body, method, config);
       store.dispatch(getConnections(response))
+
       return response;
 
     }
@@ -20,6 +21,7 @@ const getMentorProtegePosts = (store) => (next) => async (action) => {
       let method = 'get';
       let config = null
       let response = await fetchApi(url, body, method, config);
+      console.log(response, 'this is flag')
       return response;
     }
     let connectionPosts = await grabPosts();
