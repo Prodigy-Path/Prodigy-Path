@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { joinRoomThunk, sendMessageThunk, getChats } from '../store/chatSlice';
-import { Select } from '@mantine/core';
+import { Accordion} from '@mantine/core';
 import io from 'socket.io-client';
 import { convertToNames } from '../store/loginSlice';
 const socket = io.connect(process.env.REACT_APP_SERVER);
@@ -12,8 +12,9 @@ const Chat = () => {
   const dispatch = useDispatch();
   const { messages, roomName, chatConnection } = useSelector((state) => state.chat);
   const { user, userConnectionsUsers } = useSelector((state) => state.login);
-  const [isChatVisible, setIsChatVisible] = useState(false);
-  console.log('MYSUER!!!!!', user);
+  const [showMessage, setShowMessage] = useState(false);
+  const [textHeader, setTextHeader] = useState(false);
+  const [online, setOnline] = useState(false);
 
   const filterConnection = chatConnection.filter((item) => user._id === item.mentor || user._id === item.protege);
   const nameConnect = userConnectionsUsers.filter(item =>
@@ -22,13 +23,25 @@ const Chat = () => {
     )
   ).map(item => ({
     name: item.name,
+    id: item.id,
     _id: filterConnection.find(filter => item.id === filter.mentor || item.id === filter.protege)._id
   }));
+
+
 
   function getNames(nameConnect) {
     return nameConnect.map(item => item.name);
   }
+
+  function getConnectionId(nameConnect) {
+    return nameConnect.map(item => item.id);
+  }
+
+
+
   const namesArray = getNames(nameConnect);
+  const idArray = getConnectionId(nameConnect);
+
   let name = user.name
 
   useEffect(() => {
@@ -43,6 +56,7 @@ const Chat = () => {
   }, [chatConnection])
 
   useEffect(() => {
+    socket.emit('JOIN', { id: crypto.randomUUID(), userId: user.id })
     socket.on('RECEIVE_MESSAGE', ({ text, id }) => {
 
       dispatch(sendMessageThunk({ text: text, id: id }));
@@ -53,14 +67,16 @@ const Chat = () => {
     socket.on('proofOfLife', (data) => {
       console.log(data);
     });
-    socket.on('ROOMS')
-    // socket.on('USER_DISCONNECTED', (obj) => {
-
-    //   const { text, room } = obj
-    //   dispatch(sendMessageThunk({ socket, text, id: crypto.randomUUID(), room }));
-    // })
+    socket.on('ROOMS', (data) => {
+      setOnline(data);
+    });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [socket]);
+
+  // HERE IS USER ONLINE DATA !!!!!!!!!!
+
+  // console.log("online state", online);
+  // console.log(idArray);
 
   function handleSubmitMessage(e) {
     e.preventDefault();
@@ -75,27 +91,38 @@ const Chat = () => {
     e.target.text.value = ''
   }
 
-  function handleJoinRoom(name) {
-    console.log(name);
+  function handleJoinRoom(e) {
+    let name = e.target.innerText
+    setTextHeader(name)
     let text = nameConnect.find(item => item.name === name)._id;
-    console.log(text);
     socket.emit("LEAVE_ROOM", roomName);
-    dispatch(sendMessageThunk({  id: null }));
+    dispatch(sendMessageThunk({ id: null }));
     dispatch(joinRoomThunk({ socket, text }));
+    setShowMessage(true);
   }
 
   return (
     <>
-      <div className="chat_open">
-        {isChatVisible && (
+      <Accordion variant="contained" className='chat__select'>
+        <Accordion.Item value="Messages">
+
+          <Accordion.Control>Messages</Accordion.Control>
+          <Accordion.Panel>
+            <p>Your Connections:</p>
+            {namesArray.map(item => (
+              <p onClick={e => handleJoinRoom(e)}
+                key={item}>{item}</p>
+            ))}
+          </Accordion.Panel>
+        </Accordion.Item>
+      </Accordion>
+      {showMessage && (
+        <>
           <div className="chat">
-            <Select
-              className='chat__select'
-              data={namesArray}
-              label='Choose Room'
-              onChange={(name) => handleJoinRoom(name)}
-            />
-            <p className="close_button " onClick={() => setIsChatVisible(false)}>X</p>
+            <div className="chat__headerBackground"></div>
+            <p className="close_button " onClick={() => setShowMessage(false)}>X</p>
+            <p className="chat__header">{textHeader} </p>
+
             <div className="chat__message">
               <form onSubmit={handleSubmitMessage}>
                 <textarea name="text" />
@@ -110,11 +137,8 @@ const Chat = () => {
               </ul>
             </div>
           </div>
-        )}
-        {!isChatVisible && (
-          <div onClick={() => setIsChatVisible(true)}>Open Chat</div>
-        )}
-      </div>
+        </>
+      )}
     </>
   );
 };
