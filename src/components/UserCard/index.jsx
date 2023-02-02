@@ -6,7 +6,8 @@ import { newConnection } from '../store/exploreSlice';
 const UserCard = (props) => {
   const { cardUser } = props;
   const dispatch = useDispatch();
-  const { user } = useSelector((state) => state.login);
+  const { user} = useSelector((state) => state.login);
+
 
   const addNewConnection = () => {
     dispatch(
@@ -20,47 +21,47 @@ const UserCard = (props) => {
     )
   }
   return (
-    <Paper
-      radius="lg"
-      className='userCard'
-      withBorder
-      p="md"
-    >
-      <Avatar
-        className='userCard__avatar'
-        src={'https://via.placeholder.com/150'}
-        size={120}
-        radius={20} />
-      <div className='userCard__content'>
-        <Group className='userCard__content' position='apart'>
-          <div>
-            <Text size="lg" weight={500} mt="md" className='userCard__name'>
-              {cardUser.name}
-            </Text>
-            <Text color="dimmed" size="sm" className='userCard__username'>
-              @{cardUser.username}
-            </Text>
-          </div>
-          {
-            cardUser.connection_requests.includes(user._id) ?
-              <Button className='userCard__button'>
-                Pending
-              </Button>
-              :
-              <Button className='userCard__button' onClick={addNewConnection}>
-                Connect
-              </Button>
-          }
-        </Group>
-        <div className='userCard__tagGroup'>
-          {cardUser.tags.map(tag => (
-            <div className='userCard__tag'>
-              {tag}
+      <Paper
+        radius="lg"
+        className='userCard'
+        withBorder
+        p="md"
+      >
+        <Avatar
+          className='userCard__avatar'
+          src={'https://via.placeholder.com/150'}
+          size={120}
+          radius={20} />
+        <div className='userCard__content'>
+          <Group className='userCard__content' position='apart'>
+            <div>
+              <Text size="lg" weight={500} mt="md" className='userCard__name'>
+                {cardUser.name}
+              </Text>
+              <Text color="dimmed" size="sm" className='userCard__username'>
+                @{cardUser.username}
+              </Text>
             </div>
-          ))}
+            {
+              cardUser.connection_requests.includes(user._id) ?
+                <Button className='userCard__button'>
+                  Pending
+                </Button>
+                :
+                <Button className='userCard__button' onClick={addNewConnection}>
+                  Connect
+                </Button>
+            }
+          </Group>
+          <div className='userCard__tagGroup'>
+            {cardUser.tags?.map(tag => (
+              <div className='userCard__tag'>
+                {tag}
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
-    </Paper>
+      </Paper>
   )
 }
 

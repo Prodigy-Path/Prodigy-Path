@@ -24,10 +24,8 @@ const chatSlice = createSlice({
       state.messages = action.payload;
     },
     getChats: (state, action) => {
-      console.log(action.payload)
         if (state.chatConnection?.length !== action.payload.length) {
           state.chatConnection = [...action.payload];
-          console.log(state.chatConnection);
       }
     }
   },
@@ -45,11 +43,9 @@ export const sendMessageThunk = (data) => (dispatch, getState) => {
   const { text, socket, id, room } = data;
   const { messages, roomName } = getState().chat;
   if (messages.filter(message => message.id === id).length === 0) {
-    console.log('Message saved to state')
     dispatch(setMessages([...messages, { text, id }]));
   }
   if (id === null) {
-    console.log('messages erased')
     dispatch(setMessages([]));
   }
   if (socket) {

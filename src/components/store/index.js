@@ -19,9 +19,13 @@ import mentorProtegePostsSlice from './mentorProtegePostsSlice';
 import chatConnectMiddleware from './middleware/chatConnectMiddleware';
 import connectionMiddleware from './middleware/connectionMiddleware';
 import sendTasksDBMiddleware from './middleware/tasks/sendTasksDBMiddleware';
+import deleteTasksMiddleware from './middleware/tasks/deleteTasksMiddleware';
 import taskSlice from './taskSlice';
 import getAllTasks from './middleware/tasks/getAllTasksMiddleware';
 import getConnectionNames from './middleware/getConnectionNames';
+import getConnectionRequest from './middleware/getConnectionRequest';
+import processConnectionRequest from './middleware/processRequestMiddleware';
+
 const store = configureStore({
   reducer: {
     drawer: drawerSlice,
@@ -46,7 +50,10 @@ const store = configureStore({
     sendTasksDBMiddleware,
     getAllTasks,
     getConnectionNames,
+    getConnectionRequest,
+    processConnectionRequest,
     logger,
+    deleteTasksMiddleware,
   ],
 });
 
