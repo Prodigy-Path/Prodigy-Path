@@ -12,7 +12,7 @@ import { Link, Navigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { login, setChecked } from '../../store/loginSlice';
 const Login = () => {
-  const { isLoggedIn, user, checked } = useSelector((state) => state.login);
+  const { isLoggedIn, checked } = useSelector((state) => state.login);
   const dispatch = useDispatch();
   const handleSubmit = (e) => {
     e.preventDefault();
