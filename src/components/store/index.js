@@ -8,12 +8,12 @@ import chatSlice from './chatSlice';
 import loginMiddleware from './middleware/loginMiddleware';
 import signUpMiddleware from './middleware/signUpMiddleware';
 import chatMiddleware from './middleware/chatMiddleware';
-import newPostMiddleware from './middleware/newPostMiddleware';
+import newPostMiddleware from './middleware/posts/newPostMiddleware';
 import postSlice from './postSlice';
-import getPostMiddleware from './middleware/getPostMiddleware';
+import getPostMiddleware from './middleware/posts/getPostMiddleware';
 import exploreSlice from './exploreSlice';
 import exploreMiddleware from './middleware/exploreMiddleware';
-import getMentorProtegePosts from './middleware/getMentorProtegePosts';
+import getMentorProtegePosts from './middleware/posts/getMentorProtegePosts';
 import mentorProtegePostsSlice from './mentorProtegePostsSlice';
 import chatConnectMiddleware from './middleware/chatConnectMiddleware';
 import connectionMiddleware from './middleware/connectionMiddleware';
@@ -25,6 +25,8 @@ import getConnectionNames from './middleware/getConnectionNames';
 import getConnectionRequest from './middleware/getConnectionRequest';
 import processConnectionRequest from './middleware/processRequestMiddleware';
 import updateTasksMiddleware from './middleware/tasks/updateTasksMiddleware';
+import deletePostMiddleware from './middleware/posts/deletePostMiddleware';
+import updatePostMiddleware from './middleware/posts/updatePostMiddleware';
 
 const store = configureStore({
   reducer: {
@@ -44,6 +46,8 @@ const store = configureStore({
     signUpMiddleware,
     newPostMiddleware,
     getPostMiddleware,
+    deletePostMiddleware,
+    updatePostMiddleware,
     exploreMiddleware,
     connectionMiddleware,
     getMentorProtegePosts,
