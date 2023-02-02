@@ -4,7 +4,7 @@ import { configureStore } from '@reduxjs/toolkit';
 
 import drawerSlice from './drawerSlice';
 import logger from './middleware/logger';
-import loginSlice, { getConnectionRequests } from './loginSlice';
+import loginSlice from './loginSlice';
 import chatSlice from './chatSlice';
 import loginMiddleware from './middleware/loginMiddleware';
 import signUpMiddleware from './middleware/signUpMiddleware';
