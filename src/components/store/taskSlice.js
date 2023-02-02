@@ -14,16 +14,17 @@ const taskSlice = createSlice({
   initialState,
   reducers: {
     setTasks: (state, action) => {
-      console.log(action.payload);
+      action.payload.response.forEach((item, index) => {
+        item.id = index + 1;
+      });
       state.taskList = [...action.payload.response];
     },
 
     tasks: (state, action) => {
-      console.log(action.payload.tasks);
       state.taskList.push(action.payload.tasks);
     },
     removeItem: (state, action) => {
-      const id = action.payload;
+      const id = action.payload.id;
       let newTasks = state.taskList.filter((task) => task.id !== id);
       state.taskList = [...newTasks];
     },
@@ -37,11 +38,10 @@ const taskSlice = createSlice({
       });
     },
     updateItem: (state, action) => {
-      console.log(action.payload);
       let filterRecords = [...state.taskList].filter(
-        (task) => task.id !== action.payload.id,
+        (task) => task.id !== action.payload.updateData.id,
       );
-      state.taskList = [...filterRecords, action.payload];
+      state.taskList = [...filterRecords, action.payload.updateData];
     },
     setNewTitle: (state, action) => {
       state.newTitle = action.payload;

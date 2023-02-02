@@ -52,8 +52,8 @@ const Tasks = () => {
                     <span>Description: </span> {task.description}
                   </p>
                   <p>
-                    <span>Assigned to: </span>
-                    {task.mentee}
+                    <span>Assigned by: </span>
+                    {task.assigned_by}
                   </p>
                 </div>
                 <div className="tasks__icons-wrap">

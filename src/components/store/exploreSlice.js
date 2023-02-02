@@ -4,7 +4,7 @@ const initialState = {
   searchParam: '',
   results: [],
   currentPage: 1,
-  newConnection: []
+  newConnections: []
 }
 
 const exploreSlice = createSlice({
@@ -15,13 +15,15 @@ const exploreSlice = createSlice({
       state.searchParam = action.payload.query
     },
     setResults: (state, action) => {
-      state.results = action.payload.filter(user => state.searchParam ? user.tags.includes(state.searchParam) : user)
+      state.results = action.payload
     },
     setPage: (state, action) => {
       state.currentPage = action.payload.page
     },
     newConnection: (state, action) => {
-        state.newConnection = action.payload
+        state.results = state.results.filter(user => user._id === action.payload._id ? action.payload : user);
+        state.newConnections = [...state.newConnections, action.payload];
+        console.log(state.newConnections)
       }
   }
 })

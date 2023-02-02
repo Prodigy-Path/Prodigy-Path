@@ -1,13 +1,18 @@
 /** @format */
-
-import { Card, PasswordInput, TextInput, Stack, Button } from '@mantine/core';
+import {
+  Card,
+  PasswordInput,
+  TextInput,
+  Stack,
+  Button,
+  Checkbox,
+} from '@mantine/core';
 
 import { Link, Navigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { login } from '../../store/loginSlice';
-
+import { login, setChecked } from '../../store/loginSlice';
 const Login = () => {
-  const { isLoggedIn } = useSelector((state) => state.login);
+  const { isLoggedIn, checked } = useSelector((state) => state.login);
   const dispatch = useDispatch();
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -19,38 +24,41 @@ const Login = () => {
       }),
     );
   };
+  const handleCheck = (e) => {
+    dispatch(setChecked(e.target.value));
+  };
   return (
-    <div className="login__form">
+    <div className='login__form'>
       <form onSubmit={handleSubmit}>
         <Card withBorder>
           <Stack>
             <TextInput
-              placeholder="Username"
+              placeholder='Username'
               withAsterisk
-              label="Username"
-              name="Username"
+              label='Username'
+              name='Username'
             />
 
             <PasswordInput
-              name="Password"
-              type="password"
-              placeholder="Password"
-              label="Password"
+              name='Password'
+              type='password'
+              placeholder='Password'
+              label='Password'
               withAsterisk
             />
+            <Checkbox
+              value={checked}
+              onChange={handleCheck}
+              label='Keep me logged in'
+            />
           </Stack>
-          <Button type="submit">Submit</Button>
+          <Button type='submit'>Submit</Button>
         </Card>
       </form>
       <p className='create-account'>
         Don't have an account? <Link to={'/signup'}>Create one here</Link>
       </p>
-      {isLoggedIn ? (
-        <Navigate
-          to="/"
-          replace={true}
-        />
-      ) : null}
+      {isLoggedIn ? <Navigate to='/' replace={true} /> : null}
     </div>
   );
 };

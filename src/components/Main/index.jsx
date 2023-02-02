@@ -13,10 +13,29 @@ import ProdPathAbout from '../About/ProdPathAbout';
 import MentorTasks from '../Task/MentorTasks';
 import ProtegeTasks from '../Task/ProtegeTasks';
 
+import Cookies from 'universal-cookie';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { cookieLogin } from '../store/loginSlice';
+
+
+import Profile from '../Profile';
+
 const Main = () => {
+  const dispatch = useDispatch();
   const { isLoggedIn, user } = useSelector((state) => state.login);
 
-  console.log(user);
+  const cookies = new Cookies();
+  useEffect(() => {
+    const cook = cookies.get('user');
+  
+    if (cook?.token) {
+      dispatch(cookieLogin(cook));
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+
   return (
     <>
       <Routes>
@@ -24,10 +43,12 @@ const Main = () => {
           path={'/'}
           element={isLoggedIn ? <Dashboard /> : <SplashPage />}
         />
+
         <Route
           path={'/explore'}
-          element={<Explore />}
+          element={isLoggedIn ? <Explore /> : <SplashPage />}
         />
+
 
         <Route
           path={'/tasks'}
@@ -38,6 +59,7 @@ const Main = () => {
             </>
           }
         />
+
         <Route
           path={'/login'}
           element={<Login />}
@@ -54,6 +76,11 @@ const Main = () => {
           path={'/about'}
           element={<ProdPathAbout />}
         />
+        <Route
+          path={'/profile'}
+          element={isLoggedIn ?<Profile /> : <SplashPage/>}
+        />
+
       </Routes>
       {isLoggedIn ? <Chat /> : null}
       <Footer />
