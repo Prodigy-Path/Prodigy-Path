@@ -7,16 +7,37 @@
   }
   .close_button{
     position: fixed;
-    right: 10px;
-    bottom: 30rem;
+    right: 339px;
+    bottom: 21.9rem;
+    z-index: 3;
   }
   &__select {
     position: fixed;
-    bottom: 30rem;
-    right: 10px;
+    bottom: 0rem;
+    right: 0px;
+    width: 30rem;
+    background-color: 'white';
+  }
+
+  &__header{
+    bottom: 21.9rem;
+    left: 1180px;
+    position: fixed;
+    z-index: 3;
+  }
+
+  &__headerBackground{
+    position: fixed;
+    right: 300px;
+    bottom: 210px;
+    background-color: rgb(195, 186, 186);
+    height: 4rem;
+    z-index: 2;
+    width: 30rem;
+    border-radius: 6px;
   }
   position: fixed;
-  right: 0px;
+  right: 300px;
   bottom: 0px;
   background-color: #fff;
   height: 25rem;
@@ -24,7 +45,7 @@
   overflow-x: hidden;
   border-top: 0;
   border-bottom: 0;
-  width: 25rem;
+  width: 30rem;
   &::-webkit-scrollbar {
     width: 15px;
   }
@@ -65,17 +86,3 @@
   
 }
 
-.chat_open {
-  position: fixed;
-  bottom: 0;
-  right: 0;
-  width: 250px;
-  height: 50px;
-  background-color: #fff;
-  border-top: 1px solid #ccc;
-  border-left: 1px solid #ccc;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-}
