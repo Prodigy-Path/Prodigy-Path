@@ -99,6 +99,7 @@ const Chat = () => {
   return (
     <>
       <Accordion  styles={{
+        backgroundColor: '#fff',
         item: {
           backgroundColor: '#fff',
           border: '1px solid #ededed',
@@ -108,13 +109,13 @@ const Chat = () => {
         },
         chevron: {
           '&[data-rotate]': {
-            transform: 'rotate(-90deg)',
+            transform: 'rotate(-180deg)',
           },
         },
       }} className='select'>
         <Accordion.Item value="Messages">
           <Accordion.Control icon={< IconMessage size={14} />}>Messages</Accordion.Control>
-          <Accordion.Panel>
+          <Accordion.Panel style={{ overflow: 'auto', maxHeight: '400px' }}>
             <p>Your Connections:</p>
             {matchedId.map(item => (
               <>
