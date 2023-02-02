@@ -14,6 +14,9 @@ const taskSlice = createSlice({
   initialState,
   reducers: {
     setTasks: (state, action) => {
+      action.payload.response.forEach((item, index) => {
+        item.id = index + 1;
+      });
       state.taskList = [...action.payload.response];
     },
 
@@ -21,7 +24,8 @@ const taskSlice = createSlice({
       state.taskList.push(action.payload.tasks);
     },
     removeItem: (state, action) => {
-      const id = action.payload.data;
+      const id = action.payload.id;
+      console.log(id);
       let newTasks = state.taskList.filter((task) => task.id !== id);
       state.taskList = [...newTasks];
     },

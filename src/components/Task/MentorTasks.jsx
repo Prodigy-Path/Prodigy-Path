@@ -31,6 +31,7 @@ const Tasks = () => {
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
   const addTask = () => {
     if (newTitle) {
       let newTaskId = taskList.length + 1;
@@ -51,8 +52,9 @@ const Tasks = () => {
     }
   };
 
-  const deleteTask = (id) => {
-    dispatch(removeItem({ data: id, action: 'DELETE_TASK' }));
+  const deleteTask = (_id, id) => {
+    console.log(_id, 'data');
+    dispatch(removeItem({ _id, id, action: 'DELETE_TASK' }));
   };
 
   const markDone = (id) => {
@@ -83,6 +85,7 @@ const Tasks = () => {
     dispatch(updateItem(updateData));
     dispatch(setUpdateData(''));
   };
+
   return (
     <div className="container tasks">
       <h2 className="tasks__title">Task Assignment</h2>
@@ -174,7 +177,7 @@ const Tasks = () => {
           .sort((a, b) => (a.id > b.id ? 1 : -1))
           .map((task, index) => (
             <div
-              key={task.id}
+              key={task._id}
               className="tasks__task"
             >
               <div className="tasks__task-content">
@@ -214,6 +217,7 @@ const Tasks = () => {
                     <span
                       title="Edit"
                       onClick={() => {
+                        console.log(task);
                         dispatch(
                           setUpdateData({
                             id: task.id,
@@ -233,7 +237,7 @@ const Tasks = () => {
                   )}
 
                   <span
-                    onClick={() => deleteTask(task.id)}
+                    onClick={() => deleteTask(task._id, task.id)}
                     title="Delete"
                   >
                     <FontAwesomeIcon
