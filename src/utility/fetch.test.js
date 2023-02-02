@@ -1,6 +1,7 @@
 /** @format */
 
 import fetchApi from './fetchApi';
+import Base64 from 'js-base64';
 
 describe('fetchApi', () => {
   it('should make a GET request to the provided URL', async () => {
@@ -52,5 +53,63 @@ describe('fetchApi', () => {
       error = err;
     }
     expect(error).toEqual(new Error('request failed'));
+  });
+
+  it('should set the Authorization header with basic auth credentials', async () => {
+    const config = { username: 'user', password: 'pass' };
+    const url = 'https://example.com';
+
+    window.fetch = jest.fn().mockImplementation(() =>
+      Promise.resolve({
+        json: () => Promise.resolve({}),
+        headers: {
+          get: (header) =>
+            header === 'Authorization'
+              ? `Basic ${Base64.encode(
+                  `${config.username}:${config.password}`,
+                )}`
+              : null,
+        },
+      }),
+    );
+
+    await fetchApi(url, null, 'GET', config);
+
+    expect(window.fetch).toHaveBeenCalledWith(
+      url,
+      expect.objectContaining({
+        headers: expect.objectContaining({
+          Authorization: `Basic ${Base64.encode(
+            `${config.username}:${config.password}`,
+          )}`,
+        }),
+      }),
+    );
+  });
+
+  it('should set the Authorization header with a bearer token', async () => {
+    const config = { bearerToken: 'token' };
+    const url = 'https://example.com';
+
+    window.fetch = jest.fn().mockImplementation(() =>
+      Promise.resolve({
+        json: () => Promise.resolve({}),
+        headers: {
+          get: (header) =>
+            header === 'Authorization' ? `Bearer ${config.bearerToken}` : null,
+        },
+      }),
+    );
+
+    await fetchApi(url, null, 'GET', config);
+
+    expect(window.fetch).toHaveBeenCalledWith(
+      url,
+      expect.objectContaining({
+        headers: expect.objectContaining({
+          Authorization: `Bearer ${config.bearerToken}`,
+        }),
+      }),
+    );
   });
 });
