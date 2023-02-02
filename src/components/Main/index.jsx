@@ -28,13 +28,13 @@ const Main = () => {
   const cookies = new Cookies();
   useEffect(() => {
     const cook = cookies.get('user');
-    console.log(cook);
+  
     if (cook?.token) {
       dispatch(cookieLogin(cook));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  console.log(user);
+
 
   return (
     <>

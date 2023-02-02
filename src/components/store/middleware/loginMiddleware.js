@@ -6,7 +6,6 @@ const cookies = new Cookies();
 const expireDate = new Date();
 expireDate.setSeconds(expireDate.getSeconds() + 30);
 
-console.log('expire date', expireDate.getMinutes())
 const loginMiddleware = (store) => (next) => async (action) => {
 
   if (action?.payload?.action === 'login') {

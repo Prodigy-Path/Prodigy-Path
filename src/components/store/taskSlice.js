@@ -25,7 +25,6 @@ const taskSlice = createSlice({
     },
     removeItem: (state, action) => {
       const id = action.payload.id;
-      console.log(id);
       let newTasks = state.taskList.filter((task) => task.id !== id);
       state.taskList = [...newTasks];
     },
@@ -40,9 +39,9 @@ const taskSlice = createSlice({
     },
     updateItem: (state, action) => {
       let filterRecords = [...state.taskList].filter(
-        (task) => task.id !== action.payload.id,
+        (task) => task.id !== action.payload.updateData.id,
       );
-      state.taskList = [...filterRecords, action.payload];
+      state.taskList = [...filterRecords, action.payload.updateData];
     },
     setNewTitle: (state, action) => {
       state.newTitle = action.payload;

@@ -17,6 +17,7 @@
   color: white;
   font-weight: 700;
   &::before {
+    border-radius: 5px;
     position: absolute;
     content: '';
     top: 0;
@@ -34,6 +35,7 @@
   }
 
   &:hover::before {
+    border-radius: 5px;
     opacity: 1;
   }
 }
