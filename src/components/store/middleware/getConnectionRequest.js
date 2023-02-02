@@ -6,9 +6,9 @@ const getConnectionRequest = (store) => (next) => async (action) => {
   if (action.payload?.action === 'CONNECTION_REQUEST') {
     const { user } = store.getState((state) => state).login;
     const connectionNames = [];
-
+    const yourUser = await fetchApi(`${process.env.REACT_APP_SERVER}/users/${user._id}`, null, 'GET', null)
     async function bigFunction() {
-      const connectionRequestPromises = user.connection_requests.map(
+      const connectionRequestPromises = yourUser.connection_requests.map(
         async (id) => {
           await grabConnection(id);
           async function grabConnection(id) {
