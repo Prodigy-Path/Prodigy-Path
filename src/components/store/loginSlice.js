@@ -60,6 +60,7 @@ const loginSlice = createSlice({
     },
     processConnectionRequest: (state, action) => {
       state.user = action.payload
+      state.connectionRequestUsers = state.connectionRequestUsers.filter(user => user._id !== action.payload)
     }
   },
 });

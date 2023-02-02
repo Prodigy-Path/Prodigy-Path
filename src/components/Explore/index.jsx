@@ -21,8 +21,10 @@ const Explore = () => {
 
   const { user, userConnectionsUsers } = useSelector((state) => state.login);
 
-  const userIDs = userConnectionsUsers.map((user) => user._id);
-
+  const userIDs = userConnectionsUsers.map(user => user._id)
+  
+  const { newConnections} = useSelector((state) => state.explore)
+  
   const theme = useMantineTheme();
   const searchTerm = user.role === 'mentor' ? 'Protege' : 'Mentor';
   const handleNewParam = (query) => {
@@ -38,11 +40,15 @@ const Explore = () => {
     dispatch(
       setResults({
         action: 'search',
-        userRole: user.role,
-      }),
-    );
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+        userRole: user.role
+      })
+    )
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+  
+  useEffect(() => {
+
+  }, [newConnections])
 
   const filterConnections = results.filter(
     (users) => !userIDs.includes(users._id),
