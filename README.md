@@ -14,6 +14,16 @@ The main problem this application solves is the difficulty that many individuals
 
 The MVP of this application is a working platform that allows users to sign up as either a mentor or mentee, search for potential partners, and connect with each other through the application. This would include a search function with filtering capabilities, a messaging feature, and the ability for mentors to approve mentee requests and share contact information.
 
+
+![image](https://user-images.githubusercontent.com/105423307/216466234-8c3cf45f-2251-4581-b646-6a62b8dcd286.png)
+![image](https://user-images.githubusercontent.com/105423307/216466292-6292d7f8-a4b3-4e75-b6ff-ffa6d28caaf3.png)
+![image](https://user-images.githubusercontent.com/105423307/216466336-25d730a2-2d79-45e0-916e-e75d43aeebcd.png)
+![image](https://user-images.githubusercontent.com/105423307/216466433-7e981950-74aa-4ae5-9b67-15969050a2ad.png)
+![image](https://user-images.githubusercontent.com/105423307/216466523-6602d186-4024-4743-808e-f4363fb11948.png)
+![image](https://user-images.githubusercontent.com/105423307/216466583-b834ba47-183b-4e50-84fd-d055948d9556.png)
+![image](https://user-images.githubusercontent.com/105423307/216466625-aa50afec-dad7-48f4-b5a9-25baab4ecf33.png)
+
+
 ## Installation
 
 To run this project on your local machine, follow these steps:
