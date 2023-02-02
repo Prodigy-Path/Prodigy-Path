@@ -14,7 +14,7 @@ const Chat = () => {
   const { user, userConnectionsUsers } = useSelector((state) => state.login);
   const [showMessage, setShowMessage] = useState(false);
   const [textHeader, setTextHeader] = useState(false);
-  const [online, setOnline] = useState(false);
+  // const [online, setOnline] = useState(false);
 
   const filterConnection = chatConnection.filter((item) => user._id === item.mentor || user._id === item.protege);
   const nameConnect = userConnectionsUsers.filter(item =>
@@ -40,25 +40,24 @@ const Chat = () => {
 
 
   const namesArray = getNames(nameConnect);
-  const idArray = getConnectionId(nameConnect);
-
+  
   let name = user.name
-
+  
   useEffect(() => {
     dispatch(getChats({ action: 'getChats' }))
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
-
+  
   useEffect(() => {
     dispatch(convertToNames({ action: 'CONNECTION_NAMES' }));
-
+    
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [chatConnection])
-
+  
   useEffect(() => {
     socket.emit('JOIN', { id: crypto.randomUUID(), userId: user.id })
     socket.on('RECEIVE_MESSAGE', ({ text, id }) => {
-
+      
       dispatch(sendMessageThunk({ text: text, id: id }));
     });
     socket.on('USER_CONNECTED', (data) => {
@@ -68,16 +67,17 @@ const Chat = () => {
       console.log(data);
     });
     socket.on('ROOMS', (data) => {
-      setOnline(data);
+      // setOnline(data);
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [socket]);
-
+  
   // HERE IS USER ONLINE DATA !!!!!!!!!!
-
+  
+  const idArray = getConnectionId(nameConnect);
   // console.log("online state", online);
-  // console.log(idArray);
-
+  console.log(idArray);
+  
   function handleSubmitMessage(e) {
     e.preventDefault();
     if (roomName) {
