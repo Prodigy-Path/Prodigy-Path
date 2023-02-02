@@ -33,15 +33,13 @@ const ProtegeDashboard = () => {
   }, []);
   return (
     <>
-      <Text className='new_post_component'>
-        Articles from your mentors:
-      </Text>
-      {sortedFilteredProtege.map((d, idx) => (
-        <div key={idx}>
+      <Text className="new_post_component">Articles from your mentors:</Text>
+      {sortedFilteredProtege.map((d) => (
+        <div key={crypto.randomUUID()}>
           <Card withBorder>
-            <Group position='together'>
+            <Group position="together">
               <Image
-                src='https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png'
+                src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png"
                 height={30}
                 width={30}
                 p={0}
@@ -55,8 +53,8 @@ const ProtegeDashboard = () => {
                   {d.text.split('http')[0]}
                   <a
                     href={'http' + d.text.split('http')[1].split(' ')[0]}
-                    target='_blank'
-                    rel='noopener noreferrer'
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
                     {'http' + d.text.split('http')[1].split(' ')[0]}
                   </a>{' '}
@@ -70,6 +68,6 @@ const ProtegeDashboard = () => {
         </div>
       ))}
     </>
-  )
+  );
 }
 export default ProtegeDashboard

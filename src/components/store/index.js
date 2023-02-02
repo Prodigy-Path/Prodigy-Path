@@ -3,7 +3,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 
 import drawerSlice from './drawerSlice';
-import logger from './middleware/logger';
 import loginSlice from './loginSlice';
 import chatSlice from './chatSlice';
 import loginMiddleware from './middleware/loginMiddleware';
@@ -53,7 +52,6 @@ const store = configureStore({
     getConnectionNames,
     getConnectionRequest,
     processConnectionRequest,
-    logger,
     updateTasksMiddleware,
     deleteTasksMiddleware,
   ],

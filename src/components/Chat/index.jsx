@@ -98,6 +98,7 @@ const Chat = () => {
 
   return (
     <>
+
       <Accordion  styles={{
         item: {
           backgroundColor: '#fff',
@@ -127,6 +128,7 @@ const Chat = () => {
                   </Stack>
                 </Card>
               </>
+
             ))}
           </Accordion.Panel>
         </Accordion.Item>
@@ -135,7 +137,12 @@ const Chat = () => {
         <>
           <div className="chat">
             <div className="chat__headerBackground"></div>
-            <p className="close_button " onClick={() => setShowMessage(false)}>X</p>
+            <p
+              className="close_button "
+              onClick={() => setShowMessage(false)}
+            >
+              X
+            </p>
             <p className="chat__header">{textHeader} </p>
             <div className="chat__message">
               <form onSubmit={handleSubmitMessage}>
@@ -146,7 +153,7 @@ const Chat = () => {
             <div className="chat__window">
               <ul>
                 {messages.map((msg, index) => (
-                  <li key={index}>{`${msg.text}`}</li>
+                  <li key={crypto.randomUUID()}>{`${msg.text}`}</li>
                 ))}
               </ul>
             </div>

@@ -32,17 +32,28 @@ const HeaderComponent = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [opened]);
   return (
-    <Header height={75} fixed={true} className='header'>
-      <Group position='apart' className='header__group'>
+    <Header
+      height={75}
+      fixed={true}
+      className="header"
+    >
+      <Group
+        position="apart"
+        className="header__group"
+      >
         <Link
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           to={'/'}
-          className='header__group__title'
+          className="header__group__title"
         >
           ProdigyPath
         </Link>
-        <Group position='right' className='header__group__nav'>
+        <Group
+          position="right"
+          className="header__group__nav"
+        >
           {isLoggedIn ? (
+
             <Tabs className={`header__group__nav__segment`}>
               <Tabs.List>
                 <Tabs.Tab color="teal" value='dashboard' icon={<IconHome size={14} />} onClick={() => {
@@ -71,11 +82,12 @@ const HeaderComponent = () => {
                 </Tabs.Tab>
               </Tabs.List>
             </Tabs>
+
           ) : null}
           {isLoggedIn ? (
             <Burger
-              className='header__group__burger'
-              color='#E6DDC4'
+              className="header__group__burger"
+              color="#E6DDC4"
               opened={opened}
               onClick={() => dispatch(setOpened())}
               title={title}
@@ -84,8 +96,8 @@ const HeaderComponent = () => {
           {isLoggedIn ? (
             <Button
               onClick={handleLogout}
-              className='header__group__nav__signup'
-              size='md'
+              className="header__group__nav__signup"
+              size="md"
               styles={(theme) => ({
                 root: {
                   '&:hover': {
@@ -98,12 +110,15 @@ const HeaderComponent = () => {
                 },
               })}
             >
+
               
               <Link to='/'>Logout <IconLogout size={14} /></Link>
+
             </Button>
           ) : null}
         </Group>
         {isLoggedIn ? (
+
           <Tabs className={`header__group__mobileMenu ${menuClass}`}>
             <Tabs.List>
               <Stack>
@@ -137,6 +152,7 @@ const HeaderComponent = () => {
               </Stack>
             </Tabs.List>
           </Tabs>
+
         ) : null}
       </Group>
     </Header>
