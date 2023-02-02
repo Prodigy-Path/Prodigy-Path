@@ -53,7 +53,6 @@ const Tasks = () => {
   };
 
   const deleteTask = (_id, id) => {
-    console.log(_id, 'data');
     dispatch(removeItem({ _id, id, action: 'DELETE_TASK' }));
   };
 
@@ -71,9 +70,10 @@ const Tasks = () => {
     assigned_to = updateData.assigned_to,
   }) => {
     let newEntry = {
+      _id: updateData._id,
       id: updateData.id,
       title,
-      description,
+      description: description,
       assigned_to,
       status: updateData.status ? true : false,
     };
@@ -82,7 +82,7 @@ const Tasks = () => {
   };
 
   const updateTask = () => {
-    dispatch(updateItem(updateData));
+    dispatch(updateItem({ updateData, action: 'UPDATE_TASK' }));
     dispatch(setUpdateData(''));
   };
 
@@ -103,7 +103,7 @@ const Tasks = () => {
             <Input
               label="Description task:"
               placeholder="Description of task..."
-              value={updateData.describe}
+              value={updateData.description}
               onChange={(e) => changeTask({ description: e.target.value })}
               className="tasks__input"
             />
@@ -217,12 +217,12 @@ const Tasks = () => {
                     <span
                       title="Edit"
                       onClick={() => {
-                        console.log(task);
                         dispatch(
                           setUpdateData({
+                            _id: task._id,
                             id: task.id,
                             title: task.title,
-                            describe: task.description,
+                            description: task.description,
                             assigned_to: task.assigned_to,
                             status: task.status ? true : false,
                           }),

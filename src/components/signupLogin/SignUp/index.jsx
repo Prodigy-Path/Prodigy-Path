@@ -7,13 +7,15 @@ import {
   Stack,
   Button,
   Chip,
+  Checkbox,
 } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { useDispatch, useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
-import { login } from '../../store/loginSlice';
+import { login, setChecked } from '../../store/loginSlice';
+
 const SignUp = () => {
-  const { isLoggedIn } = useSelector((state) => state.login);
+  const { isLoggedIn, checked } = useSelector((state) => state.login);
   const [visible, { toggle }] = useDisclosure(false);
   const dispatch = useDispatch();
 
@@ -30,69 +32,62 @@ const SignUp = () => {
       }),
     );
   };
+  const handleCheck = (e) => {
+    dispatch(setChecked(e.target.value));
+  };
   return (
-    <div className="login__form">
+    <div className='login__form'>
       <form onSubmit={handleSubmit}>
         <Card withBorder>
           <Stack>
             <TextInput
-              placeholder="Username"
+              placeholder='Username'
               withAsterisk
-              label="Username"
-              name="Username"
+              label='Username'
+              name='Username'
             />
             <TextInput
-              placeholder="Name"
+              placeholder='Name'
               withAsterisk
-              label="Name"
-              name="Name"
+              label='Name'
+              name='Name'
             />
-            <TextInput
-              placeholder="Email"
-              label="E-mail"
-              name="Email"
-            />
+            <TextInput placeholder='Email' label='E-mail' name='Email' />
 
             <PasswordInput
-              name="Password"
-              type="password"
-              placeholder="Password"
-              label="Password"
+              name='Password'
+              type='password'
+              placeholder='Password'
+              label='Password'
               withAsterisk
               visible={visible}
               onVisibilityChange={toggle}
             />
             <PasswordInput
-              name="PasswordConfirm"
-              type="password"
-              placeholder="Password"
-              label="Confirm Password"
+              name='PasswordConfirm'
+              type='password'
+              placeholder='Password'
+              label='Confirm Password'
               withAsterisk
             />
+            <Checkbox
+              value={checked}
+              onChange={handleCheck}
+              label='Keep me logged in'
+            />
           </Stack>
-          <Button type="submit">Submit</Button>
           <Chip.Group>
-            <Chip
-              name="role"
-              value="mentor"
-            >
+            <Chip name='role' value='mentor'>
               Mentor
             </Chip>
-            <Chip
-              name="role"
-              value="protege"
-            >
+            <Chip name='role' value='protege'>
               Protege
             </Chip>
           </Chip.Group>
+          <Button type='submit'>Submit</Button>
         </Card>
       </form>
-      {isLoggedIn ? (
-        <Navigate
-          to="/"
-          replace={true}
-        />
-      ) : null}
+      {isLoggedIn ? <Navigate to='/' replace={true} /> : null}
     </div>
   );
 };

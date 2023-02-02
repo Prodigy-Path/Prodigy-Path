@@ -25,6 +25,7 @@ import getAllTasks from './middleware/tasks/getAllTasksMiddleware';
 import getConnectionNames from './middleware/getConnectionNames';
 import getConnectionRequest from './middleware/getConnectionRequest';
 import processConnectionRequest from './middleware/processRequestMiddleware';
+import updateTasksMiddleware from './middleware/tasks/updateTasksMiddleware';
 
 const store = configureStore({
   reducer: {
@@ -53,6 +54,7 @@ const store = configureStore({
     getConnectionRequest,
     processConnectionRequest,
     logger,
+    updateTasksMiddleware,
     deleteTasksMiddleware,
   ],
 });
