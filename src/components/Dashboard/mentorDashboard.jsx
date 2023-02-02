@@ -96,20 +96,20 @@ const MentorDashboard = () => {
       </form>
       {isEditing ? (
         <Modal
-          className='dash__modal'
+          className='dashModal'
           opened={opened}
           onClose={() => setOpened(false)}
         >
-          <form onSubmit={updateNewPost} className='dash__editForm'>
+          <form onSubmit={updateNewPost} className='dashModal__editForm'>
             <Group mr={0} position='together'>
               <h4>Edit Post</h4>
               <TextInput
-                className='dash__editFormInput'
+                className='dashModal__editFormInput'
                 placeholder='Subject'
                 name='title'
               />
               <Textarea
-                className='dash__editFormInput'
+                className='dashModal__editFormInput'
                 placeholder='Body...'
                 name='text'
                 radius={0}
