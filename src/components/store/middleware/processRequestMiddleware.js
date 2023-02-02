@@ -35,24 +35,26 @@ const processConnectionRequest = (store) => (next) => async (action) => {
       return response
     }
     await acceptConnection()
-    action.payload = await deleteRequest()
+    action.payload.user = await deleteRequest()
+    action.payload.connection = connection
     console.log(action.payload)
   }
-    if (action.payload?.action === 'DELETE') {
-      const { user } = store.getState((state) => state).login;
-      const connection = action.payload.connection
-      async function deleteRequest() {
-        let url = `${process.env.REACT_APP_SERVER}/users/${user._id}`;
-        let body = { ...user, connection_requests: user.connection_requests.filter(item => item !== connection._id) };
-        let method = 'PATCH';
-        let config = {
-          bearerToken: user.token,
-        };
-        let response = await fetchApi(url, body, method, config);
-        console.log(response)
-        return response
-      }
-    action.payload = await deleteRequest();
+  if (action.payload?.action === 'DELETE') {
+    const { user } = store.getState((state) => state).login;
+    const connection = action.payload.connection
+    async function deleteRequest() {
+      let url = `${process.env.REACT_APP_SERVER}/users/${user._id}`;
+      let body = { ...user, connection_requests: user.connection_requests.filter(item => item !== connection._id) };
+      let method = 'PATCH';
+      let config = {
+        bearerToken: user.token,
+      };
+      let response = await fetchApi(url, body, method, config);
+      console.log(response)
+      return response
+    }
+    action.payload.user = await deleteRequest()
+    action.payload.connection = connection._id
   }
   next(action);
 };

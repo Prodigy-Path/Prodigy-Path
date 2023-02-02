@@ -23,7 +23,6 @@ const Explore = () => {
 
   const userIDs = userConnectionsUsers.map(user => user._id)
   
-  const { newConnections} = useSelector((state) => state.explore)
   
   const theme = useMantineTheme();
   const searchTerm = user.role === 'mentor' ? 'Protege' : 'Mentor';
@@ -46,10 +45,6 @@ const Explore = () => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   
-  useEffect(() => {
-
-  }, [newConnections])
-
   const filterConnections = results.filter(
     (users) => !userIDs.includes(users._id),
   );
@@ -109,7 +104,7 @@ const Explore = () => {
         </section>
         <section className='explore__results'>
           {showResults.map((users, idx) => (
-            <UserCard cardUser={users} key={idx} />
+            <UserCard cardUser={users} key={idx + users.name} showResults={showResults}/>
           ))}
         </section>
         <Pagination

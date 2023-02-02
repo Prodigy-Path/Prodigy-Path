@@ -30,7 +30,10 @@ const Profile = (props) => {
     )
   }
 
-  console.log(user)
+  useEffect(() => {
+
+  },[userConnectionsUsers])
+
   return (
     <div className='profileContainer'>
       <Paper
@@ -89,7 +92,7 @@ const Profile = (props) => {
 
           <Tabs.Panel value="settings" pl="xs">
             {connectionRequestUsers.map(user => (
-              <div>
+              <div key={user._id}>
                 <p>{user.username}</p>
                 <Button onClick={() => handleRequest('ACCEPT', user)}>Accept</Button>
                 <Button onClick={() => handleRequest('DELETE', user)}>Decline</Button>

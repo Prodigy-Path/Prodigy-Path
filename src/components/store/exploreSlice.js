@@ -4,7 +4,8 @@ const initialState = {
   searchParam: '',
   results: [],
   currentPage: 1,
-  newConnections: []
+  newConnections: [],
+  change: 'change'
 }
 
 const exploreSlice = createSlice({
@@ -23,11 +24,11 @@ const exploreSlice = createSlice({
     newConnection: (state, action) => {
         state.results = state.results.filter(user => user._id === action.payload._id ? action.payload : user);
         state.newConnections = [...state.newConnections, action.payload];
-        console.log(state.newConnections)
-      }
+      },
+
   }
 })
 
-export const { setParams, setResults, setPage, newConnection } = exploreSlice.actions;
+export const { setParams, setResults, setPage, newConnection,   } = exploreSlice.actions;
 
 export default exploreSlice.reducer
