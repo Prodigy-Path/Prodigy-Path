@@ -40,7 +40,7 @@ describe('processConnectionRequest middleware', () => {
     await processRequest(store)(next)(action);
 
     expect(fetchApi).toHaveBeenCalled();
-    
+
     expect(next).toHaveBeenCalledWith({ payload: {} });
   });
 
