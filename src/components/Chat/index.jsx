@@ -6,6 +6,7 @@ import { joinRoomThunk, sendMessageThunk, getChats } from '../store/chatSlice';
 import { Accordion, Card, Indicator, Stack } from '@mantine/core';
 import io from 'socket.io-client';
 import { convertToNames } from '../store/loginSlice';
+import { IconMessage } from '@tabler/icons';
 const socket = io.connect(process.env.REACT_APP_SERVER);
 
 const Chat = () => {
@@ -112,7 +113,7 @@ const Chat = () => {
         },
       }} className='select'>
         <Accordion.Item value="Messages">
-          <Accordion.Control>Messages</Accordion.Control>
+          <Accordion.Control icon={< IconMessage size={14} />}>Messages</Accordion.Control>
           <Accordion.Panel>
             <p>Your Connections:</p>
             {matchedId.map(item => (
