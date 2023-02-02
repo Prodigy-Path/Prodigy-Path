@@ -1,8 +1,8 @@
 /** @format */
 
-import connectionMiddleware from './connectionMiddleware';
+import connectionMiddleware from '../connectionMiddleware';
 
-jest.mock('../../../utility/fetchApi', () => jest.fn(() => Promise.resolve()));
+jest.mock('../../../../utility/fetchApi', () => jest.fn(() => Promise.resolve()));
 describe('connectionMiddleware', () => {
   it('should call next with action if action is not a connection request', () => {
     const store = {};

@@ -1,6 +1,6 @@
 /** @format */
 
-import chatConnectMiddleware from './chatConnectMiddleware';
+import chatConnectMiddleware from '../chatConnectMiddleware';
 import configureMockStore from 'redux-mock-store';
 
 describe('chatConnectMiddleware', () => {

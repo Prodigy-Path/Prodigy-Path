@@ -1,6 +1,6 @@
 /** @format */
 
-import chatMiddleware from './chatMiddleware';
+import chatMiddleware from '../chatMiddleware';
 
 describe('chatMiddleware', () => {
   let dispatch;
