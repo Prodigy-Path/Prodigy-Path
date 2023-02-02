@@ -10,7 +10,6 @@ const UserCard = (props) => {
   const [pending, setPending] = useState(false)
 
   let addNewConnection = (e) => {
-    setPending(true)
     dispatch(
       newConnection({
         action: 'connection',
@@ -19,6 +18,7 @@ const UserCard = (props) => {
         newConnection: user._id,
         token: user.token
       }),
+      setPending(true)
     )
   }
 
