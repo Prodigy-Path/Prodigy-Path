@@ -1,11 +1,11 @@
 /** @format */
 
 import fetchApi from '../../../../utility/fetchApi';
-import updateTasks from '../tasks/updateTasksMiddleware';
+import newPosts from '../newPostMiddleware';
 
 jest.mock('../../../../utility/fetchApi');
 
-describe('UpdateTasks', () => {
+describe('newPosts', () => {
   let store;
   let next;
   let action;
@@ -19,30 +19,30 @@ describe('UpdateTasks', () => {
     next = jest.fn();
   });
 
-  it('should call fetchApi with the correct parameters when action type is UPDATE_TASK', async () => {
+  it('should call fetchApi with the correct parameters when action type is newPosts', async () => {
     action = {
       payload: {
-        action: 'UPDATE_TASK',
+        action: 'newPost',
         updateData: {
           _id: '123',
         },
       },
     };
-    await updateTasks(store)(next)(action);
+    await newPosts(store)(next)(action);
     expect(fetchApi).toHaveBeenCalled();
   });
 
   it('should call next with the action', async () => {
     action = {
       payload: {
-        action: 'UPDATE_TASK',
+        action: 'newPost',
         _id: '123',
         updateData: {
           _id: '123',
         },
       },
     };
-    await updateTasks(store)(next)(action);
+    await newPosts(store)(next)(action);
     expect(next).toHaveBeenCalled();
   });
 });
