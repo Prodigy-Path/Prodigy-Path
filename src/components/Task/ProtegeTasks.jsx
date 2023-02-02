@@ -9,6 +9,7 @@ const Tasks = () => {
   const dispatch = useDispatch();
 
   const { taskList } = useSelector((state) => state.taskList);
+  const { user } = useSelector((state) => state.login);
 
   useEffect(() => {
     dispatch(setTasks({ action: 'GET_TASKS' }));
@@ -24,10 +25,14 @@ const Tasks = () => {
     dispatch(setDone(id));
   };
 
+  const filteredTasks = taskList.filter(task => task.assigned_to === user.username);
+
+  console.log(filteredTasks);
+
   return (
     <div className="tasks">
-      {taskList &&
-        [...taskList]
+      {filteredTasks &&
+        [...filteredTasks]
           .sort((a, b) => (a.id > b.id ? 1 : -1))
           .map((task, index) => (
             <div

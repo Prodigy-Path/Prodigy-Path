@@ -11,6 +11,7 @@ import {
   MultiSelect,
 } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
+import { useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
 import { login, setChecked } from '../../store/loginSlice';
@@ -97,8 +98,16 @@ const SignUp = () => {
         email: e.target.Email.value,
         password: e.target.Password.value,
         role: e.target.role.value,
+        tags: ref.current,
       }),
     );
+    let result = e.target.MultiSelect;
+    console.log(result);
+  };
+  const ref = useRef([]);
+  const changeTags = (value) => {
+    ref.current = value;
+    console.log(ref.current);
   };
   const handleCheck = (e) => {
     dispatch(setChecked(e.target.value));
@@ -139,8 +148,11 @@ const SignUp = () => {
             <MultiSelect
               data={data}
               placeholder='Pick any tags you would like to use to find mentors'
+              name='Multiselect'
               label='Tags'
               searchable
+              ref={changeTags}
+              onChange={(value) => changeTags(value)}
               nothingFound='Nothing found'
               clearButtonLabel='Clear selection'
               clearable

@@ -1,6 +1,6 @@
 /** @format */
 
-import fetchApi from '../../../utility/fetchApi';
+import fetchApi from '../../../../utility/fetchApi';
 const newPostMiddleware = (store) => (next) => async (action) => {
   if (action.payload?.action === 'newPost') {
     let url = `${process.env.REACT_APP_SERVER}/posts`;

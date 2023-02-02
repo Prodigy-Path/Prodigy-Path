@@ -3,6 +3,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
   posts: [],
+  newTitle: '',
+  newText: '',
+  updateData: '',
+  isEditing: false,
+  postId: '',
 };
 const postSlice = createSlice({
   name: 'post',
@@ -16,8 +21,29 @@ const postSlice = createSlice({
         state.posts = [...action.payload];
       }
     },
+    deletePost: (state, action) => {
+      console.log(action.payload)
+      const id = action.payload._id;
+      let newPosts = state.posts.filter((post) => post._id !== id);
+      state.posts = [...newPosts];
+    },
+    setIsEditing: (state, action) => {
+      state.isEditing = !state.isEditing;
+      state.postId = action?.payload?._id
+      console.log(state.isEditing, state.postId)
+    },
+    resetIsEditing: (state) => {
+      state.isEditing = !state.isEditing;
+    },
+    updatePost: (state, action) => {
+      let filterRecords = [...state.posts].filter(
+        (post) => post._id !== state.postId
+      );
+      state.posts = [...filterRecords, action.payload];
+      console.log(state.posts)
+    },
   },
 });
-export const { post, getPost } = postSlice.actions;
+export const { post, getPost, deletePost, updatePost, setNewText, setNewTitle, setUpdatePostData, setIsEditing, resetIsEditing } = postSlice.actions;
 
 export default postSlice.reducer;

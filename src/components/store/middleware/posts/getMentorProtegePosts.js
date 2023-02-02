@@ -1,7 +1,7 @@
 /** @format */
 
-import fetchApi from '../../../utility/fetchApi';
-import { getConnections } from '../loginSlice';
+import fetchApi from '../../../../utility/fetchApi';
+import { getConnections } from '../../loginSlice';
 const getMentorProtegePosts = (store) => (next) => async (action) => {
   if (action.payload?.action === 'getMentorProtegePost') {
     const grabConnections = async () => {

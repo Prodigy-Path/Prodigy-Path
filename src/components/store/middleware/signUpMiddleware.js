@@ -9,6 +9,7 @@ const signUpMiddleware = (store) => (next) => async (action) => {
       name: action.payload.name,
       password: action.payload.password,
       role: action.payload.role,
+      tags: action.payload.tags,
     };
     let method = 'post';
     let config = null;

@@ -86,6 +86,12 @@ const Tasks = () => {
     dispatch(setUpdateData(''));
   };
 
+
+
+  const filteredTasks = taskList.filter(task => task.assigned_by === user.username);
+
+  console.log(filteredTasks);
+
   return (
     <div className="container tasks">
       <h2 className="tasks__title">Task Assignment</h2>
@@ -170,10 +176,10 @@ const Tasks = () => {
           </button>
         </div>
       )}
-      {taskList && taskList.length ? '' : 'Currently no tasks...'}
+      {filteredTasks && filteredTasks.length ? '' : 'Currently no tasks...'}
 
-      {taskList &&
-        [...taskList]
+      {filteredTasks &&
+        [...filteredTasks]
           .sort((a, b) => (a.id > b.id ? 1 : -1))
           .map((task, index) => (
             <div
