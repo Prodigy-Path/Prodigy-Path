@@ -13,6 +13,7 @@ import ProdPathAbout from '../About/ProdPathAbout';
 import MentorTasks from '../Task/MentorTasks';
 import ProtegeTasks from '../Task/ProtegeTasks';
 
+import Profile from '../Profile';
 const Main = () => {
   const { isLoggedIn, user } = useSelector((state) => state.login);
 
@@ -25,7 +26,7 @@ const Main = () => {
         />
         <Route
           path={'/explore'}
-          element={<Explore />}
+          element={isLoggedIn ? <Explore /> : <SplashPage />}
         />
 
         <Route
@@ -52,6 +53,10 @@ const Main = () => {
         <Route
           path={'/about'}
           element={<ProdPathAbout />}
+        />
+        <Route
+          path={'/profile'}
+          element={isLoggedIn ?<Profile /> : <SplashPage/>}
         />
       </Routes>
       {isLoggedIn ? <Chat /> : null}

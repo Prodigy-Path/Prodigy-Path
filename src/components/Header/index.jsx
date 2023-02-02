@@ -99,6 +99,19 @@ const HeaderComponent = () => {
                       </Box>
                     </Center>
                   ),
+                },{
+                  value: 'Profile',
+                  label: (
+                    <Center>
+                      <Box
+                        onClick={() => {
+                          navigate('/profile');
+                        }}
+                      >
+                        Profile
+                      </Box>
+                    </Center>
+                  ),
                 },
               ]}
             />

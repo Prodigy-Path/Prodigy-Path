@@ -7,6 +7,7 @@ const initialState = {
   user: {},
   usersConnections: [],
   userConnectionsUsers: [],
+  connectionRequestUsers: []
 };
 
 const loginSlice = createSlice({
@@ -40,10 +41,16 @@ const loginSlice = createSlice({
         state.userConnectionsUsers = [...action.payload.users];
       }
     },
+    getConnectionRequests: (state, action) => {
+      state.connectionRequestUsers = [...action.payload]
+    },
+    processConnectionRequest: (state, action) => {
+      state.user = action.payload
+    }
   },
 });
 
-export const { login, logout, getConnections, convertToNames } =
+export const { login, logout, getConnections, convertToNames, getConnectionRequests, processConnectionRequest } =
   loginSlice.actions;
 
 export default loginSlice.reducer;

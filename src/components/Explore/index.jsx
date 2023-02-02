@@ -1,8 +1,8 @@
 /** @format */
 
-import React from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setParams, setResults, setPage} from '../store/exploreSlice';
+import { setParams, setResults, setPage } from '../store/exploreSlice';
 import { TextInput, ActionIcon, useMantineTheme, Pagination } from '@mantine/core';
 import { IconSearch, IconArrowRight, IconArrowLeft } from '@tabler/icons';
 import UserCard from '../UserCard';
@@ -12,7 +12,9 @@ const Explore = () => {
 
   const { searchParam, results, currentPage } = useSelector((state) => state.explore)
 
-  const { user } = useSelector((state) => state.login);
+  const { user, userConnectionsUsers  } = useSelector((state) => state.login);
+
+  const userIDs = userConnectionsUsers.map(user => user._id)
 
   const theme = useMantineTheme();
   const searchTerm = user.role === 'mentor' ? 'Protege' : 'Mentor'
@@ -25,18 +27,30 @@ const Explore = () => {
     );
   };
 
-  const handleSearch = () => {
+  useEffect(() => {
     dispatch(
       setResults({
         action: 'search',
         userRole: user.role
       })
     )
-  }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+  
 
+
+  const filterConnections = results.filter(users => !userIDs.includes(users._id))
+
+  const filteredItems = useMemo (() => {
+    return filterConnections.filter(user => {
+      return searchParam ? user.tags.some(tag => tag.toLowerCase().includes(searchParam.toLowerCase())) : user
+    })
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[searchParam, results])
+  
   const startIndex = (currentPage - 1) * 5;
   const endIndex = startIndex + 5
-  const showResults = results.slice(startIndex, endIndex)
+  const showResults = filteredItems.slice(startIndex, endIndex)
 
   const setCurrentPage = (page) => {
     dispatch(
@@ -71,7 +85,6 @@ const Explore = () => {
                 radius="xl"
                 color={theme.primaryColor}
                 variant="filled"
-                onClick={handleSearch}
               >
                 {theme.dir === 'ltr' ? (
                   <IconArrowRight
@@ -91,8 +104,8 @@ const Explore = () => {
           />
         </section>
         <section className='explore__results'>
-          {showResults.map((user, idx) => (
-            <UserCard cardUser={user} key={idx} />
+          {showResults.map((users, idx) => (
+            <UserCard cardUser={users} key={idx}/>
 
           ))}
         </section>
