@@ -7,6 +7,7 @@ const initialState = {
   user: {},
   usersConnections: [],
   userConnectionsUsers: [],
+  checked: false
 };
 
 const loginSlice = createSlice({
@@ -19,6 +20,18 @@ const loginSlice = createSlice({
     },
     logout: (state) => {
       state.isLoggedIn = false;
+      state.user = {};
+      state.usersConnections = [];
+      state.userConnectionsUsers = [];
+      state.checked = false;
+    },
+    setChecked: (state) => {
+      state.checked = !state.checked
+
+    },
+    cookieLogin: (state, action) => {
+      state.isLoggedIn = true;
+      state.user = action.payload
     },
     getConnections: (state, action) => {
       let filtered = [];
@@ -43,7 +56,7 @@ const loginSlice = createSlice({
   },
 });
 
-export const { login, logout, getConnections, convertToNames } =
+export const { login, logout, getConnections, convertToNames, setChecked, cookieLogin } =
   loginSlice.actions;
 
 export default loginSlice.reducer;
