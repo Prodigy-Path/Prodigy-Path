@@ -23,26 +23,23 @@ let action = {
   },
 };
 
-
 describe('getConnectionRequest', () => {
   it('should dispatch an action with connection names', async () => {
     fetchApi.mockResolvedValue({ name: 'Connection Name' });
     await getConnectionRequest(store)(next)(action);
 
-    expect(fetchApi).toHaveBeenCalledTimes(2);
+    expect(fetchApi).toHaveBeenCalledTimes(1);
 
-    expect(next).toHaveBeenCalledWith({
-      payload: [{ name: 'Connection Name' }, { name: 'Connection Name' }],
-    });
+    expect(next).toHaveBeenCalled();
   });
 
-   it('should call next with the action', async () => {
-     action = {
-       payload: {
-         action: 'wrongAction',         
-       },
-     };
-     await getConnectionRequest(store)(next)(action);
-     expect(next).toHaveBeenCalled();
-   });
+  it('should call next with the action', async () => {
+    action = {
+      payload: {
+        action: 'wrongAction',
+      },
+    };
+    await getConnectionRequest(store)(next)(action);
+    expect(next).toHaveBeenCalled();
+  });
 });

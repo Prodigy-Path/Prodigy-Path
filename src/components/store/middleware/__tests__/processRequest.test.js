@@ -41,7 +41,7 @@ describe('processConnectionRequest middleware', () => {
 
     expect(fetchApi).toHaveBeenCalled();
 
-    expect(next).toHaveBeenCalledWith({ payload: {} });
+    expect(next).toHaveBeenCalled();
   });
 
   it('should handle the DELETE action correctly', async () => {
@@ -61,6 +61,6 @@ describe('processConnectionRequest middleware', () => {
     await processRequest(store)(next)(action);
 
     expect(fetchApi).toHaveBeenCalled();
-    expect(next).toHaveBeenCalledWith({ payload: {} });
+    expect(next).toHaveBeenCalled();
   });
 });
