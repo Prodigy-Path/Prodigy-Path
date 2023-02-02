@@ -24,7 +24,7 @@ const processConnectionRequest = (store) => (next) => async (action) => {
         bearerToken: user.token,
       };
       let response = await fetchApi(url, body, method, config);
-      console.log(response)
+
     }
     await acceptConnection()
     action.payload = await deleteRequest()
@@ -40,7 +40,7 @@ const processConnectionRequest = (store) => (next) => async (action) => {
           bearerToken: user.token,
         };
         let response = await fetchApi(url, body, method, config);
-        console.log(response)
+
       }
       action.payload = await deleteRequest()
     }
