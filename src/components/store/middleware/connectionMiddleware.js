@@ -12,7 +12,8 @@ const connectionMiddleware = (store) => (next) => async (action) => {
       let config = {
         bearerToken: action.payload.token
       };
-      let response = await fetchApi(url, body, method, config);
+      await fetchApi(url, body, method, config);
+      let response = await fetchApi(url, null, 'GET', config)
       action.payload = response
     }
   }
