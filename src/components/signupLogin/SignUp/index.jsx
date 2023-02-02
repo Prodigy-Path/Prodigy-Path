@@ -103,13 +103,6 @@ const SignUp = () => {
   const handleCheck = (e) => {
     dispatch(setChecked(e.target.value));
   };
-  const checkSame = (e) => {
-    if (e.target.passwordConfirm.value !== e.target.password.value) {
-      return 'Passwords do not match';
-    } else {
-      return null;
-    }
-  };
   return (
     <div className='login__form'>
       <form onSubmit={handleSubmit}>
