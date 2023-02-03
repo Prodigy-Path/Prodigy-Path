@@ -62,7 +62,7 @@
   &__friends {
     background-color: $color-lighter-beige;
     margin: 15px;
-    border-radius: 20px;
+    border-radius: 15px;
     &__table {
       overflow: hidden;
     }
@@ -71,8 +71,18 @@
     }
   }
   &__request {
+    padding: 10px;
+    &__table {
+      background-color: $color-lighter-beige;
+      border-radius: 15px;
+    }
     &__name {
       width: 80%;
+    }
+    &__buttons {
+      align-items: center;
+      display: flex;
+      gap: 10px;
     }
   }
 }

@@ -1,16 +1,45 @@
-import React, { useEffect } from 'react'
-import { Avatar, Text, Button, Paper, Group } from '@mantine/core';
+import React, { useEffect, useState } from 'react'
+import { Avatar, Text, Button, Paper, Group, MultiSelect, Textarea } from '@mantine/core';
 import { useDispatch, useSelector } from 'react-redux';
 import { Tabs } from '@mantine/core';
 import { IconPhoto, IconMessageCircle, IconSettings } from '@tabler/icons';
 import { getConnectionRequests, processConnectionRequest } from '../store/loginSlice';
 import { Table, ScrollArea } from '@mantine/core';
+import { updateUser } from '../store/loginSlice';
 
-const Profile = (props) => {
+const Profile = () => {
 
   const { user, userConnectionsUsers, connectionRequestUsers } = useSelector((state) => state.login);
   const dispatch = useDispatch()
+  const [editMode, setEditMode] = useState(false);
+  const [formData, setFormData] = useState({
+    description: '',
+  });
+  const [newTags, setTags] = useState([])
 
+  const changeTags = (value) => {
+    console.log(value)
+    setTags(value)
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(
+      updateUser({
+        action: 'UPDATE_USER',
+        tags: newTags,
+        description: formData
+      })
+    )
+    setEditMode(false);
+  };
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  }
 
   useEffect(() => {
     dispatch(
@@ -31,11 +60,74 @@ const Profile = (props) => {
     )
   }
 
-  useEffect(() => {
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [userConnectionsUsers])
-
+  const data = [
+    { value: 'Git', label: 'Git', group: 'JavaScript' },
+    { value: 'GitHub', label: 'GitHub', group: 'JavaScript' },
+    { value: 'React', label: 'React', group: 'JavaScript' },
+    { value: 'React-Native', label: 'React-Native', group: 'JavaScript' },
+    { value: 'JavaScript', label: 'JavaScript', group: 'JavaScript' },
+    { value: 'CSS', label: 'CSS', group: 'JavaScript' },
+    { value: 'HTML', label: 'HTML', group: 'JavaScript' },
+    { value: 'SCSS', label: 'SCSS', group: 'JavaScript' },
+    { value: 'Web Development', label: 'Web Development', group: 'JavaScript' },
+    { value: 'Front-End', label: 'Front-End', group: 'JavaScript' },
+    { value: 'ECMAScript', label: 'ECMAScript', group: 'JavaScript' },
+    {
+      value: 'JavaScript Libraries',
+      label: 'JavaScript Libraries',
+      group: 'JavaScript',
+    },
+    { value: 'jQuery', label: 'jQuery', group: 'JavaScript' },
+    { value: 'Angular', label: 'Angular', group: 'JavaScript' },
+    { value: 'Vue.js', label: 'Vue.js', group: 'JavaScript' },
+    { value: 'Node.js', label: 'Node.js', group: 'JavaScript' },
+    { value: 'UI', label: 'UI', group: 'JavaScript' },
+    { value: 'UX', label: 'UX', group: 'JavaScript' },
+    {
+      value: 'Web Applications',
+      label: 'Web Applications',
+      group: 'JavaScript',
+    },
+    {
+      value: 'Single-Page Applications (SPAs)',
+      label: 'Single-Page Applications (SPAs)',
+      group: 'JavaScript',
+    },
+    { value: 'AJAX', label: 'AJAX', group: 'JavaScript' },
+    { value: 'JSON', label: 'JSON', group: 'JavaScript' },
+    { value: 'Asynchronous', label: 'Asynchronous', group: 'JavaScript' },
+    {
+      value: 'Object-Oriented Programming',
+      label: 'Object-Oriented Programming',
+      group: 'JavaScript',
+    },
+    {
+      value: 'Event-Driven Programming',
+      label: 'Event-Driven Programming',
+      group: 'JavaScript',
+    },
+    {
+      value: 'DOM Manipulation',
+      label: 'DOM Manipulation',
+      group: 'JavaScript',
+    },
+    { value: 'REST APIs', label: 'REST APIs', group: 'JavaScript' },
+    { value: 'npm', label: 'npm', group: 'JavaScript' },
+    { value: 'CLI', label: 'CLI', group: 'JavaScript' },
+    { value: 'Webpack', label: 'Webpack', group: 'JavaScript' },
+    { value: 'Python', label: 'Python', group: 'Python' },
+    { value: 'Azure', label: 'Azure', group: 'Python' },
+    { value: 'Django', label: 'Django', group: 'Python' },
+    { value: 'Numpy', label: 'Numpy', group: 'Python' },
+    { value: 'Machine Learning', label: 'Machine Learning', group: 'Python' },
+    { value: 'Pandas', label: 'Pandas', group: 'Python' },
+    { value: 'Scikit-learn', label: 'Scikit-learn', group: 'Python' },
+    { value: 'Jupyter Notebooks', label: 'Jupyter Notebooks', group: 'Python' },
+    { value: 'Keras', label: 'Keras', group: 'Python' },
+    { value: 'PyTorch', label: 'PyTorch', group: 'Python' },
+    { value: 'PyCharm', label: 'PyCharm', group: 'Python' },
+  ];
 
 
   const rows = userConnectionsUsers.map((user) => (
@@ -74,7 +166,7 @@ const Profile = (props) => {
     </tr>
   ));
 
-
+  console.log(user)
 
   return (
     <div className='profileContainer'>
@@ -102,18 +194,35 @@ const Profile = (props) => {
                 {user?.role}
               </Text>
             </div>
-            <Button className='profile__button' size='md'>
-              Edit
-            </Button>
+            {!editMode ?
+              <Button className='profile__button' size='md' onClick={() => setEditMode(true)}>
+                Edit
+              </Button> :
+              <Button className='profile__button' size='md' onClick={handleSubmit}>
+                Submit
+              </Button>}
           </Group>
-          <div className='profile__tagGroup'>
-            Tags:
-            {user.tags?.map(tag => (
-              <div className='profile__tag'>
-                {tag}
-              </div>
-            ))}
-          </div>
+          {!editMode ?
+            <div className='profile__tagGroup'>
+              Tags:
+              {user.tags?.map(tag => (
+                <div className='profile__tag'>
+                  {tag}
+                </div>
+              ))}
+            </div> :
+            <MultiSelect
+              data={data}
+              placeholder='Pick any tags you would like to use to find mentors'
+              name='Multiselect'
+              label='Tags'
+              searchable
+              defaultValue={user?.tags}
+              onChange={(value) => changeTags(value)}
+              nothingFound='Nothing found'
+              clearButtonLabel='Clear selection'
+              clearable
+            />}
         </div>
         <Tabs radius="md" variant='outline' defaultValue="description" className='profile__tabs'>
           <Tabs.List grow>
@@ -123,7 +232,27 @@ const Profile = (props) => {
           </Tabs.List>
 
           <Tabs.Panel value="description" pl="xs">
-            User description
+            {!editMode ? 
+              <Textarea
+                label="User Description"
+                variant="filled"
+                radius="md"
+                size="md"
+                value={user.description}
+                disabled
+              /> 
+              :
+              <Textarea
+                placeholder="Description"
+                label="User Description"
+                variant="filled"
+                radius="md"
+                size="md"
+                name='description'
+                onChange={(e) => handleChange(e)}
+                defaultValue={user?.description}
+              />
+            }
           </Tabs.Panel>
 
           <Tabs.Panel value="messages" pl="xs" className='profile__friends'>
@@ -134,16 +263,21 @@ const Profile = (props) => {
             </ScrollArea>
           </Tabs.Panel>
 
-          <Tabs.Panel value="settings" pl="xs">
+          <Tabs.Panel value="settings" pl="xs" className='profile__request'>
             <ScrollArea className='profile__scrollArea'>
-              <Table sx={{ minWidth: 200 }} verticalSpacing="sm" className='profile__friends__table'>
+              <Table sx={{ minWidth: 200 }} verticalSpacing="sm" className='profile__request__table'>
                 <tbody>
                   {connectionRequestUsers.map(user => (
                     <tr key={user._id} className={user._id}>
                       <td className='profile__request__name'>
-                        <p>{user.username}</p>
+                        <Text size="lg" weight={500}>
+                          {user?.name}
+                        </Text>
+                        <Text color="dimmed" size="sm">
+                          @{user?.username}
+                        </Text>
                       </td>
-                      <td>
+                      <td className='profile__request__buttons'>
                         <Button onClick={() => handleRequest('ACCEPT', user)}>Accept</Button>
                         <Button onClick={() => handleRequest('DECLINE', user)}>Decline</Button>
                       </td>
