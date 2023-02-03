@@ -56,25 +56,25 @@ const HeaderComponent = () => {
 
             <Tabs className={`header__group__nav__segment`}>
               <Tabs.List>
-                <Tabs.Tab color="teal" value='dashboard' icon={<IconHome size={14} />} onClick={() => {
+                <Tabs.Tab color="teal" value='dashboard' icon={<IconHome size={20} />} onClick={() => {
                   window.scrollTo({ top: 0, behavior: 'smooth' });
                   navigate('/');
                 }}>
                   Dashboard
                 </Tabs.Tab>
-                <Tabs.Tab color="lime" icon={<IconChecklist size={14} />} value='tasks' onClick={() => {
+                <Tabs.Tab color="lime" icon={<IconChecklist size={20} />} value='tasks' onClick={() => {
                   window.scrollTo({ top: 0, behavior: 'smooth' });
                   navigate('/tasks');
                 }}>
                   Tasks
                 </Tabs.Tab>
-                <Tabs.Tab icon={<IconSearch size={14} />} color="orange" value='explore' onClick={() => {
+                <Tabs.Tab icon={<IconSearch size={20} />} color="orange" value='explore' onClick={() => {
                   window.scrollTo({ top: 0, behavior: 'smooth' });
                   navigate('/explore');
                 }}>
                   Explore
                 </Tabs.Tab>
-                <Tabs.Tab icon={<IconUserCircle size={14} />} color="pink" value='profile' onClick={() => {
+                <Tabs.Tab icon={<IconUserCircle size={20} />} color="pink" value='profile' onClick={() => {
                   window.scrollTo({ top: 0, behavior: 'smooth' });
                   navigate('/profile');
                 }}>
@@ -122,31 +122,31 @@ const HeaderComponent = () => {
           <Tabs className={`header__group__mobileMenu ${menuClass}`}>
             <Tabs.List>
               <Stack>
-                <Tabs.Tab color="teal" value='dashboard' icon={<IconHome size={14} />} onClick={() => {
+                <Tabs.Tab color="teal" value='dashboard' icon={<IconHome size={20} />} onClick={() => {
                   window.scrollTo({ top: 0, behavior: 'smooth' });
                   navigate('/');
                 }}>
                   Dashboard
                 </Tabs.Tab>
-                <Tabs.Tab color="lime" icon={<IconChecklist size={14} />} value='tasks' onClick={() => {
+                <Tabs.Tab color="lime" icon={<IconChecklist size={20} />} value='tasks' onClick={() => {
                   window.scrollTo({ top: 0, behavior: 'smooth' });
                   navigate('/tasks');
                 }}>
                   Tasks
                 </Tabs.Tab>
-                <Tabs.Tab icon={<IconSearch size={14} />} color="orange" value='explore' onClick={() => {
+                <Tabs.Tab icon={<IconSearch size={20} />} color="orange" value='explore' onClick={() => {
                   window.scrollTo({ top: 0, behavior: 'smooth' });
                   navigate('/explore');
                 }}>
                   Explore
                 </Tabs.Tab>
-                <Tabs.Tab icon={<IconUserCircle size={14} />} color="pink" value='profile' onClick={() => {
+                <Tabs.Tab icon={<IconUserCircle size={20} />} color="pink" value='profile' onClick={() => {
                   window.scrollTo({ top: 0, behavior: 'smooth' });
                   navigate('/profile');
                 }}>
                   Profile
                 </Tabs.Tab>
-                <Tabs.Tab icon={<IconLogout size={14} />} color="pink" value='logout' onClick={handleLogout}>
+                <Tabs.Tab icon={<IconLogout size={20} />} color="pink" value='logout' onClick={handleLogout}>
                   Logout
                 </Tabs.Tab>
               </Stack>
