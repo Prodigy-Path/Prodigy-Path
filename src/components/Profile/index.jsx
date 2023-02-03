@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Tabs } from '@mantine/core';
 import { IconPhoto, IconMessageCircle, IconSettings } from '@tabler/icons';
 import { getConnectionRequests, processConnectionRequest } from '../store/loginSlice';
+import { Table, ScrollArea } from '@mantine/core';
 
 const Profile = (props) => {
 
@@ -32,7 +33,48 @@ const Profile = (props) => {
 
   useEffect(() => {
 
-  },[userConnectionsUsers])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [userConnectionsUsers])
+
+
+
+  const rows = userConnectionsUsers.map((user) => (
+    <tr key={user._id}>
+      <td className='profile__friends__name'>
+        <Group spacing="sm">
+          <Avatar size={40} src={'https://via.placeholder.com/150'} radius={40} />
+          <div>
+            <Text size="sm" weight={500}>
+              {user.name}
+            </Text>
+            <Text size="sm" color='dimmed' weight={500}>
+              @{user.username}
+            </Text>
+          </div>
+        </Group>
+      </td>
+      {user.email ?
+        <td>
+          <Text size="sm">{user.email}</Text>
+          <Text size="xs" color="dimmed">
+            Email
+          </Text>
+        </td>
+        : null
+      }
+      <td>
+        <Text size="sm">{user.role}</Text>
+        <Text size="xs" color="dimmed">
+          role
+        </Text>
+      </td>
+      <td>
+        <Button onClick={() => handleRequest('DELETE', user)}> Remove </Button>
+      </td>
+    </tr>
+  ));
+
+
 
   return (
     <div className='profileContainer'>
@@ -84,20 +126,32 @@ const Profile = (props) => {
             User description
           </Tabs.Panel>
 
-          <Tabs.Panel value="messages" pl="xs">
-            {userConnectionsUsers.map(user => (
-              <p>{user.name}</p>
-            ))}
+          <Tabs.Panel value="messages" pl="xs" className='profile__friends'>
+            <ScrollArea className='profile__scrollArea'>
+              <Table sx={{ minWidth: 200 }} verticalSpacing="sm" className='profile__friends__table'>
+                <tbody>{rows}</tbody>
+              </Table>
+            </ScrollArea>
           </Tabs.Panel>
 
           <Tabs.Panel value="settings" pl="xs">
-            {connectionRequestUsers.map(user => (
-              <div key={user._id}>
-                <p>{user.username}</p>
-                <Button onClick={() => handleRequest('ACCEPT', user)}>Accept</Button>
-                <Button onClick={() => handleRequest('DELETE', user)}>Decline</Button>
-              </div>
-            ))}
+            <ScrollArea className='profile__scrollArea'>
+              <Table sx={{ minWidth: 200 }} verticalSpacing="sm" className='profile__friends__table'>
+                <tbody>
+                  {connectionRequestUsers.map(user => (
+                    <tr key={user._id} className={user._id}>
+                      <td className='profile__request__name'>
+                        <p>{user.username}</p>
+                      </td>
+                      <td>
+                        <Button onClick={() => handleRequest('ACCEPT', user)}>Accept</Button>
+                        <Button onClick={() => handleRequest('DECLINE', user)}>Decline</Button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </Table>
+            </ScrollArea>
           </Tabs.Panel>
         </Tabs>
       </Paper>
