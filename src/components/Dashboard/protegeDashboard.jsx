@@ -1,6 +1,6 @@
 /** @format */
 
-import { Card, Group, Image, Text } from '@mantine/core';
+import { Avatar, Paper, Text } from '@mantine/core';
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getPostProtege } from '../store/mentorProtegePostsSlice';
@@ -33,18 +33,17 @@ const ProtegeDashboard = () => {
       <Text className="new_post_component">Articles from your mentors:</Text>
       {sortedFilteredProtege.map((d) => (
         <div key={crypto.randomUUID()}>
-          <Card withBorder>
-            <Group position="together">
-              <Image
-                src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png"
-                height={30}
-                width={30}
-                p={0}
+    <Paper radius='lg' className='dashCard' withBorder p='md'>
+
+            <Avatar
+                className='dashCard__avatar'
+                src={'https://via.placeholder.com/150'}
+                size={120}
+                radius={20}
               />
-              <Text>{d.userName}</Text>
-            </Group>
-            <Card.Section withBorder>{d.title}</Card.Section>
-            <Card.Section>
+            <Text className='dashCard__title' withBorder>{d.title}</Text>
+              <Text className='dashCard__name'>{d.userName}</Text>
+            <Text className='dashCard__content'>
               {d.text.includes('http') ? (
                 <>
                   {d.text.split('http')[0]}
@@ -60,8 +59,8 @@ const ProtegeDashboard = () => {
               ) : (
                 d.text
               )}
-            </Card.Section>
-          </Card>
+            </Text>
+            </Paper>
         </div>
       ))}
     </>
