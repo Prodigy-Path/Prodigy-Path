@@ -62,31 +62,6 @@ describe('Footer component', () => {
     expect(screen.getByText('Terms of Service')).toBeInTheDocument();
   });
 
-  test('scrolls to the top of the page when clicking the link to /about', () => {
-    const store = mockStore({
-      login: {
-        isLoggedIn: false,
-      },
-    });
-    jest.spyOn(window, 'scrollTo');
-
-    render(
-      <Provider store={store}>
-        <BrowserRouter>
-          <Link
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            to="/about"
-          >
-            What's Prodigy Path?
-          </Link>
-          ,
-        </BrowserRouter>
-      </Provider>,
-    );
-
-    fireEvent.click(screen.getByText("What's Prodigy Path?"));
-  });
-
   test('scrolls to the top of the page when clicking the link to /devs', () => {
     const store = mockStore({
       login: {
