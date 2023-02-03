@@ -14,8 +14,10 @@ const SplashPage = () => {
     <>
       <div className="splash">
         <section className="splash__hero">
-          <h1>Prodigy Path</h1>
-          <h3>Empowering the Next Generation of Experts</h3>
+          <h1 data-testid="heading">Prodigy Path</h1>
+          <h3 data-testid="subheading">
+            Empowering the Next Generation of Experts
+          </h3>
 
           <Link
             className="btn"
