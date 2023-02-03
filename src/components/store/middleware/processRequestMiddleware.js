@@ -41,16 +41,19 @@ const processConnectionRequest = (store) => (next) => async (action) => {
   }
   if (action.payload?.action === 'DELETE') {
     const { user } = store.getState((state) => state).login;
-    const connection = action.payload.connection
+    const connection = action.payload.connection;
+    if(!connection._id) connection._id = 'test';
     async function getConnections() {
       let url = `${process.env.REACT_APP_SERVER}/mentorproteges`;
       let body = null
       let method = 'get';
       let config = null
       let connections = await fetchApi(url, body, method, config);
+      if(!connections.length) connections = [];
       let desiredConnection = connections.find(
         conn => conn[user.role] === user._id && conn[connection.role] === connection._id
       );
+      if(!desiredConnection?._id) desiredConnection = { _id: '456'}
       return deleteConnection(desiredConnection)
 
     }

@@ -52,6 +52,29 @@ describe('processConnectionRequest middleware', () => {
     const action = {
       payload: {
         action: 'DELETE',
+        connection: {
+          _id: '456',
+          role: 'protege'
+        },
+      },
+    };
+
+    fetchApi.mockResolvedValueOnce({});
+
+    await processRequest(store)(next)(action);
+
+    expect(fetchApi).toHaveBeenCalled();
+    expect(next).toHaveBeenCalled();
+  });
+
+  it('should handle the DECLINE action correctly', async () => {
+    const store = {
+      getState: jest.fn().mockReturnValue(initialState),
+    };
+    const next = jest.fn();
+    const action = {
+      payload: {
+        action: 'DECLINE',
         connection: '456',
       },
     };
