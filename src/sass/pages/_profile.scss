@@ -59,4 +59,20 @@
     background-color: $color-light-green;
     height: 100%;
   }
+  &__friends {
+    background-color: $color-lighter-beige;
+    margin: 15px;
+    border-radius: 20px;
+    &__table {
+      overflow: hidden;
+    }
+    &__name {
+      width: 60%;
+    }
+  }
+  &__request {
+    &__name {
+      width: 80%;
+    }
+  }
 }

@@ -21,8 +21,8 @@ const UserCard = (props) => {
 
         token: user.token,
       }),
-      setPending(true),
     );
+    setPending(true);
   };
 
   return (
