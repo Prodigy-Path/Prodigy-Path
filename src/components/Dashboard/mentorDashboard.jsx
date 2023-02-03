@@ -7,9 +7,10 @@ import {
   TextInput,
   Paper,
   Avatar,
+  Modal,
 } from '@mantine/core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrashCan } from '@fortawesome/free-solid-svg-icons';
+import { faTrashCan, faPen, faCheck } from '@fortawesome/free-solid-svg-icons';
 import {
   post,
   getPost,
@@ -19,11 +20,12 @@ import {
   resetIsEditing,
 } from '../store/postSlice';
 import { useSelector, useDispatch } from 'react-redux';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 const MentorDashboard = () => {
   const { user } = useSelector((state) => state.login);
   const { posts, isEditing } = useSelector((state) => state.post);
+  const [opened, setOpened] = useState(false);
   console.log(posts);
   const dispatch = useDispatch();
   const handleSubmit = (e) => {
@@ -46,24 +48,28 @@ const MentorDashboard = () => {
   };
   const startEditing = (_id) => {
     console.log(_id);
+    setOpened(true);
     dispatch(setIsEditing({ _id }));
   };
   const cancelUpdate = () => {
+    setOpened(false);
     dispatch(resetIsEditing());
   };
   const updateNewPost = (e) => {
     console.log(e);
+    console.log(e.target.updateText.value, e.target.updateTitle.value);
     e.preventDefault();
     dispatch(
       updatePost({
         action: 'updatePost',
         user: user._id,
         userName: user.username,
-        text: e.target.text.value,
-        title: e.target.title.value,
+        text: e.target.updateText.value,
+        title: e.target.updateTitle.value,
         token: user.token,
       }),
     );
+    setOpened(false);
     dispatch(resetIsEditing());
   };
   useEffect(() => {
@@ -79,7 +85,9 @@ const MentorDashboard = () => {
     <>
       <form onSubmit={handleSubmit} className='new_post_component'>
         <Group mr={0} position='together'>
-          <h4>Publish a new article to your protégé's dashboards</h4>
+          <h4 className='dashModal__heading'>
+            Publish a new article to your protégé's dashboards
+          </h4>
           <Card withBorder p={0} mb={10}>
             <TextInput placeholder='Subject' name='title' />
             <Textarea placeholder='Body...' name='text' radius={0} />
@@ -90,21 +98,42 @@ const MentorDashboard = () => {
         </Group>
       </form>
       {isEditing ? (
-        <form onSubmit={updateNewPost} className='new_post_component'>
-          <Group mr={0} position='together'>
-            <h4>Edit Post</h4>
-            <Card withBorder p={0} mb={10}>
-              <TextInput placeholder='Subject' name='title' />
-              <Textarea placeholder='Body...' name='text' radius={0} />
-            </Card>
-            <Button type='submit' m={0}>
-              Post
-            </Button>
-            <Button onClick={cancelUpdate} m={0}>
-              Cancel
-            </Button>
-          </Group>
-        </form>
+        <Modal
+          className='dashModal'
+          opened={opened}
+          onClose={() => setOpened(false)}
+          withCloseButton={false}
+          closeOnEscape={false}
+          closeOnClickOutside={false}
+        >
+          <form onSubmit={updateNewPost} className='dashModal__editForm'>
+            <Group mr={0} position='together' className='dashModal__group'>
+              <h4 className='dashModal__heading'>Edit Post</h4>
+              <TextInput
+                className='dashModal__editFormInput'
+                placeholder='Subject'
+                name='updateTitle'
+              />
+              <Textarea
+                className='dashModal__editFormInput'
+                placeholder='Body...'
+                name='updateText'
+                radius={0}
+              />
+              <Button className='dashModal__check' onClick={cancelUpdate}>
+                {/* cancel update button */}
+                <FontAwesomeIcon
+                  className='tasks_icon trash'
+                  icon={faTrashCan}
+                />
+              </Button>
+              <Button className='dashModal__delete' type='submit'>
+                {/* post update button */}
+                <FontAwesomeIcon className='tasks_icon trash' icon={faCheck} />
+              </Button>
+            </Group>
+          </form>
+        </Modal>
       ) : (
         sortedFiltered.map((d, idx) => (
           <div key={idx}>
@@ -124,7 +153,12 @@ const MentorDashboard = () => {
                   icon={faTrashCan}
                 />
               </Button>
-              <Button onClick={() => startEditing(d._id)}>Edit</Button>
+              <Button
+                className='dashCard__edit'
+                onClick={() => startEditing(d._id)}
+              >
+                <FontAwesomeIcon className='tasks_icon pen' icon={faPen} />
+              </Button>
               <Text className='dashCard__title'>{d.title}</Text>
               <Text className='dashCard__name'>@{user.username}</Text>
               <Text className='dashCard__content'>
