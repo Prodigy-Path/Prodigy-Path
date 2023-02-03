@@ -7,7 +7,10 @@ const Dashboard = () => {
   const { user } = useSelector((state) => state.login);
 
   return (
-    <>{user.role === 'mentor' ? <MentorDashboard /> : <ProtegeDashboard />}</>
+    <div className="dashboard__main">
+      {user.role === 'mentor' ? <MentorDashboard /> : <ProtegeDashboard />}
+    </div>
   );
 };
 export default Dashboard;
+ 
