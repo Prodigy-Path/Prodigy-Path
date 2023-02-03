@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
-import MentorDashboard from './mentorDashboard';
-import ProtegeDashboard from './protegeDashboard';
+import MentorDashboard from './MentorDashboard';
+import ProtegeDashboard from './ProtegeDashboard';
 const Dashboard = () => {
   const { user } = useSelector((state) => state.login);
 
