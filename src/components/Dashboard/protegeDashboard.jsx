@@ -1,9 +1,6 @@
-import {
-  Card,
-  Group,
-  Image,
-  Text,
-} from '@mantine/core';
+/** @format */
+
+import { Card, Group, Image, Text } from '@mantine/core';
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getPostProtege } from '../store/mentorProtegePostsSlice';
@@ -69,5 +66,5 @@ const ProtegeDashboard = () => {
       ))}
     </>
   );
-}
-export default ProtegeDashboard
+};
+export default ProtegeDashboard;
