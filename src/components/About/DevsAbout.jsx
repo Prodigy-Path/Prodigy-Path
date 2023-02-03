@@ -2,6 +2,7 @@
 
 import React from 'react';
 import lewis from '../../images/selfie-lewis.png';
+import seth from '../../images/seth.jpg'
 export default function DevsAbout() {
   return (
     <article className="about">
@@ -15,7 +16,7 @@ export default function DevsAbout() {
         <div>
           <h3>Seth Pierce</h3>
           <img
-            src="https://fastly.picsum.photos/id/392/200/300.jpg?hmac=tcnub3WKREnSOdoCn7rQtfZkHXNWn5fXwNpHrv0o-5k"
+            src={seth}
             alt="Seth"
           />
         </div>
