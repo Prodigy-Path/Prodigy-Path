@@ -86,9 +86,9 @@ const Tasks = () => {
     dispatch(setUpdateData(''));
   };
 
-
-
-  const filteredTasks = taskList.filter(task => task.assigned_by === user.username);
+  const filteredTasks = taskList.filter(
+    (task) => task.assigned_by === user.username,
+  );
 
   console.log(filteredTasks);
 
