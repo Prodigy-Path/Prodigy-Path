@@ -62,7 +62,9 @@ const loginSlice = createSlice({
       state.connectionRequestUsers = state.connectionRequestUsers.filter(user => user._id !== action.payload.connection._id)
       if(action.payload.action === 'DELETE') state.userConnectionsUsers = state.userConnectionsUsers.filter(user => user._id !== action.payload.connection._id)
       if(action.payload.action === 'ACCEPT') state.userConnectionsUsers = [...state.userConnectionsUsers, action.payload.connection]
-
+    },
+    updateUser: (state,action) => {
+      state.user = action.payload.user
     }
 
   },
@@ -77,6 +79,7 @@ export const {
   setChecked,
   cookieLogin,
   processConnectionRequest,
+  updateUser
 } = loginSlice.actions;
 
 export default loginSlice.reducer;

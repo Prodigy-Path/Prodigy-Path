@@ -27,6 +27,7 @@ import processConnectionRequest from './middleware/processRequestMiddleware';
 import updateTasksMiddleware from './middleware/tasks/updateTasksMiddleware';
 import deletePostMiddleware from './middleware/posts/deletePostMiddleware';
 import updatePostMiddleware from './middleware/posts/updatePostMiddleware';
+import updateUserMiddleware from './middleware/updateUserMiddleware';
 
 const store = configureStore({
   reducer: {
@@ -58,6 +59,7 @@ const store = configureStore({
     processConnectionRequest,
     updateTasksMiddleware,
     deleteTasksMiddleware,
+    updateUserMiddleware
   ],
 });
 
