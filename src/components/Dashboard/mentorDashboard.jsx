@@ -8,7 +8,6 @@ import {
   Paper,
   Avatar,
   Modal,
-  Stack,
 } from '@mantine/core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashCan, faPen, faCheck } from '@fortawesome/free-solid-svg-icons';
