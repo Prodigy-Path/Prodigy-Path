@@ -136,7 +136,7 @@ const MentorDashboard = () => {
         </Modal>
       ) : (
         sortedFiltered.map((d, idx) => (
-          <div key={idx}>
+          <div key={crypto.randomUUID()}>
             <Paper radius='lg' className='dashCard' withBorder p='md'>
               <Avatar
                 className='dashCard__avatar'

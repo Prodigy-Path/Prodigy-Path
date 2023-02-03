@@ -108,3 +108,38 @@
     width: 100% !important;
   }
 }
+
+.reactions {
+  margin-top: 20px;
+
+
+  &__reactions-counter {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &__emoji-mart {
+    z-index: 999;
+  }
+
+  &__emoji-mart-anchors {
+    display: none;
+  }
+
+  &__emoji-mart-search {
+    display: none;
+  }
+
+  &__emoji-mart-bar {
+    display: none;
+  }
+
+  &__emoji-mart-scroll {
+    overflow: auto;
+    height: auto;
+  }
+
+  &__emoji-mart-category-label {
+    display: none;
+  }
+}
