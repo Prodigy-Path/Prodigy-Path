@@ -20,7 +20,9 @@
     left: 16.5rem;
     font-size: 4rem;
     width: auto;
+    max-width: 60rem !important;
     color: $color-lighter-beige;
+    margin-bottom: 10rem !important;
     font-weight: bold;
   }
 
@@ -35,7 +37,7 @@
 
   &__content {
     // position: relative;
-    margin-top: 7rem;
+    margin-top: 12rem;
 
     margin-right: 15rem;
     font-size: 2.5rem;
