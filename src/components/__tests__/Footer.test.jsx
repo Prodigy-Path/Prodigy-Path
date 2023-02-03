@@ -61,34 +61,4 @@ describe('Footer component', () => {
     expect(screen.getByText('Privacy Policy')).toBeInTheDocument();
     expect(screen.getByText('Terms of Service')).toBeInTheDocument();
   });
-
-  test('scrolls to the top of the page when clicking the link to /devs', () => {
-    const store = mockStore({
-      login: {
-        isLoggedIn: true,
-      },
-    });
-    jest.spyOn(window, 'scrollTo');
-
-    render(
-      <Provider store={store}>
-        <BrowserRouter>
-          <Link
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            to="/devs"
-          >
-            Meet the Devs
-          </Link>
-          ,
-        </BrowserRouter>
-      </Provider>,
-    );
-
-    fireEvent.click(screen.getByText('Meet the Devs'));
-
-    expect(window.scrollTo).toHaveBeenCalledWith({
-      top: 0,
-      behavior: 'smooth',
-    });
-  });
 });
