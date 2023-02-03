@@ -19,7 +19,7 @@ jobs:
     strategy:
       matrix:
         # need to build and test for MULTIPLE node versions?  we can! or test one version!
-        node-version: [12.x]
+        node-version: [19.x]
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
