@@ -58,9 +58,11 @@ const loginSlice = createSlice({
       state.connectionRequestUsers = [...action.payload];
     },
     processConnectionRequest: (state, action) => {
-
       state.user = action.payload.user
       state.connectionRequestUsers = state.connectionRequestUsers.filter(user => user._id !== action.payload.connection._id)
+      if(action.payload.action === 'DELETE') state.userConnectionsUsers = state.userConnectionsUsers.filter(user => user._id !== action.payload.connection._id)
+      if(action.payload.action === 'ACCEPT') state.userConnectionsUsers = [...state.userConnectionsUsers, action.payload.connection]
+
     }
 
   },

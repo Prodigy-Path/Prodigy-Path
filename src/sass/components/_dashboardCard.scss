@@ -57,4 +57,89 @@
     padding: 0%;
     background-color: $color-background-splash;
   }
+
+  &__edit {
+    position: absolute;
+    right: 10rem;
+    top: 3rem;
+    padding: 0%;
+    background-color: $color-background-splash;
+  }
+
+
+}
+
+.dashModal {
+  padding: 0%;
+
+  &__editForm {
+    width: 100%;
+    height: 25rem;
+    padding: 0%;
+
+  }
+
+  &__group {
+    width: 100% !important;
+  }
+
+  &__check {
+    position: absolute;
+    left: 15rem;
+    bottom: 2rem;
+    padding: 0%;
+    background-color: $color-background-splash;
+  }
+
+  &__delete {
+    position: absolute;
+    left: 5rem;
+    bottom: 2rem;
+    padding: 0%;
+    background-color: $color-background-splash;
+  }
+
+  &__heading {
+    color: $color-lighter-beige;
+  }
+
+  &__editFormInput {
+
+    width: 100% !important;
+  }
+}
+
+.reactions {
+  margin-top: 20px;
+
+
+  &__reactions-counter {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &__emoji-mart {
+    z-index: 999;
+  }
+
+  &__emoji-mart-anchors {
+    display: none;
+  }
+
+  &__emoji-mart-search {
+    display: none;
+  }
+
+  &__emoji-mart-bar {
+    display: none;
+  }
+
+  &__emoji-mart-scroll {
+    overflow: auto;
+    height: auto;
+  }
+
+  &__emoji-mart-category-label {
+    display: none;
+  }
 }

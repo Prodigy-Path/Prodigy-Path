@@ -41,10 +41,44 @@ const processConnectionRequest = (store) => (next) => async (action) => {
   }
   if (action.payload?.action === 'DELETE') {
     const { user } = store.getState((state) => state).login;
-    const connection = action.payload.connection
+    const connection = action.payload.connection;
+    if(!connection._id) connection._id = 'test';
+    async function getConnections() {
+      let url = `${process.env.REACT_APP_SERVER}/mentorproteges`;
+      let body = null
+      let method = 'get';
+      let config = null
+      let connections = await fetchApi(url, body, method, config);
+      if(!connections.length) connections = [];
+      let desiredConnection = connections.find(
+        conn => conn[user.role] === user._id && conn[connection.role] === connection._id
+      );
+      if(!desiredConnection?._id) desiredConnection = { _id: '456'}
+      return deleteConnection(desiredConnection)
+
+    }
+    async function deleteConnection(desiredConnection) {
+      let url = `${process.env.REACT_APP_SERVER}/mentorproteges/${desiredConnection._id}`;
+      let body = null
+      let method = 'delete';
+      let config = null
+      await fetchApi(url, body, method, config);
+    }
+    getConnections()
+    action.payload.user = user
+    action.payload.connection = connection
+  }
+  if (action.payload?.action === 'DECLINE') {
+    const { user } = store.getState((state) => state).login;
+    const connection = action.payload.connection;
     async function deleteRequest() {
       let url = `${process.env.REACT_APP_SERVER}/users/${user._id}`;
-      let body = { ...user, connection_requests: user.connection_requests.filter(item => item !== connection._id) };
+      let body = {
+        ...user,
+        connection_requests: user.connection_requests.filter(
+          (item) => item !== connection._id,
+        ),
+      };
       let method = 'PATCH';
       let config = {
         bearerToken: user.token,
@@ -54,7 +88,8 @@ const processConnectionRequest = (store) => (next) => async (action) => {
       return response
     }
     action.payload.user = await deleteRequest()
-    action.payload.connection = connection._id
+    action.payload.connection = connection
+    console.log(action.payload)
   }
   next(action);
 };
