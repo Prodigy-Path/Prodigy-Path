@@ -2,12 +2,13 @@
 
 import React from 'react';
 import lewis from '../../images/selfie-lewis.png';
-import seth from '../../images/seth.jpg'
+import seth from '../../images/seth.jpg';
+import elias from '../../images/selfie-elias.png';
 export default function DevsAbout() {
   return (
-    <article className="about">
+    <article className='about'>
       <h2>Meet the Minds Behind Prodigy Path</h2>
-      <p className="about__team">
+      <p className='about__team'>
         Our team consists of four experienced and driven individuals, each with
         their own unique background and skill-set.
         <div>Get to know us below:</div>
@@ -15,10 +16,7 @@ export default function DevsAbout() {
       <section>
         <div>
           <h3>Seth Pierce</h3>
-          <img
-            src={seth}
-            alt="Seth"
-          />
+          <img src={seth} alt='Seth' />
         </div>
         <p>
           I am a full-stack JavaScript software developer with a background in
@@ -30,10 +28,7 @@ export default function DevsAbout() {
       <section>
         <div>
           <h3>Lewis Benson</h3>
-          <img
-            src={lewis}
-            alt="Lewis"
-          />
+          <img src={lewis} alt='Lewis' />
         </div>
         <p>
           As a full-stack developer with a diverse professional background,
@@ -47,10 +42,7 @@ export default function DevsAbout() {
       <section>
         <div>
           <h3>Elias Staehle</h3>
-          <img
-            src="https://fastly.picsum.photos/id/392/200/300.jpg?hmac=tcnub3WKREnSOdoCn7rQtfZkHXNWn5fXwNpHrv0o-5k"
-            alt="Elias"
-          />
+          <img src={elias} alt='Elias' />
         </div>
         <p>
           With a background in machining and leading groups of people, as well
@@ -63,8 +55,8 @@ export default function DevsAbout() {
         <div>
           <h3>Steven Rejdukowski</h3>
           <img
-            src="https://fastly.picsum.photos/id/392/200/300.jpg?hmac=tcnub3WKREnSOdoCn7rQtfZkHXNWn5fXwNpHrv0o-5k"
-            alt="Steven"
+            src='https://fastly.picsum.photos/id/392/200/300.jpg?hmac=tcnub3WKREnSOdoCn7rQtfZkHXNWn5fXwNpHrv0o-5k'
+            alt='Steven'
           />
         </div>
         <p>
