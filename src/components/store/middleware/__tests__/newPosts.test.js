@@ -1,7 +1,7 @@
 /** @format */
 
 import fetchApi from '../../../../utility/fetchApi';
-import newPosts from '../newPostMiddleware';
+import newPosts from '../posts/newPostMiddleware';
 
 jest.mock('../../../../utility/fetchApi');
 

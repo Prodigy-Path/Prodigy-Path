@@ -1,5 +1,7 @@
+/** @format */
+
 import fetchApi from '../../../../utility/fetchApi';
-import getMentorProtegePosts from '../getMentorProtegePosts';
+import getMentorProtegePosts from '../posts/getMentorProtegePosts';
 import { getConnections } from '../../loginSlice';
 
 jest.mock('../../../../utility/fetchApi');
@@ -14,11 +16,11 @@ describe('getMentorProtegePosts middleware', () => {
       getState: jest.fn().mockReturnValue({
         login: {
           user: {
-            connection_requests: [1, 2, 3]
-          }
-        }
+            connection_requests: [1, 2, 3],
+          },
+        },
       }),
-      dispatch: jest.fn()
+      dispatch: jest.fn(),
     };
   });
 
@@ -86,7 +88,6 @@ describe('getMentorProtegePosts middleware', () => {
     };
 
     await getMentorProtegePosts(store)(next)(action);
-    expect(fetchApi).toHaveBeenCalled()
-
-  })
-})
+    expect(fetchApi).toHaveBeenCalled();
+  });
+});
