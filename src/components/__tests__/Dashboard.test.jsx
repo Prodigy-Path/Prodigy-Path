@@ -3,8 +3,8 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import Dashboard from '../Dashboard';
-import MentorDashboard from '../Dashboard/MentorDashboard';
-import ProtegeDashboard from '../Dashboard/ProtegeDashboard';
+import MentorDashboard from '../Dashboard/mentorDashboard';
+import ProtegeDashboard from '../Dashboard/protegeDashboard';
 import store from '../store';
 import { BrowserRouter } from 'react-router-dom';
 import '@testing-library/jest-dom';
@@ -32,14 +32,14 @@ describe('Tasks', () => {
     );
   });
 
-    it('renders ProtegeDashboard without crashing', () => {
-      render(
-        <Provider store={store}>
-          <BrowserRouter>
-            <ProtegeDashboard />
-          </BrowserRouter>
-          ,
-        </Provider>,
-      );
-    });
+  it('renders ProtegeDashboard without crashing', () => {
+    render(
+      <Provider store={store}>
+        <BrowserRouter>
+          <ProtegeDashboard />
+        </BrowserRouter>
+        ,
+      </Provider>,
+    );
+  });
 });
