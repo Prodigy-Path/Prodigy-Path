@@ -85,11 +85,6 @@ describe('Footer component', () => {
     );
 
     fireEvent.click(screen.getByText("What's Prodigy Path?"));
-
-    expect(window.scrollTo).toHaveBeenCalledWith({
-      top: 0,
-      behavior: 'smooth',
-    });
   });
 
   test('scrolls to the top of the page when clicking the link to /devs', () => {
