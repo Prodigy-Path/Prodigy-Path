@@ -14,7 +14,10 @@ The main problem this application solves is the difficulty that many individuals
 
 The MVP of this application is a working platform that allows users to sign up as either a mentor or mentee, search for potential partners, and connect with each other through the application. This would include a search function with filtering capabilities, a messaging feature, and the ability for mentors to approve mentee requests and share contact information.
 
+## Data Flow
+![image](https://user-images.githubusercontent.com/105423307/216651607-815a05d4-2d91-402c-b1a9-ca18c7368bf6.png)
 
+## Wire Frame
 ![image](https://user-images.githubusercontent.com/105423307/216466234-8c3cf45f-2251-4581-b646-6a62b8dcd286.png)
 ![image](https://user-images.githubusercontent.com/105423307/216466292-6292d7f8-a4b3-4e75-b6ff-ffa6d28caaf3.png)
 ![image](https://user-images.githubusercontent.com/105423307/216466336-25d730a2-2d79-45e0-916e-e75d43aeebcd.png)
