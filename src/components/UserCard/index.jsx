@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { Avatar, Text, Button, Paper, Group } from '@mantine/core';
+import { Avatar, Text, Button, Paper, Group, Textarea } from '@mantine/core';
 import { useDispatch, useSelector } from 'react-redux';
 import { newConnection } from '../store/exploreSlice';
 
@@ -44,7 +44,7 @@ const UserCard = (props) => {
             </Text>
           </div>
           {cardUser.connection_requests?.includes(user._id) ||
-          pending === true ? (
+            pending === true ? (
             <Button className='userCard__button'>Pending</Button>
           ) : (
             <Button className='userCard__button' onClick={addNewConnection}>
@@ -59,6 +59,15 @@ const UserCard = (props) => {
             </div>
           ))}
         </div>
+        <Textarea
+          label="Description"
+          className='userCard__textarea'
+          variant="filled"
+          radius="md"
+          size="lg"
+          value={cardUser.description}
+          disabled
+        />
       </div>
     </Paper>
   );

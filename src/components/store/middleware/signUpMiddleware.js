@@ -13,7 +13,8 @@ const signUpMiddleware = (store) => (next) => async (action) => {
     };
     let method = 'post';
     let config = null;
-    await fetchApi(url, body, method, config);
+    let response = await fetchApi(url, body, method, config);
+    action.payload = response
   }
   next(action);
 };
