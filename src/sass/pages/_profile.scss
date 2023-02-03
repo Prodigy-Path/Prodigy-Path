@@ -70,6 +70,13 @@
       width: 60%;
     }
   }
+  &__textarea {
+    height: 76%;
+  }
+  &__descriptionTab {
+    padding: 5px 10px;
+    height: 100%;
+  }
   &__request {
     padding: 10px;
     &__table {
@@ -85,4 +92,26 @@
       gap: 10px;
     }
   }
+}
+
+.mantine-lbhgo6 {
+  width: 100%;
+  height: 100%;
+  background-color: $color-lighter-beige !important;
+  color: black !important;
+  font-weight: 500;
+  margin-bottom: 0;
+}
+
+.mantine-12sbrde {
+  height: 100%;
+}
+
+.mantine-9hpi7j {
+  width: 100%;
+  height: 100%;
+  background-color: $color-lighter-beige !important;
+  color: black !important;
+  font-weight: 500;
+  margin-bottom: 0;
 }
