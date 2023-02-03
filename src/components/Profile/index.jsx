@@ -13,9 +13,9 @@ const Profile = () => {
   const dispatch = useDispatch()
   const [editMode, setEditMode] = useState(false);
   const [formData, setFormData] = useState({
-    description: '',
+    description: user.description,
   });
-  const [newTags, setTags] = useState([])
+  const [newTags, setTags] = useState(user.tags)
 
   const changeTags = (value) => {
     console.log(value)
@@ -231,23 +231,25 @@ const Profile = () => {
             <Tabs.Tab value="settings" icon={<IconSettings size={14} />}>Pending Connections</Tabs.Tab>
           </Tabs.List>
 
-          <Tabs.Panel value="description" pl="xs">
+          <Tabs.Panel value="description" pl="xs" className='profile__descriptionTab'>
             {!editMode ? 
               <Textarea
                 label="User Description"
+                className='profile__textarea'
                 variant="filled"
                 radius="md"
-                size="md"
+                size="lg"
                 value={user.description}
                 disabled
               /> 
               :
               <Textarea
                 placeholder="Description"
+                className='profile__textarea'
                 label="User Description"
                 variant="filled"
                 radius="md"
-                size="md"
+                size="lg"
                 name='description'
                 onChange={(e) => handleChange(e)}
                 defaultValue={user?.description}
