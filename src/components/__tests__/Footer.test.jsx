@@ -1,12 +1,12 @@
 /** @format */
 
 import React from 'react';
-import { render, cleanup, screen, fireEvent } from '@testing-library/react';
+import { render, cleanup, screen } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 import Footer from '../Footer';
 import '@testing-library/jest-dom';
-import { BrowserRouter, Link } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 const mockStore = configureStore();
 
 describe('Footer component', () => {
