@@ -9,16 +9,24 @@ import {
   Chip,
   Checkbox,
   MultiSelect,
+  Alert,
 } from '@mantine/core';
-import { useDisclosure } from '@mantine/hooks';
-import { useRef } from 'react';
+import { IconAlertCircle } from '@tabler/icons';
+
+import { useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
 import { login, setChecked } from '../../store/loginSlice';
 
 const SignUp = () => {
   const { isLoggedIn, checked } = useSelector((state) => state.login);
-  const [visible, { toggle }] = useDisclosure(false);
+  const [user, setUser] = useState('');
+  const [firstName, setFirstName] = useState('');
+  // const [lastName, setLastName] = useState('')
+  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('');
+  const [passwordConfirm, setPasswordConfirm] = useState('');
+  const [error, setError] = useState('');
   const dispatch = useDispatch();
   const data = [
     { value: 'Git', label: 'Git', group: 'JavaScript' },
@@ -87,22 +95,43 @@ const SignUp = () => {
     { value: 'PyTorch', label: 'PyTorch', group: 'Python' },
     { value: 'PyCharm', label: 'PyCharm', group: 'Python' },
   ];
+  const emailRegex =
+    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(
-      login({
-        action: 'signUp',
-        username: e.target.Username.value,
-        name: e.target.Name.value,
-        email: e.target.Email.value,
-        password: e.target.Password.value,
-        role: e.target.role.value,
-        tags: ref.current,
-      }),
-    );
-    let result = e.target.MultiSelect;
-    console.log(result);
+    if (!emailRegex.test(email)) {
+      setError('Invalid email format');
+    } else if (email === '') {
+      setError('Please fill out all required fields Email is empty');
+    } else if (password !== passwordConfirm) {
+      setError('');
+      setError('Passwords do not match');
+      return;
+    } else if (password === '') {
+      setError('Please fill out all required fields Password is empty');
+    } else if (passwordConfirm === '') {
+      setError('Please fill out all required fields Password Confirm is empty');
+    } else if (user === '') {
+      setError('Please fill out all required fields Username is empty');
+    } else if (firstName === '') {
+      setError('Please fill out all required fields Name is empty');
+    } else {
+      setError('');
+      dispatch(
+        login({
+          action: 'signUp',
+          username: e.target.Username.value,
+          name: e.target.Name.value,
+          email: e.target.Email.value,
+          password: e.target.Password.value,
+          role: e.target.role.value,
+          tags: ref.current,
+        }),
+      );
+      let result = e.target.MultiSelect;
+      console.log(result);
+    }
   };
   const ref = useRef([]);
   const changeTags = (value) => {
@@ -112,6 +141,7 @@ const SignUp = () => {
   const handleCheck = (e) => {
     dispatch(setChecked(e.target.value));
   };
+
   return (
     <div className='login__form'>
       <form onSubmit={handleSubmit}>
@@ -122,29 +152,48 @@ const SignUp = () => {
               withAsterisk
               label='Username'
               name='Username'
+              onChange={(e) => setUser(e.target.value)}
             />
             <TextInput
               placeholder='Name'
               withAsterisk
               label='Name'
               name='Name'
+              onChange={(e) => setFirstName(e.target.value)}
             />
-            <TextInput placeholder='Email' label='E-mail' name='Email' />
+            <TextInput
+              placeholder='Email'
+              label='E-mail'
+              name='Email'
+              onChange={(e) => setEmail(e.target.value)}
+            />
 
             <PasswordInput
               name='Password'
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
               placeholder='Password'
               label='Password'
               withAsterisk
-              visible={visible}
-              onVisibilityChange={toggle}
             />
             <PasswordInput
               name='PasswordConfirm'
+              value={passwordConfirm}
+              onChange={(e) => setPasswordConfirm(e.target.value)}
               placeholder='Password'
               label='Confirm Password'
               withAsterisk
             />
+            {error && (
+              <Alert
+                icon={<IconAlertCircle size={16} />}
+                title='Alert'
+                color='red'
+                className='login__errorMessage'
+              >
+                {error}
+              </Alert>
+            )}
             <MultiSelect
               data={data}
               placeholder='Pick any tags you would like to use to find mentors'
