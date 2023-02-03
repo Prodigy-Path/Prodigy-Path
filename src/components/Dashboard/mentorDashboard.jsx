@@ -8,9 +8,10 @@ import {
   Paper,
   Avatar,
   Modal,
+  Stack,
 } from '@mantine/core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrashCan, faPen } from '@fortawesome/free-solid-svg-icons';
+import { faTrashCan, faPen, faCheck } from '@fortawesome/free-solid-svg-icons';
 import {
   post,
   getPost,
@@ -57,14 +58,15 @@ const MentorDashboard = () => {
   };
   const updateNewPost = (e) => {
     console.log(e);
+    console.log(e.target.updateText.value, e.target.updateTitle.value);
     e.preventDefault();
     dispatch(
       updatePost({
         action: 'updatePost',
         user: user._id,
         userName: user.username,
-        text: e.target.text.value,
-        title: e.target.title.value,
+        text: e.target.updateText.value,
+        title: e.target.updateTitle.value,
         token: user.token,
       }),
     );
@@ -84,7 +86,9 @@ const MentorDashboard = () => {
     <>
       <form onSubmit={handleSubmit} className='new_post_component'>
         <Group mr={0} position='together'>
-          <h4>Publish a new article to your protégé's dashboards</h4>
+          <h4 className='dashModal__heading'>
+            Publish a new article to your protégé's dashboards
+          </h4>
           <Card withBorder p={0} mb={10}>
             <TextInput placeholder='Subject' name='title' />
             <Textarea placeholder='Body...' name='text' radius={0} />
@@ -99,26 +103,34 @@ const MentorDashboard = () => {
           className='dashModal'
           opened={opened}
           onClose={() => setOpened(false)}
+          withCloseButton={false}
+          closeOnEscape={false}
+          closeOnClickOutside={false}
         >
           <form onSubmit={updateNewPost} className='dashModal__editForm'>
-            <Group mr={0} position='together'>
-              <h4>Edit Post</h4>
+            <Group mr={0} position='together' className='dashModal__group'>
+              <h4 className='dashModal__heading'>Edit Post</h4>
               <TextInput
                 className='dashModal__editFormInput'
                 placeholder='Subject'
-                name='title'
+                name='updateTitle'
               />
               <Textarea
                 className='dashModal__editFormInput'
                 placeholder='Body...'
-                name='text'
+                name='updateText'
                 radius={0}
               />
-              <Button type='submit' m={0}>
-                Post
+              <Button className='dashModal__check' onClick={cancelUpdate}>
+                {/* cancel update button */}
+                <FontAwesomeIcon
+                  className='tasks_icon trash'
+                  icon={faTrashCan}
+                />
               </Button>
-              <Button onClick={cancelUpdate} m={0}>
-                Cancel
+              <Button className='dashModal__delete' type='submit'>
+                {/* post update button */}
+                <FontAwesomeIcon className='tasks_icon trash' icon={faCheck} />
               </Button>
             </Group>
           </form>
