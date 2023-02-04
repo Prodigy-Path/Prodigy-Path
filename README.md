@@ -1,6 +1,6 @@
 <!-- @format -->
 
-# Prodigy-Path-Server
+# Prodigy-Path
 
 ## Live Site
 
