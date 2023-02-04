@@ -2,6 +2,10 @@
 
 # Prodigy-Path-Server
 
+## Live Site
+
+https://prodigy-path.netlify.app/
+
 ## Problem Domain
 
 This project is a mentorship application designed to connect individuals who want to learn new skills or gain experience in a particular field with individuals who are experienced and willing to share their knowledge and skills. The application allows users to sign up as either a mentor or a mentee, and then search for potential partners based on various tags, such as the specific skills or industry they are interested in. Once a mentor and mentee have connected, they can communicate through the application and share contact information such as phone numbers, email addresses, and social media handles.
