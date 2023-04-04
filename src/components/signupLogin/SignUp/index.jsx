@@ -129,14 +129,13 @@ const SignUp = () => {
           tags: ref.current,
         }),
       );
-      let result = e.target.MultiSelect;
-      console.log(result);
+  
     }
   };
   const ref = useRef([]);
   const changeTags = (value) => {
     ref.current = value;
-    console.log(ref.current);
+
   };
   const handleCheck = (e) => {
     dispatch(setChecked(e.target.value));

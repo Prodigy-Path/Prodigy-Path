@@ -27,8 +27,6 @@ const Tasks = () => {
 
   const filteredTasks = taskList.filter(task => task.assigned_to === user.username);
 
-  console.log(filteredTasks);
-
   return (
     <div className="tasks">
       {filteredTasks &&
