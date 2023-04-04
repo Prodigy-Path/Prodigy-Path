@@ -26,7 +26,7 @@ const MentorDashboard = () => {
   const { user } = useSelector((state) => state.login);
   const { posts, isEditing } = useSelector((state) => state.post);
   const [opened, setOpened] = useState(false);
-  console.log(posts);
+  
   const dispatch = useDispatch();
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -47,7 +47,7 @@ const MentorDashboard = () => {
     dispatch(deletePost({ _id, action: 'deletePost' }));
   };
   const startEditing = (_id) => {
-    console.log(_id);
+   
     setOpened(true);
     dispatch(setIsEditing({ _id }));
   };
@@ -56,8 +56,7 @@ const MentorDashboard = () => {
     dispatch(resetIsEditing());
   };
   const updateNewPost = (e) => {
-    console.log(e);
-    console.log(e.target.updateText.value, e.target.updateTitle.value);
+
     e.preventDefault();
     dispatch(
       updatePost({

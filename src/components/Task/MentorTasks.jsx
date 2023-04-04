@@ -90,8 +90,6 @@ const Tasks = () => {
     (task) => task.assigned_by === user.username,
   );
 
-  console.log(filteredTasks);
-
   return (
     <div className="container tasks">
       <h2 className="tasks__title">Task Assignment</h2>

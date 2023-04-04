@@ -120,49 +120,57 @@ const Chat = () => {
             },
           },
         }}
-        className='select'
+        className="select"
       >
-        <Accordion.Item value='Messages'>
+        <Accordion.Item value="Messages">
           <Accordion.Control icon={<IconMessage size={14} />}>
             Messages
           </Accordion.Control>
           <Accordion.Panel style={{ overflow: 'auto', maxHeight: '400px' }}>
             <p>Your Connections:</p>
-            {matchedId.map((item) => (
-              <>
-                <Card withBorder mb={0}>
-                  <Stack withBorder>
-                    <Indicator
-                      offset={15}
-                      position='middle-end'
-                      color={item.color}
+            {matchedId.map((item, index) => (
+              <Card
+                key={index}
+                withBorder
+                mb={0}
+              >
+                <Stack>
+                  <Indicator
+                    offset={15}
+                    position="middle-end"
+                    color={item.color}
+                  >
+                    <p
+                      onClick={(e) => handleJoinRoom(e)}
+                      key={item._id}
                     >
-                      <p onClick={(e) => handleJoinRoom(e)} key={item._id}>
-                        {item.name}
-                      </p>
-                    </Indicator>
-                  </Stack>
-                </Card>
-              </>
+                      {item.name}
+                    </p>
+                  </Indicator>
+                </Stack>
+              </Card>
             ))}
           </Accordion.Panel>
         </Accordion.Item>
       </Accordion>
       {showMessage && (
         <>
-          <div className='chat'>
-            <div className='chat__headerBackground'></div>
-            <p className='close_button ' onClick={() => setShowMessage(false)}>
+          <div className="chat">
+            <div className="chat__headerBackground"></div>
+            <p
+              className="close_button "
+              onClick={() => setShowMessage(false)}
+            >
               X
             </p>
-            <p className='chat__header'>{textHeader} </p>
-            <div className='chat__message'>
+            <p className="chat__header">{textHeader} </p>
+            <div className="chat__message">
               <form onSubmit={handleSubmitMessage}>
-                <textarea name='text' />
-                <button type='submit'>Send</button>
+                <textarea name="text" />
+                <button type="submit">Send</button>
               </form>
             </div>
-            <div className='chat__window'>
+            <div className="chat__window">
               <ul>
                 {messages.map((msg) => (
                   <li key={crypto.randomUUID()}>{`${msg.text}`}</li>

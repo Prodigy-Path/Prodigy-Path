@@ -18,7 +18,7 @@ const Profile = () => {
   const [newTags, setTags] = useState(user.tags)
 
   const changeTags = (value) => {
-    console.log(value)
+
     setTags(value)
   };
 
@@ -166,7 +166,6 @@ const Profile = () => {
     </tr>
   ));
 
-  console.log(user)
 
   return (
     <div className='profileContainer'>

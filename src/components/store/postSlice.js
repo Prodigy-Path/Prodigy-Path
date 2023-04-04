@@ -22,7 +22,6 @@ const postSlice = createSlice({
       }
     },
     deletePost: (state, action) => {
-      console.log(action.payload)
       const id = action.payload._id;
       let newPosts = state.posts.filter((post) => post._id !== id);
       state.posts = [...newPosts];
@@ -30,7 +29,7 @@ const postSlice = createSlice({
     setIsEditing: (state, action) => {
       state.isEditing = !state.isEditing;
       state.postId = action?.payload?._id
-      console.log(state.isEditing, state.postId)
+
     },
     resetIsEditing: (state) => {
       state.isEditing = !state.isEditing;
@@ -40,7 +39,7 @@ const postSlice = createSlice({
         (post) => post._id !== state.postId
       );
       state.posts = [...filterRecords, action.payload];
-      console.log(state.posts)
+
     },
   },
 });
