@@ -10,6 +10,8 @@ import { Link } from 'react-router-dom';
 import Card from './Card';
 import { useRef } from 'react';
 const SplashPage = () => {
+
+
   const autoplay = useRef(Autoplay({ delay: 17000 }));
   return (
     <>
