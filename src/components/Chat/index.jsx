@@ -134,7 +134,7 @@ const Chat = () => {
                 withBorder
                 mb={0}
               >
-                <Stack withBorder>
+                <Stack>
                   <Indicator
                     offset={15}
                     position="middle-end"
