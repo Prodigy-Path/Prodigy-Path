@@ -2,6 +2,7 @@
 
 // Tasks
 .tasks {
+
   margin: auto;
   margin-top: $margin-top-tasks;
   text-align: center;
@@ -16,9 +17,10 @@
   }
 
   &__title {
-    color: $color-primary;
+    color: $color-neutral;
     font-size: $font-size-title;
-    margin: 15rem;
+    margin-bottom: 10rem;
+
   }
 
   &_icon {
