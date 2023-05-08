@@ -6,6 +6,11 @@
 }
 
 // segmentedControl background colors and transition color
+
+.mantine-1udwvrz{
+  background-color: $color-card;
+}
+
 .mantine-Button-centerLoader {
   background-color: $color-primary;
 }
@@ -23,7 +28,7 @@
 }
 
 .mantine-1of85za:not(:first-of-type) {
-  border-color: $color-accent-1;
+  border-color: $color-secondary;
 }
 
 .mantine-SegmentedControl-active {
@@ -63,7 +68,7 @@
 }
 
 .mantine-1f55xvl:not(:first-of-type) {
-  border-color: $color-accent-1;
+  border-color: $color-secondary;
 }
 
 // *******

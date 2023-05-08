@@ -18,7 +18,7 @@ const Task = ({ task, index, user, updateData, dispatch }) => {
   };
 
   return (
-    <div key={task._id} className="tasks__task">
+    <div key={task._id} className="tasks__task dashCard">
       <div className="tasks__task-content">
         <div
           className={`tasks__task-status ${

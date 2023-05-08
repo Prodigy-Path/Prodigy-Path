@@ -1,10 +1,15 @@
 // Main Colors
-$color-primary: #1A3C5D;
-$color-secondary: #4A7594;
-$color-accent-1: #3BA0F1;
-$color-accent-2: #FFA726;
+$color-main-background: #F5F5F5;
+$color-primary:  #007BFF;
+$color-secondary: #A9A9A9;
+$color-accent-1: #28A745;
+$color-accent-2: #212529;
 $color-neutral: #F0F0F0;
-
+$color-nav-bar: #007BFF;
+$color-nav-logo: $color-accent-2;
+$color-card: #fff;
+$color-card-text: #000;
+$color-profile-tabs: $color-secondary;
 // Create Account Link Color
 $color-create-account-link: rgb(105, 160, 255);
 
@@ -24,8 +29,8 @@ $color-scroll-thumb1: rgba(59, 160, 241, 0.6);
 $color-scroll-thumb2: rgba(255, 167, 38, 0.6);
 
 // Splash Page
-$color-card-splash: hsl(204, 64%, 44%);
-$color-background-splash: #1A3C5D;
+$color-card-splash: hsl(0, 0%, 100%);
+$color-background-splash: $color-primary;
 $color-hero-color1: hsla(26, 35%, 18%, 0.628);
 $color-hero-color2: hsla(26, 41%, 22%, 0.715);
 

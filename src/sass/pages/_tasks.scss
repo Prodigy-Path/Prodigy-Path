@@ -2,7 +2,18 @@
 
 // Tasks
 .tasks {
+  h1{
+    color: black;
+  }
+display: flex;
+&__form{
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
 
+flex-direction: column;
+align-items: center;
   margin: auto;
   margin-top: $margin-top-tasks;
   text-align: center;
@@ -17,7 +28,7 @@
   }
 
   &__title {
-    color: $color-neutral;
+    align-self: center;
     font-size: $font-size-title;
     margin-bottom: 10rem;
 

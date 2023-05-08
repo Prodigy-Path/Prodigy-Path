@@ -1,5 +1,5 @@
 .userCard {
-  background-color: $color-primary;
+  background-color: $color-card;
   display: flex;
   height: max-content;
   width: 100%;
@@ -16,7 +16,7 @@
   &__name {
     font-size: 2.5rem;
     padding: 0;
-    color: $color-neutral;
+
   }
 
   &__tagGroup {
@@ -37,10 +37,4 @@
     background-color: $color-background-splash;
   }
 
-  &__textarea{
-    color: black;
-    .mantine-2v6z3t {
-      color: $color-neutral;
-    }
-  }
 }

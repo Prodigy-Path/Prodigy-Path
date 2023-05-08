@@ -26,7 +26,7 @@ const MentorDashboard = () => {
   const { user } = useSelector((state) => state.login);
   const { posts, isEditing } = useSelector((state) => state.post);
   const [opened, setOpened] = useState(false);
-  
+
   const dispatch = useDispatch();
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -47,7 +47,7 @@ const MentorDashboard = () => {
     dispatch(deletePost({ _id, action: 'deletePost' }));
   };
   const startEditing = (_id) => {
-   
+
     setOpened(true);
     dispatch(setIsEditing({ _id }));
   };
@@ -84,9 +84,9 @@ const MentorDashboard = () => {
     <>
       <form onSubmit={handleSubmit} className='new_post_component'>
         <Group mr={0} position='together'>
-          <h4 className='dashModal__heading'>
+          <h1 className='dashModal__heading'>
             Publish a new article to your protégé's dashboards
-          </h4>
+          </h1>
           <Card withBorder p={0} mb={10}>
             <TextInput placeholder='Subject' name='title' />
             <Textarea placeholder='Body...' name='text' radius={0} />

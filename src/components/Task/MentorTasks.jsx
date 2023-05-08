@@ -25,7 +25,7 @@ const MentorTasks = () => {
 
   return (
     <div className="container tasks">
-      <h2 className="tasks__title">Task Assignment</h2>
+      <h1 className="tasks__title">Task Assignment</h1>
       <TaskForm
         newTitle={newTitle}
         newDescription={newDescription}
@@ -37,6 +37,7 @@ const MentorTasks = () => {
       {filteredTasks.length ? '' : 'Currently no tasks...'}
       {filteredTasks.map((task, index) => (
         <Task
+
           key={index}
           task={task}
           index={index}
