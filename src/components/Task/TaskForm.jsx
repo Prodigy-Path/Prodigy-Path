@@ -7,6 +7,7 @@ import {
   setUpdateData,
   tasks,
   updateItem,
+
 } from '../store/taskSlice';
 import { changeTask } from './helperFunctions';
 import { useSelector } from 'react-redux';
@@ -34,10 +35,9 @@ const TaskForm = ({
       };
 
       dispatch(tasks({ tasks: newEntry, action: 'NEW_TASK' }));
-
-      setNewTitle('');
-      setNewDescription('');
-      setNewMentee('');
+      dispatch(setNewTitle(''));
+      dispatch(setNewDescription(''));
+      dispatch(setNewMentee(''));
     }
   };
 
@@ -87,7 +87,7 @@ const TaskForm = ({
       <Input
         label="Title of task"
         placeholder="Title of task"
-        value={newTitle.title}
+        value={newTitle}
         onChange={(e) => dispatch(setNewTitle(e.target.value))}
         className="tasks__input"
       />
