@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Avatar, Text, Button, Paper, Group, MultiSelect, Textarea } from '@mantine/core';
+import { Avatar, Text, Button, Paper, Group, MultiSelect, Textarea, Card } from '@mantine/core';
 import { useDispatch, useSelector } from 'react-redux';
 import { Tabs } from '@mantine/core';
 import { IconPhoto, IconMessageCircle, IconSettings } from '@tabler/icons';
@@ -168,14 +168,14 @@ const Profile = () => {
 
 
   return (
-    <div className='profileContainer'>
+    <div className='profileContainer main'>
       <Paper
         radius="lg"
         className='profile'
         withBorder
         p="lg"
       >
-        <div className='profile__content'>
+        <Card className='profile__content'>
           <Avatar
             className='profile__avatar'
             src={'https://via.placeholder.com/150'}
@@ -222,7 +222,7 @@ const Profile = () => {
               clearButtonLabel='Clear selection'
               clearable
             />}
-        </div>
+        </Card>
         <Tabs radius="md" variant='outline' defaultValue="description" className='profile__tabs'>
           <Tabs.List grow>
             <Tabs.Tab value="description" icon={<IconPhoto size={14} />}>Description</Tabs.Tab>
@@ -231,7 +231,7 @@ const Profile = () => {
           </Tabs.List>
 
           <Tabs.Panel value="description" pl="xs" className='profile__descriptionTab'>
-            {!editMode ? 
+            {!editMode ?
               <Textarea
                 label="User Description"
                 className='profile__textarea'
@@ -240,7 +240,7 @@ const Profile = () => {
                 size="lg"
                 value={user.description}
                 disabled
-              /> 
+              />
               :
               <Textarea
                 placeholder="Description"

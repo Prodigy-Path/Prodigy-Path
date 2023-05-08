@@ -75,11 +75,11 @@ const Explore = () => {
 
   return (
     <>
-      <div className='explore'>
+      <div className='explore main'>
         <section className='explore__search'>
           <TextInput
             icon={<IconSearch size={18} stroke={1.5} />}
-            className='explore__textInput '
+            className='explore__textInput'
             radius='xl'
             size='md'
             value={searchParam}

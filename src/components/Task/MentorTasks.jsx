@@ -24,7 +24,7 @@ const MentorTasks = () => {
   );
 
   return (
-    <div className="container tasks">
+    <div className="container tasks main">
       <h1 className="tasks__title">Task Assignment</h1>
       <TaskForm
         newTitle={newTitle}

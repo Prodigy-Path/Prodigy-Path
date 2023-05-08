@@ -25,8 +25,8 @@ $color-footer-text: #F3DCDC;
 
 // Scroll Bar
 $color-scroll-bar: rgba(240, 240, 240, 0.475);
-$color-scroll-thumb1: rgba(59, 160, 241, 0.6);
-$color-scroll-thumb2: rgba(255, 167, 38, 0.6);
+$color-scroll-thumb1: rgba(17, 58, 91, 0.6);
+$color-scroll-thumb2: $color-accent-2;
 
 // Splash Page
 $color-card-splash: hsl(0, 0%, 100%);
@@ -54,7 +54,7 @@ $padding-task: 10px 140px 10px 15px;
 $border-radius-input: 2rem;
 $border-radius-task: 6px;
 
-$width-tasks: 80%;
+$width-tasks: 65rem;
 $min-width-input: 40rem;
 $max-width-input: 60rem;
 

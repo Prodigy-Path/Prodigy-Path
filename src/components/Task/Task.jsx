@@ -6,6 +6,7 @@ import {
   faTrashCan,
 } from '@fortawesome/free-solid-svg-icons';
 import { removeItem, setDone, setUpdateData } from '../store/taskSlice';
+import { Paper } from '@mantine/core';
 
 const Task = ({ task, index, user, updateData, dispatch }) => {
   console.log(task)
@@ -18,7 +19,7 @@ const Task = ({ task, index, user, updateData, dispatch }) => {
   };
 
   return (
-    <div key={task._id} className="tasks__task dashCard">
+    <Paper key={task._id} className="tasks__task userCard">
       <div className="tasks__task-content">
         <div
           className={`tasks__task-status ${
@@ -83,7 +84,7 @@ const Task = ({ task, index, user, updateData, dispatch }) => {
           </span>
         </div>
       </div>
-    </div>
+    </Paper>
   );
 };
 
