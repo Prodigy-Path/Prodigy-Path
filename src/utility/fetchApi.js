@@ -13,7 +13,7 @@ async function fetchApi(url = '', body = null, method = 'GET', config = null) {
       headers['Authorization'] = `Bearer ${config.bearerToken}`;
     }
   }
-
+console.log(url, body, method)
   const response = await fetch(url, {
     method: method,
     mode: 'cors',
@@ -24,6 +24,8 @@ async function fetchApi(url = '', body = null, method = 'GET', config = null) {
     referrerPolicy: 'no-referrer',
     body: body ? JSON.stringify(body) : null,
   });
+  console.log(response.status)
+  if(response.status === 204) return response;
   return response.json();
 }
 
