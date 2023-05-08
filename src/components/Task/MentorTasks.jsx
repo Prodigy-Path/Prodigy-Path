@@ -37,7 +37,7 @@ const MentorTasks = () => {
       {filteredTasks.length ? '' : 'Currently no tasks...'}
       {filteredTasks.map((task, index) => (
         <Task
-          key={task._id}
+          key={index}
           task={task}
           index={index}
           user={user}
