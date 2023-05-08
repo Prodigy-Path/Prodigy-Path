@@ -1,20 +1,58 @@
-/** @format */
+// Main Colors
+$color-primary: #1A3C5D;
+$color-secondary: #4A7594;
+$color-accent-1: #3BA0F1;
+$color-accent-2: #FFA726;
+$color-neutral: #F0F0F0;
 
-$color-soft-gray: hsl(0, 7%, 52%);
-$color-footer: hsl(280, 7%, 16%);
+// Create Account Link Color
+$color-create-account-link: rgb(105, 160, 255);
 
-$color-dark-navy: hsl(228, 34%, 14%);
-$color-light-green: rgb(103, 137, 131);
-$color-lighter-blue: #3e5871;
-$color-lighter-beige: rgb(240, 233, 210);
+// Chat Header Background
+$color-chat-header-bg: #C9BABA;
+
+// Button Hover
+$color-btn-hover: #2A5A82;
+
+// Footer
+$color-footer: hsl(228, 20%, 16%);
+$color-footer-text: #F3DCDC;
 
 // Scroll Bar
-$color-scroll-bar: (hsla(240, 14%, 68%, 0.475));
-$color-scroll-thumb1: (hsl(313, 5%, 61%));
-$color-scroll-thumb2: (hsl(120, 2%, 52%));
+$color-scroll-bar: rgba(240, 240, 240, 0.475);
+$color-scroll-thumb1: rgba(59, 160, 241, 0.6);
+$color-scroll-thumb2: rgba(255, 167, 38, 0.6);
 
 // Splash Page
 $color-card-splash: hsl(204, 64%, 44%);
-$color-background-splash: #2c3e50;
-$color-hero-color1: hsla(240, 35%, 18%, 0.628);
-$color-hero-color2: hsla(240, 41%, 22%, 0.715);
+$color-background-splash: #1A3C5D;
+$color-hero-color1: hsla(26, 35%, 18%, 0.628);
+$color-hero-color2: hsla(26, 41%, 22%, 0.715);
+
+// Tasks
+$color-trash: rgb(226, 58, 58);
+$color-pen: rgb(226, 178, 58);
+$color-check: rgb(58, 226, 106);
+
+// layout
+$font-size-title: 5rem;
+$font-size-input: 2rem;
+$font-size-task: 22px;
+
+$margin-top-tasks: 20rem;
+$margin-bottom-task: 20px;
+$margin-icons: 2rem;
+
+$padding-input: 2rem;
+$padding-task: 10px 140px 10px 15px;
+
+$border-radius-input: 2rem;
+$border-radius-task: 6px;
+
+$width-tasks: 80%;
+$min-width-input: 40rem;
+$max-width-input: 60rem;
+
+$height-input: 5rem;
+
+$opacity-done: 0.3;
