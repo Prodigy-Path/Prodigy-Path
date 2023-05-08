@@ -2,7 +2,7 @@
 
 // Tasks
 .tasks {
-  
+
   h1{
     color: black;
   }
@@ -77,6 +77,7 @@ align-items: center;
 }
 
 .tasks__task {
+
   display: flex;
   background-color: $color-secondary;
   border-radius: $border-radius-task;
@@ -88,4 +89,7 @@ align-items: center;
   @media (max-width: 768px) {
     flex-direction: column;
   }
+}
+.tasks{
+  min-height: 75vh;
 }
