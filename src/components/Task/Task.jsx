@@ -9,7 +9,7 @@ import { removeItem, setDone, setUpdateData } from '../store/taskSlice';
 import { Paper } from '@mantine/core';
 
 const Task = ({ task, index, user, updateData, dispatch }) => {
-  console.log(task)
+
   const markDone = (id) => {
     dispatch(setDone(id));
   };
