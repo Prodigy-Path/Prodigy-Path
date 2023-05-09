@@ -34,16 +34,53 @@ const SplashPage = () => {
   const [featureRef, featureInView] = useInView({
     threshold: 0.1,
   });
+  const [featureRef1, featureInView1] = useInView({
+    threshold: 0.1,
+  });
 
+  const [featureRef2, featureInView2] = useInView({
+    threshold: 0.1,
+  });
+
+  const [featureRef3, featureInView3] = useInView({
+    threshold: 0.1,
+  });
+  const [featureRef4, featureInView4] = useInView({
+    threshold: 0.1,
+  });
   const [testimonialRef, testimonialInView] = useInView({
     threshold: 0.1,
   });
 
+  const slideInLeft = {
+    hidden: { opacity: 0, x: -150 },
+    visible: { opacity: 1, x: 0 },
+  };
+
+  const slideInRight = {
+    hidden: { opacity: 0, x: 150 },
+    visible: { opacity: 1, x: 0 },
+  };
+
+  const slideInUp = {
+    hidden: { opacity: 0, y: 150 },
+    visible: { opacity: 1, y: 0 },
+  };
+
   const heroAnimation = useAnimation();
   const featureAnimation = useAnimation();
+  const featureAnimation1 = useAnimation();
+  const featureAnimation2 = useAnimation();
+  const featureAnimation3 = useAnimation();
+  const featureAnimation4 = useAnimation();
+
   const testimonialAnimation = useAnimation();
   const [heroVisible, setHeroVisible] = useState(false);
   const [featureVisible, setFeatureVisible] = useState(false);
+  const [featureVisible1, setFeatureVisible1] = useState(false);
+  const [featureVisible2, setFeatureVisible2] = useState(false);
+  const [featureVisible3, setFeatureVisible3] = useState(false);
+  const [featureVisible4, setFeatureVisible4] = useState(false);
   const [testimonialVisible, setTestimonialVisible] = useState(false);
 
   // hero animation
@@ -57,6 +94,7 @@ const SplashPage = () => {
   }, [heroAnimation, heroInView, heroVisible]);
 
   // feature animation
+
   useEffect(() => {
     if (featureInView) {
       setFeatureVisible(true);
@@ -65,6 +103,42 @@ const SplashPage = () => {
       featureAnimation.start('hidden');
     }
   }, [featureAnimation, featureInView, featureVisible]);
+
+  useEffect(() => {
+    if (featureInView1) {
+      setFeatureVisible1(true);
+      featureAnimation1.start('visible');
+    } else if (!featureVisible1) {
+      featureAnimation1.start('hidden');
+    }
+  }, [featureAnimation1, featureInView1, featureVisible1]);
+
+  useEffect(() => {
+    if (featureInView2) {
+      setFeatureVisible2(true);
+      featureAnimation2.start('visible');
+    } else if (!featureVisible2) {
+      featureAnimation2.start('hidden');
+    }
+  }, [featureAnimation2, featureInView2, featureVisible2]);
+
+  useEffect(() => {
+    if (featureInView3) {
+      setFeatureVisible3(true);
+      featureAnimation3.start('visible');
+    } else if (!featureVisible3) {
+      featureAnimation3.start('hidden');
+    }
+  }, [featureAnimation3, featureInView3, featureVisible3]);
+
+  useEffect(() => {
+    if (featureInView4) {
+      setFeatureVisible4(true);
+      featureAnimation4.start('visible');
+    } else if (!featureVisible4) {
+      featureAnimation4.start('hidden');
+    }
+  }, [featureAnimation4, featureInView4, featureVisible4]);
 
   // testimonial animation
   useEffect(() => {
@@ -86,16 +160,24 @@ const SplashPage = () => {
           variants={fadeInUp}
           transition={{ duration: 0.25 }}
         >
-          <h1 data-testid="heading" className='splash__title'>Prodigy Path</h1>
+          <h1
+            data-testid="heading"
+            className="splash__title"
+          >
+            Prodigy Path
+          </h1>
           <h3 data-testid="subheading">
             Empowering the Next Generation of Experts
           </h3>
-          <Link className="btn" to="/login">
+          <Link
+            className="btn"
+            to="/login"
+          >
             LOGIN
           </Link>
         </motion.section>
 
-        <motion.section
+        <section
           className="splash__feature"
           ref={featureRef}
           initial="hidden"
@@ -104,67 +186,133 @@ const SplashPage = () => {
           transition={{ duration: 0.25, delay: 0.4 }}
         >
           <div className="splash__feature__content">
-
-            <div className="splash__feature__item">
-              <div className='splash__feature--img-text'>
-              <img src={match} alt="Two people working together" />
-              <div className='splash__text'>
-
-              <h3>Mentor Matching:</h3>
-              <p>
-                The platform's advanced mentor matching algorithm helps to match
-                mentors with mentees based on their skills, experience, and
-                preferences.
-              </p>
-              </div>
-              </div>
-            </div>
-            <div className="splash__feature__item">
-              <div className='splash__feature--img-text reverse'>
-              <img src={match2} alt="working on an ipad" />
-              <div className='splash__text'>
-
-              <h3>Real-time Communication:</h3>
-              <p>
-                Mentors and mentees can communicate through the platform's
-                built-in messaging system, allowing for real-time and
-                effective communication.
-              </p>
-              </div>
-              </div>
-            </div>
-            <div className="splash__feature__item">
-              <div className='splash__feature--img-text'>
-
-              <img src={match3} alt="Someone learning expert secrets" />
-              <div className='splash__text'>
-              <h3>Expert Insights:</h3>
-
-              <p>
-                Gain valuable insights and advice from experienced mentors who have
-                been where you are now and can provide the guidance you need
-                to succeed.
-              </p>
-              </div>
+            <div
+              className="splash__feature__item"
+              ref={featureRef1}
+              initial="hidden"
+              animate={featureAnimation1}
+            >
+              <div className="splash__feature--img-text">
+                <motion.img
+                  src={match}
+                  alt="Two people working together"
+                  initial="hidden"
+                  animate={featureAnimation1}
+                  variants={slideInLeft}
+                  transition={{ duration: 0.35, delay: 0.2 }}
+                />
+                <motion.div
+                  initial="hidden"
+                  animate={featureAnimation1}
+                  variants={slideInUp}
+                  transition={{ duration: 0.35, delay: 0.2 }}
+                  className="splash__text"
+                >
+                  <h3>Mentor Matching:</h3>
+                  <p>
+                    The platform's advanced mentor matching algorithm helps to
+                    match mentors with mentees based on their skills,
+                    experience, and preferences.
+                  </p>
+                </motion.div>
               </div>
             </div>
-            <div className="splash__feature__item">
-              <div className='splash__feature--img-text reverse'>
-
-              <img src={match4} alt="puzzle pieces needing connected" />
-              <div className='splash__text'>
-
-              <h3>Easy Connections:</h3>
-              <p>
-                Connect with like-minded individuals in your field of interest
-                and expand your network, helping you take your career to the
-                next level.
-              </p>
+            <div
+              className="splash__feature__item"
+              ref={featureRef2}
+              initial="hidden"
+              animate={featureAnimation2}
+            >
+              <div className="splash__feature--img-text reverse">
+                <motion.img
+                  src={match2}
+                  alt="working on an ipad"
+                  initial="hidden"
+                  animate={featureAnimation2}
+                  variants={slideInRight}
+                  transition={{ duration: 0.35, delay: 0.2 }}
+                />
+                <motion.div
+                  initial="hidden"
+                  animate={featureAnimation2}
+                  variants={slideInUp}
+                  transition={{ duration: 0.35, delay: 0.2 }}
+                  className="splash__text"
+                >
+                  <h3>Real-time Communication:</h3>
+                  <p>
+                    Mentors and mentees can communicate through the platform's
+                    built-in messaging system, allowing for real-time and
+                    effective communication.
+                  </p>
+                </motion.div>
               </div>
+            </div>
+            <div
+              className="splash__feature__item"
+              ref={featureRef3}
+              initial="hidden"
+              animate={featureAnimation3}
+            >
+              <div className="splash__feature--img-text">
+                <motion.img
+                  src={match3}
+                  alt="Someone learning expert secrets"
+                  initial="hidden"
+                  animate={featureAnimation3}
+                  variants={slideInLeft}
+                  transition={{ duration: 0.35, delay: 0.2 }}
+                />
+                <motion.div
+                  initial="hidden"
+                  animate={featureAnimation3}
+                  variants={slideInUp}
+                  transition={{ duration: 0.35, delay: 0.2 }}
+                  className="splash__text"
+                >
+                  <h3>Expert Insights:</h3>
+                  <p>
+                    Gain valuable insights and advice from experienced mentors
+                    who have been where you are now and can provide the guidance
+                    you need to succeed.
+                  </p>
+                </motion.div>
+              </div>
+            </div>
+            <div
+              className="splash__feature__item"
+              ref={featureRef4}
+              initial="hidden"
+              animate={featureAnimation4}
+            >
+              <div className="splash__feature--img-text reverse">
+                <motion.img
+                  src={match4}
+                  alt="puzzle pieces needing connected"
+                  initial="hidden"
+                  animate={featureAnimation4}
+                  variants={slideInRight}
+                  transition={{ duration: 0.35, delay: 0.2 }}
+                />
+                <motion.div
+                  initial="hidden"
+                  animate={featureAnimation4}
+                  variants={slideInUp}
+                  transition={{ duration: 0.35, delay: 0.2 }}
+                  className="splash__text"
+                >
+                  <h3>Easy Connections:</h3>
+                  <p>
+                    Our platform makes it easy to connect with like-minded
+                    individuals in your field of interest. You can build and
+                    expand your network, which will help you take your career to
+                    the next level.
+                  </p>
+                </motion.div>
               </div>
             </div>
           </div>
-        </motion.section>
+        </section>
 
         <motion.section
           className="splash__testimonials"
@@ -172,7 +320,7 @@ const SplashPage = () => {
           initial="hidden"
           animate={testimonialAnimation}
           variants={fadeInUp}
-          transition={{ duration: 0.25, delay: 0.3 }}
+          transition={{ duration: 0.35, delay: 0.2 }}
         >
           <Carousel
             plugins={[autoplay.current]}
