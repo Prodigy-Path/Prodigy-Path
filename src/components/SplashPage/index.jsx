@@ -32,21 +32,21 @@ const SplashPage = () => {
   });
 
   const [featureRef, featureInView] = useInView({
-    threshold: 0.1,
+    threshold: 0.2,
   });
   const [featureRef1, featureInView1] = useInView({
-    threshold: 0.2,
+    threshold: 0.3,
   });
 
   const [featureRef2, featureInView2] = useInView({
-    threshold: 0.1,
+    threshold: 0.2,
   });
 
   const [featureRef3, featureInView3] = useInView({
-    threshold: 0.1,
+    threshold: 0.2,
   });
   const [featureRef4, featureInView4] = useInView({
-    threshold: 0.1,
+    threshold: 0.2,
   });
   const [testimonialRef, testimonialInView] = useInView({
     threshold: 0.1,
