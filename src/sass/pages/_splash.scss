@@ -37,6 +37,42 @@
     margin-bottom: 10rem;
   }
   &__feature {
+    &__content{
+      display: flex;
+      flex-direction: column;
+      gap: 25rem;
+      margin-bottom: 25rem;
+    }
+    .reverse{
+      flex-direction: row-reverse;
+    }
+    &__item{
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+    margin-bottom: 5rem;
+    img{
+      width: 700px;
+    }
+    }
+
+    h3{
+      text-align: center;
+      font-size: 4rem;
+      font-family: sans-serif;
+      font-weight: 100;
+      color: $color-accent-2;
+    }
+    &--img-text{
+      justify-content: center;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      p{
+        max-width: 60rem;
+      }
+
+    }
     margin-top: 20rem;
     display: flex;
     flex-direction: column;
@@ -124,4 +160,10 @@
   margin-top: 2rem;
   margin-bottom: 2rem;
   align-self: center;
+}
+
+.splash__text{
+  display: flex;
+  flex-direction: column;
+  gap: 10rem;
 }

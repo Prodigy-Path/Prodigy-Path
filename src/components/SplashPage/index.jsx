@@ -3,10 +3,13 @@ import img1 from '../../images/testimonials/img1.png';
 import img2 from '../../images/testimonials/img2.png';
 import img3 from '../../images/testimonials/img3.png';
 import img4 from '../../images/testimonials/img4.png';
+import match from '../../images/match.jpg';
+import match2 from '../../images/match2.jpg';
+import match3 from '../../images/match3.jpg';
+import match4 from '../../images/match4.jpg';
 import LazyCarouselSlide from './LazyCarouselSlide';
 import Autoplay from 'embla-carousel-autoplay';
 import { Link } from 'react-router-dom';
-import Card from './Card';
 import { useRef, useEffect, useState } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
@@ -42,6 +45,8 @@ const SplashPage = () => {
   const [heroVisible, setHeroVisible] = useState(false);
   const [featureVisible, setFeatureVisible] = useState(false);
   const [testimonialVisible, setTestimonialVisible] = useState(false);
+
+  // hero animation
   useEffect(() => {
     if (heroInView) {
       setHeroVisible(true);
@@ -51,6 +56,7 @@ const SplashPage = () => {
     }
   }, [heroAnimation, heroInView, heroVisible]);
 
+  // feature animation
   useEffect(() => {
     if (featureInView) {
       setFeatureVisible(true);
@@ -60,6 +66,7 @@ const SplashPage = () => {
     }
   }, [featureAnimation, featureInView, featureVisible]);
 
+  // testimonial animation
   useEffect(() => {
     if (testimonialInView) {
       setTestimonialVisible(true);
@@ -68,129 +75,140 @@ const SplashPage = () => {
       testimonialAnimation.start('hidden');
     }
   }, [testimonialAnimation, testimonialInView, testimonialVisible]);
-
   return (
     <>
       <div className="splash">
         <motion.section
-        className="splash__hero"
+          className="splash__hero"
           ref={heroRef}
           initial="hidden"
           animate={heroAnimation}
           variants={fadeInUp}
           transition={{ duration: 0.25 }}
         >
-
-            <h1 data-testid="heading" className='splash__title'>Prodigy Path</h1>
-            <h3 data-testid="subheading">
-              Empowering the Next Generation of Experts
-            </h3>
-
-            <Link className="btn" to="/login">
-              LOGIN
-            </Link>
-
+          <h1 data-testid="heading" className='splash__title'>Prodigy Path</h1>
+          <h3 data-testid="subheading">
+            Empowering the Next Generation of Experts
+          </h3>
+          <Link className="btn" to="/login">
+            LOGIN
+          </Link>
         </motion.section>
-        <motion.div
+
+        <motion.section
+          className="splash__feature"
           ref={featureRef}
           initial="hidden"
           animate={featureAnimation}
           variants={fadeInUp}
           transition={{ duration: 0.25, delay: 0.4 }}
         >
-          <section className="splash__feature">
-            <div className="splash__row">
-              <Card>
-                <div className="splash__card one">
-                  <p className="splash__card--content">
-                    <span className="splash__title">Mentor Matching:</span> The
-                    platform's advanced mentor matching algorithm helps to match
-                    mentors with mentees based on their skills, experience, and
-                    preferences.
-                  </p>
-                </div>
-              </Card>
-              <Card>
-                <div className="splash__card two">
-                  <p className="splash__card--content">
-                    <span className="splash__title">
-                      Real-time Communication:
-                    </span>
-                    Mentors and mentees can communicate through the platform's
-                    built-in messaging system, allowing for real-time and
-                    effective communication.
-                  </p>
-                </div>
-              </Card>
+          <div className="splash__feature__content">
+
+            <div className="splash__feature__item">
+              <div className='splash__feature--img-text'>
+              <img src={match} alt="Two people working together" />
+              <div className='splash__text'>
+
+              <h3>Mentor Matching:</h3>
+              <p>
+                The platform's advanced mentor matching algorithm helps to match
+                mentors with mentees based on their skills, experience, and
+                preferences.
+              </p>
+              </div>
+              </div>
             </div>
-            <div className="splash__row">
-              <Card>
-                <div className="splash__card three">
-                  <p className="splash__card--content">
-                  <span className="splash__title">Expert Insights:</span> Gain
-                  valuable insights and advice from experienced mentors who have
-                  been where you are now and can provide the guidance you need
-                  to succeed.
-                </p>
+            <div className="splash__feature__item">
+              <div className='splash__feature--img-text reverse'>
+              <img src={match2} alt="working on an ipad" />
+              <div className='splash__text'>
+
+              <h3>Real-time Communication:</h3>
+              <p>
+                Mentors and mentees can communicate through the platform's
+                built-in messaging system, allowing for real-time and
+                effective communication.
+              </p>
               </div>
-            </Card>
-            <Card>
-              <div className="splash__card four">
-                <p className="splash__card--content">
-                  <span className="splash__title">Easy Connections:</span>
-                  Connect with like-minded individuals in your field of interest
-                  and expand your network, helping you take your career to the
-                  next level.
-                </p>
               </div>
-            </Card>
+            </div>
+            <div className="splash__feature__item">
+              <div className='splash__feature--img-text'>
+
+              <img src={match3} alt="Someone learning expert secrets" />
+              <div className='splash__text'>
+              <h3>Expert Insights:</h3>
+
+              <p>
+                Gain valuable insights and advice from experienced mentors who have
+                been where you are now and can provide the guidance you need
+                to succeed.
+              </p>
+              </div>
+              </div>
+            </div>
+            <div className="splash__feature__item">
+              <div className='splash__feature--img-text reverse'>
+
+              <img src={match4} alt="puzzle pieces needing connected" />
+              <div className='splash__text'>
+
+              <h3>Easy Connections:</h3>
+              <p>
+                Connect with like-minded individuals in your field of interest
+                and expand your network, helping you take your career to the
+                next level.
+              </p>
+              </div>
+              </div>
+            </div>
           </div>
-        </section>
-        </motion.div>
-        <motion.div
+        </motion.section>
+
+        <motion.section
+          className="splash__testimonials"
           ref={testimonialRef}
           initial="hidden"
           animate={testimonialAnimation}
           variants={fadeInUp}
           transition={{ duration: 0.25, delay: 0.3 }}
         >
-          <section className="splash__testimonials">
-            <Carousel
-              plugins={[autoplay.current]}
-              align="start"
-              loop
-              dragFree
-              orientation="vertical"
-              mx="auto"
-              height={590}
-            >
-              <Carousel.Slide>
-                <LazyCarouselSlide
-                  src={img1}
-                  alt={imgOneAlt}
-                />
-              </Carousel.Slide>
-              <Carousel.Slide>
-                <LazyCarouselSlide
-                  src={img2}
-                  alt={imgTwoAlt}
-                />
-              </Carousel.Slide>
-              <Carousel.Slide>
-                <LazyCarouselSlide
-                  src={img3}
-                  alt={imgThreeAlt}
-                />
-              </Carousel.Slide>
-              <Carousel.Slide>
-                <LazyCarouselSlide
-                  src={img4}
-                  alt={imgFourAlt}
-                />
-              </Carousel.Slide>
-            </Carousel>
-          </section>
-        </motion.div>
+          <Carousel
+            plugins={[autoplay.current]}
+            align="start"
+            loop
+            dragFree
+            orientation="vertical"
+            mx="auto"
+            height={590}
+          >
+            <Carousel.Slide>
+              <LazyCarouselSlide
+                src={img1}
+                alt={imgOneAlt}
+              />
+            </Carousel.Slide>
+            <Carousel.Slide>
+              <LazyCarouselSlide
+                src={img2}
+                alt={imgTwoAlt}
+              />
+            </Carousel.Slide>
+            <Carousel.Slide>
+              <LazyCarouselSlide
+                src={img3}
+                alt={imgThreeAlt}
+              />
+            </Carousel.Slide>
+            <Carousel.Slide>
+              <LazyCarouselSlide
+                src={img4}
+                alt={imgFourAlt}
+              />
+            </Carousel.Slide>
+          </Carousel>
+        </motion.section>
       </div>
     </>
   );
