@@ -1,10 +1,9 @@
-/** @format */
-
 import { faCircleCheck, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { removeItem, setDone, setTasks } from '../store/taskSlice';
+
 const Tasks = () => {
   const dispatch = useDispatch();
 
@@ -25,18 +24,18 @@ const Tasks = () => {
     dispatch(setDone(id));
   };
 
-  const filteredTasks = taskList.filter(task => task.assigned_to === user.username);
+  const filteredTasks = taskList.filter((task) => task.assigned_to === user.username);
 
   return (
     <div className="tasks">
-      {filteredTasks &&
+      <h1 className="tasks__title">Task Assignment</h1>
+      {filteredTasks.length === 0 ? (
+        <p>All tasks complete. You're free to tackle new challenges.</p>
+      ) : (
         [...filteredTasks]
           .sort((a, b) => (a.id > b.id ? 1 : -1))
           .map((task, index) => (
-            <div
-              key={task.id}
-              className="tasks__task"
-            >
+            <div key={task.id} className="tasks__task">
               <div className="tasks__task-content">
                 <div
                   className={`tasks__task-status ${
@@ -70,10 +69,7 @@ const Tasks = () => {
                     />
                   </span>
 
-                  <span
-                    onClick={() => deleteTask(task.id)}
-                    title="Delete"
-                  >
+                  <span onClick={() => deleteTask(task.id)} title="Delete">
                     <FontAwesomeIcon
                       className="tasks_icon trash"
                       icon={faTrashCan}
@@ -82,8 +78,10 @@ const Tasks = () => {
                 </div>
               </div>
             </div>
-          ))}
+          ))
+      )}
     </div>
   );
 };
+
 export default Tasks;

@@ -81,7 +81,7 @@ const SplashPage = () => {
           transition={{ duration: 0.25 }}
         >
 
-            <h1 data-testid="heading">Prodigy Path</h1>
+            <h1 data-testid="heading" className='splash__title'>Prodigy Path</h1>
             <h3 data-testid="subheading">
               Empowering the Next Generation of Experts
             </h3>
