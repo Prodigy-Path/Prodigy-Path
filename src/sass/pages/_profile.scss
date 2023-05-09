@@ -11,7 +11,7 @@
 .profile {
   width: 100%;
   height: 80%;
-  background-color: $color-lighter-blue;
+  background-color: $color-card;
   display: flex;
   flex-direction: column;
   &__avatar {
@@ -44,23 +44,23 @@
   }
   &__tag {
     font-size: 1.5rem;
-    color: $color-lighter-beige;
+    color: $color-neutral;
     background-color: $color-background-splash;
     padding: 5px;
     border-radius: 5px;
   }
   &__description {
     height: 100%;
-    background-color: $color-lighter-beige;
+    background-color: $color-neutral;
   }
   &__tabs {
     border: 1px white solid;
     border-radius: 10px;
-    background-color: $color-light-green;
+    background-color: $color-secondary;
     height: 100%;
   }
   &__friends {
-    background-color: $color-lighter-beige;
+    background-color: $color-neutral;
     margin: 15px;
     border-radius: 15px;
     &__table {
@@ -80,7 +80,7 @@
   &__request {
     padding: 10px;
     &__table {
-      background-color: $color-lighter-beige;
+      background-color: $color-neutral;
       border-radius: 15px;
     }
     &__name {
@@ -94,10 +94,12 @@
   }
 }
 
+textarea{
+  background-color: rgb(255, 255, 255) !important;
+}
 .mantine-lbhgo6 {
   width: 100%;
-  height: 100%;
-  background-color: $color-lighter-beige !important;
+  height: 30rem;
   color: black !important;
   font-weight: 500;
   margin-bottom: 0;
@@ -110,7 +112,7 @@
 .mantine-9hpi7j {
   width: 100%;
   height: 100%;
-  background-color: $color-lighter-beige !important;
+  background-color: $color-neutral !important;
   color: black !important;
   font-weight: 500;
   margin-bottom: 0;

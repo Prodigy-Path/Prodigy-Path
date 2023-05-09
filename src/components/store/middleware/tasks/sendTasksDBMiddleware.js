@@ -14,6 +14,10 @@ const sendTasksDBMiddleware = (store) => (next) => async (action) => {
     let method = 'post';
     let config = null;
     await fetchApi(url, body, method, config);
+    method = 'get';
+    body = null;
+    let response = await fetchApi(url, body, method, config);
+    action.payload.response = response;
   }
   next(action);
 };

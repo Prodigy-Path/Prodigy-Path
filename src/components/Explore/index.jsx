@@ -22,8 +22,8 @@ const Explore = () => {
   const { user, userConnectionsUsers } = useSelector((state) => state.login);
 
   const userIDs = userConnectionsUsers.map(user => user._id)
-  
-  
+
+
   const theme = useMantineTheme();
   const searchTerm = user.role === 'mentor' ? 'Protege' : 'Mentor';
   const handleNewParam = (query) => {
@@ -44,7 +44,7 @@ const Explore = () => {
     )
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
-  
+
   const filterConnections = results.filter(
     (users) => !userIDs.includes(users._id),
   );
@@ -75,7 +75,7 @@ const Explore = () => {
 
   return (
     <>
-      <div className='explore'>
+      <div className='explore main'>
         <section className='explore__search'>
           <TextInput
             icon={<IconSearch size={18} stroke={1.5} />}

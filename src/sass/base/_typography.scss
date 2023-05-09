@@ -12,8 +12,8 @@ body {
 }
 
 h1 {
-  color: white;
-  font-size: 15rem;
+  color: $color-accent-2;
+  font-size: 4rem;
   font-family: sans-serif;
   font-weight: 100;
 }
@@ -41,8 +41,8 @@ a {
 }
 
 .header__group__title {
-  color: $color-lighter-beige;
+  color: $color-nav-logo;
   font-size: 4rem;
   font-family: sans-serif;
-  text-shadow: 2.25px 2.25px 2.25px $color-lighter-blue;
+  text-shadow: 2.25px 2.25px 2.25px $color-secondary;
 }
