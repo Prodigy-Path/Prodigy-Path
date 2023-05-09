@@ -2,12 +2,12 @@
 
 .splash {
   // width: 98%;
- &__title{
+  &__title {
     font-size: 4rem;
     font-family: sans-serif;
     font-weight: 100;
     color: $color-neutral;
- }
+  }
   display: flex;
 
   flex-direction: column;
@@ -37,46 +37,45 @@
     margin-bottom: 10rem;
   }
   &__feature {
-    &__content{
+    &__content {
       display: flex;
       flex-direction: column;
-      gap: 25rem;
+
       margin-bottom: 25rem;
     }
-    .reverse{
+    .reverse {
       flex-direction: row-reverse;
     }
-    &__item{
-    display: flex;
-    flex-direction: column;
-    gap: 5rem;
-    margin-bottom: 5rem;
-    img{
-      width: 700px;
-    }
+    &__item {
+      display: flex;
+      flex-direction: column;
+      gap: 5rem;
+
+      img {
+        width: 700px;
+      }
     }
 
-    h3{
+    h3 {
       text-align: center;
       font-size: 4rem;
       font-family: sans-serif;
       font-weight: 100;
       color: $color-accent-2;
     }
-    &--img-text{
+    &--img-text {
       justify-content: center;
       display: flex;
       align-items: center;
       justify-content: space-around;
-      p{
+      p {
         max-width: 60rem;
       }
-
     }
     margin-top: 20rem;
     display: flex;
     flex-direction: column;
-    width: 80%;
+
     gap: 5rem;
   }
   &__row {
@@ -162,8 +161,20 @@
   align-self: center;
 }
 
-.splash__text{
+.splash__text {
   display: flex;
   flex-direction: column;
   gap: 10rem;
+}
+
+.splash__feature__item {
+  padding: 25rem 0;
+  height: 100rem;
+  background-color: $color-feature-1;
+  &:nth-child(odd) {
+    background-color: $color-feature-2;
+  }
+  &:last-child {
+    background-color: $color-accent-1;
+  }
 }
