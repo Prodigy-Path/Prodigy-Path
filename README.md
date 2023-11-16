@@ -4,7 +4,7 @@
 
 ## Live Site
 
-https://prodigy-path.netlify.app/
+https://prodigy-path.netlify.app
 
 ## Problem Domain
 
