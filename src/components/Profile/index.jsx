@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import { Avatar, Text, Button, Paper, Group, MultiSelect, Textarea } from '@mantine/core';
+import { Avatar, Text, Button, Paper, Group, MultiSelect, Textarea, Card } from '@mantine/core';
 import { useDispatch, useSelector } from 'react-redux';
 import { Tabs } from '@mantine/core';
 import { IconPhoto, IconMessageCircle, IconSettings } from '@tabler/icons';
 import { getConnectionRequests, processConnectionRequest } from '../store/loginSlice';
 import { Table, ScrollArea } from '@mantine/core';
 import { updateUser } from '../store/loginSlice';
-
+import data from './data'
 const Profile = () => {
 
   const { user, userConnectionsUsers, connectionRequestUsers } = useSelector((state) => state.login);
@@ -61,73 +61,7 @@ const Profile = () => {
   }
 
 
-  const data = [
-    { value: 'Git', label: 'Git', group: 'JavaScript' },
-    { value: 'GitHub', label: 'GitHub', group: 'JavaScript' },
-    { value: 'React', label: 'React', group: 'JavaScript' },
-    { value: 'React-Native', label: 'React-Native', group: 'JavaScript' },
-    { value: 'JavaScript', label: 'JavaScript', group: 'JavaScript' },
-    { value: 'CSS', label: 'CSS', group: 'JavaScript' },
-    { value: 'HTML', label: 'HTML', group: 'JavaScript' },
-    { value: 'SCSS', label: 'SCSS', group: 'JavaScript' },
-    { value: 'Web Development', label: 'Web Development', group: 'JavaScript' },
-    { value: 'Front-End', label: 'Front-End', group: 'JavaScript' },
-    { value: 'ECMAScript', label: 'ECMAScript', group: 'JavaScript' },
-    {
-      value: 'JavaScript Libraries',
-      label: 'JavaScript Libraries',
-      group: 'JavaScript',
-    },
-    { value: 'jQuery', label: 'jQuery', group: 'JavaScript' },
-    { value: 'Angular', label: 'Angular', group: 'JavaScript' },
-    { value: 'Vue.js', label: 'Vue.js', group: 'JavaScript' },
-    { value: 'Node.js', label: 'Node.js', group: 'JavaScript' },
-    { value: 'UI', label: 'UI', group: 'JavaScript' },
-    { value: 'UX', label: 'UX', group: 'JavaScript' },
-    {
-      value: 'Web Applications',
-      label: 'Web Applications',
-      group: 'JavaScript',
-    },
-    {
-      value: 'Single-Page Applications (SPAs)',
-      label: 'Single-Page Applications (SPAs)',
-      group: 'JavaScript',
-    },
-    { value: 'AJAX', label: 'AJAX', group: 'JavaScript' },
-    { value: 'JSON', label: 'JSON', group: 'JavaScript' },
-    { value: 'Asynchronous', label: 'Asynchronous', group: 'JavaScript' },
-    {
-      value: 'Object-Oriented Programming',
-      label: 'Object-Oriented Programming',
-      group: 'JavaScript',
-    },
-    {
-      value: 'Event-Driven Programming',
-      label: 'Event-Driven Programming',
-      group: 'JavaScript',
-    },
-    {
-      value: 'DOM Manipulation',
-      label: 'DOM Manipulation',
-      group: 'JavaScript',
-    },
-    { value: 'REST APIs', label: 'REST APIs', group: 'JavaScript' },
-    { value: 'npm', label: 'npm', group: 'JavaScript' },
-    { value: 'CLI', label: 'CLI', group: 'JavaScript' },
-    { value: 'Webpack', label: 'Webpack', group: 'JavaScript' },
-    { value: 'Python', label: 'Python', group: 'Python' },
-    { value: 'Azure', label: 'Azure', group: 'Python' },
-    { value: 'Django', label: 'Django', group: 'Python' },
-    { value: 'Numpy', label: 'Numpy', group: 'Python' },
-    { value: 'Machine Learning', label: 'Machine Learning', group: 'Python' },
-    { value: 'Pandas', label: 'Pandas', group: 'Python' },
-    { value: 'Scikit-learn', label: 'Scikit-learn', group: 'Python' },
-    { value: 'Jupyter Notebooks', label: 'Jupyter Notebooks', group: 'Python' },
-    { value: 'Keras', label: 'Keras', group: 'Python' },
-    { value: 'PyTorch', label: 'PyTorch', group: 'Python' },
-    { value: 'PyCharm', label: 'PyCharm', group: 'Python' },
-  ];
+
 
 
   const rows = userConnectionsUsers.map((user) => (
@@ -168,14 +102,14 @@ const Profile = () => {
 
 
   return (
-    <div className='profileContainer'>
+    <div className='profileContainer main'>
       <Paper
         radius="lg"
         className='profile'
         withBorder
         p="lg"
       >
-        <div className='profile__content'>
+        <Card className='profile__content'>
           <Avatar
             className='profile__avatar'
             src={'https://via.placeholder.com/150'}
@@ -222,7 +156,7 @@ const Profile = () => {
               clearButtonLabel='Clear selection'
               clearable
             />}
-        </div>
+        </Card>
         <Tabs radius="md" variant='outline' defaultValue="description" className='profile__tabs'>
           <Tabs.List grow>
             <Tabs.Tab value="description" icon={<IconPhoto size={14} />}>Description</Tabs.Tab>
@@ -231,7 +165,7 @@ const Profile = () => {
           </Tabs.List>
 
           <Tabs.Panel value="description" pl="xs" className='profile__descriptionTab'>
-            {!editMode ? 
+            {!editMode ?
               <Textarea
                 label="User Description"
                 className='profile__textarea'
@@ -240,7 +174,7 @@ const Profile = () => {
                 size="lg"
                 value={user.description}
                 disabled
-              /> 
+              />
               :
               <Textarea
                 placeholder="Description"

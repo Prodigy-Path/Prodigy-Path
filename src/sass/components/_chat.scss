@@ -1,4 +1,4 @@
-/** @format */
+//chat menu
 
 .chat {
   &__join {
@@ -20,16 +20,16 @@
     z-index: 3;
   }
 
-  &__headerBackground{
+  &__headerBackground {
     position: absolute;
     right: 0px;
     bottom: 210px;
-    background-color: rgb(195, 186, 186);
+    background-color: $color-chat-header-bg;
     height: 4rem;
     z-index: 2;
     width: 31rem;
     border-radius: 1px;
-  }
+    }
   position: fixed;
   right: 320px;
   bottom: 0px;

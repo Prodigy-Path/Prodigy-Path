@@ -7,7 +7,7 @@
   align-items: center;
   li,
   a {
-    color: #f3dcdc;
+    color: $color-footer-text;
     text-decoration: none;
     list-style: none;
   }
@@ -28,12 +28,13 @@
     color: rgb(128, 128, 128);
   }
   &__logo > a {
-    color: rgb(240, 233, 210);
-    text-shadow: 2.25px 2.25px 2.25px #3e5871;
+    color: $color-neutral;
+    text-shadow: 2.25px 2.25px 2.25px $color-secondary;
     font-size: 4rem;
     text-decoration: underline;
   }
   &__copyright {
+    color: rgb(128, 128, 128);
     margin-top: 5rem;
     padding-top: 7rem;
     border-top: 1px white solid;

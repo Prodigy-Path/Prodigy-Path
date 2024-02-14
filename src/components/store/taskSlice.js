@@ -21,7 +21,10 @@ const taskSlice = createSlice({
     },
 
     tasks: (state, action) => {
-      state.taskList.push(action.payload.tasks);
+      action.payload.response.forEach((item, index) => {
+        item.id = index + 1;
+      });
+      state.taskList = [...action.payload.response];
     },
     removeItem: (state, action) => {
       const id = action.payload.id;

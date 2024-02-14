@@ -2,7 +2,7 @@
 
 .header {
   &__group {
-    background-color: $color-dark-navy;
+    background-color: $color-nav-bar;
     display: flex;
     align-items: center;
     height: 100%;
@@ -12,7 +12,7 @@
       width: 600px;
 
       &__segment {
-        background-color: $color-lighter-beige;
+        background-color: $color-neutral;
         height: 1.7em;
         max-width: 16.6em;
         align-items: center;
@@ -20,8 +20,8 @@
       }
 
       &__signup {
-        background-color: $color-lighter-beige;
-        color: $color-dark-navy;
+        background-color: $color-neutral;
+        color: $color-primary;
       }
     }
 
@@ -29,7 +29,7 @@
       position: absolute;
       top: 100%;
       right: 0;
-      background-color: $color-lighter-blue;
+      background-color: $color-secondary;
       height: auto;
       width: auto;
     }

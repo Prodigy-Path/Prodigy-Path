@@ -7,12 +7,15 @@ import elias from '../../images/selfie-elias.png';
 export default function DevsAbout() {
   return (
     <article className='about'>
+      <section className='about__team'>
+
       <h2>Meet the Minds Behind Prodigy Path</h2>
-      <p className='about__team'>
+      <p >
         Our team consists of four experienced and driven individuals, each with
         their own unique background and skill-set.
         <div>Get to know us below:</div>
       </p>
+      </section>
       <section>
         <div>
           <h3>Seth Pierce</h3>

@@ -1,5 +1,15 @@
-/** @format */
+main{
+  background-color: $color-main-background;
+}
 
-.dashboard__main {
-  min-height: 50vh;
+.profile__tabs{
+  background-color: $color-profile-tabs !important;
+}
+
+.main{
+  min-height: 90vh;
+}
+
+.no-posts{
+  text-align: center;
 }
